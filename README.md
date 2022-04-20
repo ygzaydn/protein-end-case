@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+Üye Ol Sayfa Detayları
+- Tasarıma göre design edilmeli
+- Kullanıcılar bu sayfadan üye olabilmeliler
+- Email ve Password alanları zorunlu alanlar olmalı
+- Email ve Password alanlarının validasyonu UI tarafında da yapılmalı
+- Email valid olmalı ve en az 8 ve en fazla 20 karakter uzunluğunda bir password girilmeli
+- İşlem başarılı ise kullanıcı index sayfasına signed-in olarak yönlendirilmeli
+- İşlem başarısız ise kullanıcıya tasarıma göre hata mesajı gösterilmeli
+- İşlem başarılı ise API'den gelen ve cookie olarak set edilen Auth_Token değeri tüm
+authentication gerektiren requestlerde header'a Bearer token olarak eklenmeli
+- Zaten login olan kullanıcılar bu sayfaya gelmeye çalıştığında bu sayfayı göremeden index
+sayfasına yönlendirilmeli
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Üye Girişi Sayfa Detayları
+- Tasarıma göre design edilmeli
+- Kullanıcılar bu sayfadan üye girişi yapabilmeli
+- Email ve Password alanları zorunlu alanlar olmalı
+- Email ve Password alanlarının validasyonu UI tarafında da yapılmalı
+- Email valid olmalı ve en az 8 ve en fazla 20 karakter uzunluğunda bir password girilmeli
+- İşlem başarılı ise kullanıcı index sayfasına signed-in olarak yönlendirilmeli
+- İşlem başarısız ise kullanıcıya tasarıma göre hata mesajı gösterilmeli
+- İşlem başarılı ise API'den gelen ve cookie olarak set edilen Auth_Token değeri tüm
+authantication gerektiren requestlerde header'a Bearer token olarak eklenmeli
+- Zaten login olan kullanıcılar bu sayfaya gelmeye çalıştığında bu sayfayı göremeden index
+sayfasına yönlendirilmeli
 
-## Available Scripts
+Index Sayfa Detayları
 
-In the project directory, you can run:
+- Tasarıma göre design edilmeli
+- Hesabım ve Ürün Ekle butonları kullanıcı authanticated ise gösterilmeli aksi halde Üye
+Girişi butonu gözükmeli
+- Hesabım butonuna tıklanınca Hesabım sayfasına gitmeli
+- Ürün Ekle butonuna tıklanınca ürün ekleme sayfasına gitmeli
+- Tasarıma göre tüm kategoriler listelenmeli ve kullanıcı tıkladığında listelenen ürünler
+tıklanılan kategoriye göre filtrelenmeli, default olarak tüm ürünler çekilmeli
+- Herhangi bir kategori tıklandığı zaman, seçili kategori queryde tutulmalı. Kullanıcı URL
+üzerinden siteye geldiğinde queryde bir kategori değeri varsa, o kategori seçili gelmeli
 
-### `npm start`
+Ürün Detay Sayfa Detayları
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Tasarıma göre design edilmeli
+- Teklif Ver butonu üründen gelen data içerisindeki isOfferable alanına göre gösterilmeli ya
+da gösterilmemeli
+- Teklif Ver butonuna tıklanınca tasarımdaki gibi bir pop-up çıkmalı ve oradan hazır teklifler
+yapılmalı ya da kullanıcı kendisi teklif girebilmeli. Teklif girme alanı number olmalı ve
+buraya validasyon eklenmeli
+- Hazır yüzdelik tekliflerden birisi seçildiğinde, fiyat üzerinden ilgili değer hesaplanıp API
+tarafına yollanmalı (offeredPrice), mesela, 100₺ olan ürün için %40 değeri seçilirse, 40₺
+teklif yapılmalı
+- Eğer bir kullanıcı bir ürüne teklif verdiyse, o ürünün detayına gelince Teklif Ver butonu
+yerine Teklifi Geri Çek butonu gözükmeli. Tıklanınca teklif geri çekilmeli
+- Kullanıcı teklif yapmadan bir ürünü direk satın alabilir. Satın Al butonuna tıklanınca ilgili
+pop-up gözükmeli ve kullanıcı aksiyonuna göre hareket edilmeli
+- Kullanıcı ürünü satın alınca, ilgili ürün içerisindeki Satın Al ve Teklif Ver butonları
+gizlenmeli. Bu Ürün Satışta Değil şeklinde tasarımdaki gibi bir yazı gösterilmeli. Bu yazı
+ürün datası içerisindeki isSold alanının değerine göre gösterilmeli
+Hesabım Sayfa Detayları
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Tasarıma göre design edilmeli
+- Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli
+- Tasarıma göre aktif olan tab için ilgili offer'lar listelenmeli
+- Alınan tekliflere Onayla ve Reddet butonları ile cevap verilebilmeli
+- Verilen teklif onaylandığında yanında satın al butonu gözükmeli
+- Ürün detay sayfasındaki gibi Satın Al butonuna tıklanınca ilgili pop-up gözükmeli. Satın
+Al'a tıklayınca Teklif Verdiklerim listesindeki ürünün durumu güncellenmeli
+- Ürün Ekleme Sayfa Detayları
+- Tasarıma göre design edilmeli
+- Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli
+- İlgili validasyonlar eklenmeli:
+- Ürün Adı alanı maksimum 100 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı
+- Açıklama alanı maksimum 500 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı
+- Kategori alanı ilgili endpointten çekilen kategorileri listelemeli ve en fazla bir kategori
+seçilebilmeli. Bu alan zorunlu bir alan olmalı
+- Renk alanı ilgili endpointten çekilen renkleri listelemeli ve en fazla bir renk seçilebilmeli.
+Bu alan zorunlu bir alan olmamalı
+- Marka alanı ilgili endpointten çekilen markaları listelemeli ve en fazla bir marka
+seçilebilmeli. Bu alan zorunlu bir alan olmamalı
+- Kullanım Durumu alanı ilgili endpointten çekilen kullanım durumlarını listelemeli ve en
+fazla bir kullanım durumu seçilebilmeli. Bu alan zorunlu bir alan olmalı
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Ürün Görseli alanından en fazla bir ürün görseli eklenmeli. Eklenen ürün görseli
+istenildiği zaman silinebilmeli. Bu alan zorunlu bir alan olmalı. Sadece png/jpg/jpeg
+formatında görseller eklenmeli. Maksimum 400kb değerinde görseller eklenilebilmeli
+- Fiyat alanı number olmalı ve zorunlu bir alan olmalı
+- Teklif Opsiyonu alanı boolean bir değer olmalı ve default olarak false olmalı
+Ek Proje Gereksinimleri:
+- Tüm UI responsive olmalı
+- Desktop ve Responsive iletilen tasarıma göre yapılmalı.
+- İlgili yerlere kendi insiyatifinizde loading indicator ekleyebilirsiniz. Mesela productlar
+yüklenirken ya da Satın Al gibi async operasyonlar başlatıldığında loading indicator
+gösterilebilir
+- Performanslı bir uygulama olmalı ve CLS gibi web-vitals parametrelerine dikkat edilmeli
+- Accessibility'e önem verilmeli
+- Typescript, SSR, Unit-testing ve Code-splitting gibi geliştirmelerin olması öne çıkaran bir
+özellik olabilir
+- Yazılan projenin nasıl ayağa kalktığı ve benzeri detayların paylaşıldığı bir README.md file'ı
+projlere eklenmeli
