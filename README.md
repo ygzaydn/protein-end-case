@@ -54,6 +54,7 @@ pop-up gözükmeli ve kullanıcı aksiyonuna göre hareket edilmeli
 - Kullanıcı ürünü satın alınca, ilgili ürün içerisindeki Satın Al ve Teklif Ver butonları
 gizlenmeli. Bu Ürün Satışta Değil şeklinde tasarımdaki gibi bir yazı gösterilmeli. Bu yazı
 ürün datası içerisindeki isSold alanının değerine göre gösterilmeli
+
 Hesabım Sayfa Detayları
 
 - Tasarıma göre design edilmeli
@@ -77,12 +78,12 @@ Bu alan zorunlu bir alan olmamalı
 seçilebilmeli. Bu alan zorunlu bir alan olmamalı
 - Kullanım Durumu alanı ilgili endpointten çekilen kullanım durumlarını listelemeli ve en
 fazla bir kullanım durumu seçilebilmeli. Bu alan zorunlu bir alan olmalı
-
 - Ürün Görseli alanından en fazla bir ürün görseli eklenmeli. Eklenen ürün görseli
 istenildiği zaman silinebilmeli. Bu alan zorunlu bir alan olmalı. Sadece png/jpg/jpeg
 formatında görseller eklenmeli. Maksimum 400kb değerinde görseller eklenilebilmeli
 - Fiyat alanı number olmalı ve zorunlu bir alan olmalı
 - Teklif Opsiyonu alanı boolean bir değer olmalı ve default olarak false olmalı
+
 Ek Proje Gereksinimleri:
 - Tüm UI responsive olmalı
 - Desktop ve Responsive iletilen tasarıma göre yapılmalı.
