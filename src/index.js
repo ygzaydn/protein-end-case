@@ -7,16 +7,17 @@ import { store, persistor } from "./redux/store";
 import "./utils/i18next";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "./styles/main.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <PersistGate persistor={persistor}>
-                <App />
-            </PersistGate>
-        </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
+    </BrowserRouter>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

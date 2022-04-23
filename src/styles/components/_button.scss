@@ -1,0 +1,34 @@
+.button {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    &__large {
+        padding: 1.5rem 12rem;
+    }
+    &__medium {
+        padding: 1.5rem 8rem;
+    }
+    &__small {
+        padding: 1.5rem 4rem;
+    }
+    &__xsmall{
+        padding: 1rem 2rem;
+    }
+    &__primary{
+        background-color: $color-blue-1;
+        color: $color-light-1;
+    }
+    &__secondary{
+        background-color: $color-blue-2;
+        color: $color-blue-1;
+    }
+    &__orange {
+        background-color: $color-orange-2;
+        color: $color-orange-1;
+    }
+    &__red {
+        background-color: $color-red-1;
+        color: $color-light-1;
+    }
+}
