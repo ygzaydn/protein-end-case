@@ -1,8 +1,12 @@
 .button {
+    display: flex;
+    align-items: center;
     border: none;
     outline: none;
     border-radius: 10px;
     font-size: 1.5rem;
+    cursor: pointer;
+    margin: 0 0.5rem;
     &__large {
         padding: 1.5rem 12rem;
     }
@@ -12,14 +16,14 @@
     &__small {
         padding: 1.5rem 4rem;
     }
-    &__xsmall{
+    &__xsmall {
         padding: 1rem 2rem;
     }
-    &__primary{
+    &__primary {
         background-color: $color-blue-1;
         color: $color-light-1;
     }
-    &__secondary{
+    &__secondary {
         background-color: $color-blue-2;
         color: $color-blue-1;
     }
@@ -30,5 +34,24 @@
     &__red {
         background-color: $color-red-1;
         color: $color-light-1;
+    }
+    & svg {
+        margin-right: 0.8rem;
+    }
+
+    @include respond(phone) {
+        &__hideText {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                display: none;
+            }
+        }
+        & svg {
+            margin-right: 0;
+        }
     }
 }

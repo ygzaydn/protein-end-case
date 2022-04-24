@@ -1,0 +1,36 @@
+.indexpage {
+    &__header {
+        max-width: 1448px;
+        margin: auto;
+    }
+    &__content {
+        background-color: $color-light-4;
+    }
+    &__bannerdiv {
+        max-width: 1448px;
+        margin: auto;
+        padding: 1.5rem 0;
+        &__image {
+            width: 100%;
+            height: auto;
+        }
+    }
+    &__categorydiv {
+        max-width: 1448px;
+        margin: auto;
+        display: flex;
+        @include respond(tab-port) {
+            width: 100%;
+            overflow: auto;
+            @include hideScrollBar;
+        }
+    }
+    &__itemdiv {
+        max-width: 1448px;
+        justify-content: space-evenly;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(auto, 25rem));
+        padding: 4rem 0 6rem 0;
+    }
+}

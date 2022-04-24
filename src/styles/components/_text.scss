@@ -1,0 +1,45 @@
+.text {
+    padding: 0.2rem;
+    margin: 0.2rem;
+    text-align: center;
+    &__white {
+        color: $color-light-1;
+    }
+    &__dark {
+        color: $color-dark-2;
+    }
+    &__blue {
+        color: $color-blue-1;
+    }
+    &__red {
+        color: $color-red-1;
+    }
+    &__green {
+        color: $color-green-1;
+    }
+    &__block {
+        & > * {
+            display: block;
+        }
+    }
+    &__inline {
+        & > * {
+            display: inline;
+        }
+    }
+    &__light {
+        & > * {
+            font-weight: 200;
+        }
+    }
+    &__medium {
+        & > * {
+            font-weight: 400;
+        }
+    }
+    &__bold {
+        & > * {
+            font-weight: 600;
+        }
+    }
+}

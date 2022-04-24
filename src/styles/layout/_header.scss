@@ -1,0 +1,20 @@
+.header {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__logodiv {
+        margin: auto 0;
+        & img {
+            height: 4.2rem;
+            width: 12.6rem;
+        }
+    }
+    &__buttondiv {
+        display: flex;
+        align-items: stretch;
+    }
+    @include respond(tab-port) {
+        padding: 1rem 2rem;
+    }
+}

@@ -1,0 +1,27 @@
+.itemcard {
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: $color-light-1;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &__image {
+        border-radius: 10px;
+        width: 23rem;
+        aspect-ratio: 260/297;
+        margin-bottom: 2rem;
+        background-size: cover;
+    }
+
+    &__infodiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.2rem;
+    }
+
+    &:hover {
+        background-color: $color-dark-5;
+    }
+}

@@ -5,6 +5,14 @@
     transform: translate(-50%, -50%);
 }
 
+@mixin hideScrollBar {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 // Media query manager
 /*
 break points
