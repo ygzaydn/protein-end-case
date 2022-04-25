@@ -1,6 +1,8 @@
 import { all, put, takeLatest, call } from "redux-saga/effects";
 import { register } from "../../utils/axios";
 
+import Cookies from "universal-cookie";
+
 export function* incrementAsync() {
     yield put({ type: "INCREMENT" });
 }
@@ -8,6 +10,9 @@ export function* incrementAsync() {
 export function* fetchRegister({ payload }) {
     try {
         const res = yield call(register, { ...payload });
+        const cookies = new Cookies();
+        cookies.set("jwt", res.data.jwt, { path: "/" });
+
         yield put({
             type: "SIGN_UP_SUCCESS",
             payload: {
@@ -16,7 +21,6 @@ export function* fetchRegister({ payload }) {
             },
         });
     } catch (error) {
-        console.log("asd");
         yield put({
             type: "SIGN_UP_FAILURE",
             payload: error.message,

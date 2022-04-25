@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Signin, Logo2 } from "../../assets/images";
 import { Text, SignupForm, SignInForm } from "../../components";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router";
 
-const Signup = () => {
+const Signup = ({ auth }) => {
     const [page, setPage] = useState("signup");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (auth) {
+            navigate("/");
+        }
+    }, [auth]);
 
     return (
         <section className="signup">
@@ -70,4 +80,12 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+const mapStateToProps = (state) => ({
+    auth: state.user.authenticated,
+});
+
+Signup.propTypes = {
+    auth: PropTypes.bool,
+};
+
+export default connect(mapStateToProps, null)(Signup);
