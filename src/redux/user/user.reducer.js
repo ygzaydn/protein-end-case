@@ -4,6 +4,8 @@ import { UserActionTypes } from "./user.types";
 const INITIAL_STATE = {
     currentUser: null,
     error: null,
+    authenticated: false,
+    token: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -12,8 +14,10 @@ const userReducer = (state = INITIAL_STATE, action) => {
         case UserActionTypes.SIGN_UP_SUCCESS:
             return {
                 ...state,
-                currentUser: action.payload,
+                currentUser: { ...action.payload.user },
+                token: action.payload.jwt,
                 error: null,
+                authenticated: true,
             };
         case UserActionTypes.SIGN_OUT_SUCCESS:
             return {
@@ -27,6 +31,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 error: action.payload,
+                authenticated: false,
+                token: null,
             };
 
         default:

@@ -1,10 +1,8 @@
 import React from "react";
 import { useFormik } from "formik";
-import { FormTextInput, Button } from "../";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { FormTextInput, Button } from "..";
 
-const SignupForm = ({ fetch }) => {
+const SignInForm = () => {
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -34,37 +32,19 @@ const SignupForm = ({ fetch }) => {
                 onChangeFunc={formik.handleChange}
                 value={formik.values.password}
                 labelText="Şifre"
-                additionalText=" &nbsp;"
+                additionalText="Şifremi Unuttum"
             />
 
             <Button
                 type="submit"
                 color="primary"
                 size="xsmall"
-                clickFunc={() =>
-                    fetch(
-                        formik.values.email,
-                        formik.values.password,
-                        formik.values.email
-                    )
-                }
+                classes={"signupform__button"}
             >
-                <h5 style={{ textAlign: "center", width: "100%" }}>Üye ol</h5>
+                <h5 style={{ textAlign: "center", width: "100%" }}>Giriş</h5>
             </Button>
         </form>
     );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    fetch: (email, password, username) =>
-        dispatch({
-            type: "SIGN_UP_START",
-            payload: { email, password, username },
-        }),
-});
-
-SignupForm.propTypes = {
-    fetch: PropTypes.func,
-};
-
-export default connect(null, mapDispatchToProps)(SignupForm);
+export default SignInForm;

@@ -4,6 +4,7 @@ import Header from "./header/header";
 import CategoryText from "./categoryText/categoryText";
 import ItemCard from "./itemCard/itemCard";
 import SignupForm from "./signupForm/signupForm";
+import SignInForm from "./signinForm/signInForm";
 import FormTextInput from "./formInput/formTextInput.jsx";
 
 export {
@@ -13,5 +14,6 @@ export {
     CategoryText,
     ItemCard,
     SignupForm,
+    SignInForm,
     FormTextInput,
 };

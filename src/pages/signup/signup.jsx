@@ -1,20 +1,12 @@
-import React from "react";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useState } from "react";
 import { Signin, Logo2 } from "../../assets/images";
-import { Text, SignupForm } from "../../components";
+import { Text, SignupForm, SignInForm } from "../../components";
 
 const Signup = () => {
-    const notify = () =>
-        toast.error("Wow so easy!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            progress: undefined,
-        });
+    const [page, setPage] = useState("signup");
+
     return (
         <section className="signup">
-            <ToastContainer />
             <div className="signup__imagediv">
                 <img
                     src={Signin}
@@ -33,23 +25,44 @@ const Signup = () => {
                 <div className="signup__formdiv">
                     <div className="signup__formdiv--text">
                         <Text color="dark" fontWeight="bold">
-                            <h1>Üye ol</h1>
+                            <h1>
+                                {page === "signup" ? "Üye ol" : "Giriş yap"}
+                            </h1>
                         </Text>
                         <Text color="dark" fontWeight="medium">
-                            <h5>Fırsatlardan yararlanmak için üye ol!</h5>
+                            <h5>
+                                {page === "signup"
+                                    ? "Fırsatlardan yararlanmak için üye ol!"
+                                    : "Fırsatlardan yararlanmak için giriş yap!"}
+                            </h5>
                         </Text>
                     </div>
-
-                    <SignupForm />
+                    {page === "signup" ? <SignupForm /> : <SignInForm />}
                 </div>
                 <div className="signup__lowerdiv">
                     <Text color="dark" display="inline" fontWeight="medium">
-                        <h6>Hesabın var mı?</h6>
+                        <h6>
+                            {page === "signup"
+                                ? " Hesabın var mı?"
+                                : " Hesabın yok mu?"}
+                        </h6>
                     </Text>
                     <Text color="blue" display="inline" fontWeight="medium">
-                        <h6 style={{ cursor: "pointer" }} onClick={notify}>
-                            Giriş yap
-                        </h6>
+                        {page === "signup" ? (
+                            <h6
+                                style={{ cursor: "pointer" }}
+                                onClick={() => setPage("signin")}
+                            >
+                                Giriş yap
+                            </h6>
+                        ) : (
+                            <h6
+                                style={{ cursor: "pointer" }}
+                                onClick={() => setPage("signup")}
+                            >
+                                Üye ol
+                            </h6>
+                        )}
                     </Text>
                 </div>
             </div>

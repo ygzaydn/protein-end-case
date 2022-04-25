@@ -9,6 +9,7 @@ const Button = ({
     color,
     hideTextonMobile,
     type,
+    classes,
 }) => {
     const classNames = ["button"];
     size === "large" && classNames.push("button__large");
@@ -26,7 +27,7 @@ const Button = ({
     return (
         <button
             onClick={() => clickFunc && clickFunc()}
-            className={classNames.join(" ")}
+            className={`${classes} ${classNames.join(" ")}`}
             type={type}
         >
             {children}
@@ -41,6 +42,7 @@ Button.propTypes = {
     children: PropTypes.node,
     hideTextonMobile: PropTypes.bool,
     type: PropTypes.string,
+    classes: PropTypes.string,
 };
 
 export default Button;
