@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import SignUp from "./signup";
+import SignIn from "./signin";
 
 test("Account page renders", () => {
-    render(<SignUp />);
-    const text = screen.getByText(/SignUp/i);
+    render(<SignIn />);
+    const text = screen.getByText(/SignIn/i);
     expect(text).toBeInTheDocument();
 });
