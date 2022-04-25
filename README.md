@@ -96,3 +96,9 @@ gösterilebilir
 özellik olabilir
 - Yazılan projenin nasıl ayağa kalktığı ve benzeri detayların paylaşıldığı bir README.md file'ı
 projlere eklenmeli
+
+
+API: https://bootcampapi.techcs.io/api/fe/v1/
+Yeni API: https://bootcamp.akbolat.net/documentation/v1.0.0
+Tasarım: https://xd.adobe.com/view/d2d90aae-3e30-4062-64db-8e998a010c1a-a4e8/grid
+Şifre: Çiçeksepeti1

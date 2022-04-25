@@ -2,7 +2,14 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-const Button = ({ children, clickFunc, size, color, hideTextonMobile }) => {
+const Button = ({
+    children,
+    clickFunc,
+    size,
+    color,
+    hideTextonMobile,
+    type,
+}) => {
     const classNames = ["button"];
     size === "large" && classNames.push("button__large");
     size === "medium" && classNames.push("button__medium");
@@ -20,6 +27,7 @@ const Button = ({ children, clickFunc, size, color, hideTextonMobile }) => {
         <button
             onClick={() => clickFunc && clickFunc()}
             className={classNames.join(" ")}
+            type={type}
         >
             {children}
         </button>
@@ -32,6 +40,7 @@ Button.propTypes = {
     size: PropTypes.string,
     children: PropTypes.node,
     hideTextonMobile: PropTypes.bool,
+    type: PropTypes.string,
 };
 
 export default Button;
