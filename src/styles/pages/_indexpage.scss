@@ -5,11 +5,12 @@
     }
     &__content {
         background-color: $color-light-4;
+        padding: 2rem;
     }
     &__bannerdiv {
         max-width: 1448px;
         margin: auto;
-        padding: 1.5rem 0;
+
         &__image {
             width: 100%;
             height: auto;
@@ -19,18 +20,20 @@
         max-width: 1448px;
         margin: auto;
         display: flex;
+        overflow: auto;
+
         @include respond(tab-port) {
             width: 100%;
-            overflow: auto;
             @include hideScrollBar;
         }
     }
     &__itemdiv {
         max-width: 1448px;
-        justify-content: space-evenly;
+        justify-content: center;
         margin: auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(auto, 25rem));
+        grid-gap: 1.25rem;
+        grid-template-columns: repeat(auto-fit, minmax(auto, 23rem));
         padding: 4rem 0 6rem 0;
     }
 }

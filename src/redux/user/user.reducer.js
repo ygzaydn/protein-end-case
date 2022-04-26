@@ -34,7 +34,10 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 authenticated: false,
                 token: null,
             };
-
+        case UserActionTypes.RESET_USER:
+            return {
+                ...INITIAL_STATE,
+            };
         default:
             return state;
     }

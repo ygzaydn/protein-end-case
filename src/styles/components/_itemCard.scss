@@ -2,15 +2,20 @@
     padding: 1rem;
     border-radius: 10px;
     background-color: $color-light-1;
-    margin: 1rem 0;
+    border: 5px solid $color-light-1;
     cursor: pointer;
     transition: all 0.4s;
 
+    &__imagediv {
+        width: 21rem;
+        height: 30rem;
+        border-radius: 10px;
+    }
+
     &__image {
         border-radius: 10px;
-        width: 23rem;
-        aspect-ratio: 260/297;
-        margin-bottom: 2rem;
+        width: 20rem;
+        height: auto;
         background-size: cover;
     }
 
@@ -18,10 +23,22 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0.2rem;
+        height: 4rem;
+        margin: 1rem 0;
+        border-radius: 5px;
+        &--brand {
+            margin: 0 0.2rem;
+        }
+    }
+    &__pricediv {
+        height: 3rem;
+        width: 12rem;
+        border-radius: 5px;
+        padding: 0 2rem 0 0;
     }
 
     &:hover {
         background-color: $color-dark-5;
+        border: 5px solid $color-dark-4;
     }
 }
