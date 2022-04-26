@@ -26,6 +26,11 @@ export const register = async ({ email, password, username }) => {
     return res;
 };
 
+export const login = async ({ email, password }) => {
+    const res = await instance.post(urls.login, { email, password });
+    return res;
+};
+
 export const user = async () => {
     const res = await instance.get(urls.userInfo, {
         headers: {

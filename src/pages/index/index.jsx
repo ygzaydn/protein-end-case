@@ -12,11 +12,25 @@ const Index = ({
     categories,
 }) => {
     const [pageCategory, setPageCategory] = useState("");
+    const [filteredProducts, setFilteredProducts] = useState([]);
+
     useEffect(() => {
-        checkUser();
         getProducts();
         getCategories();
+        checkUser();
     }, []);
+
+    useEffect(() => {
+        setFilteredProducts(filterProducts());
+    }, [pageCategory]);
+
+    const filterProducts = () => {
+        if (pageCategory !== "") {
+            return products.filter((el) => el.category.name === pageCategory);
+        } else {
+            return products;
+        }
+    };
 
     return (
         <section className="indexpage">
@@ -48,7 +62,7 @@ const Index = ({
                     ))}
                 </div>
                 <div className="indexpage__itemdiv">
-                    {products.map((el) => (
+                    {filteredProducts.map((el) => (
                         <ItemCard
                             key={el.id + el.brand}
                             brand={el.brand}

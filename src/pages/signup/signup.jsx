@@ -53,8 +53,8 @@ const Signup = ({ auth }) => {
                     <Text color="dark" display="inline" fontWeight="medium">
                         <h6>
                             {page === "signup"
-                                ? " Hesabın var mı?"
-                                : " Hesabın yok mu?"}
+                                ? " Hesabın var mı? "
+                                : " Hesabın yok mu? "}
                         </h6>
                     </Text>
                     <Text color="blue" display="inline" fontWeight="medium">
