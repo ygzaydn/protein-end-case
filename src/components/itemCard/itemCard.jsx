@@ -3,9 +3,9 @@ import React from "react";
 import { Text } from "../../components";
 import PropTypes from "prop-types";
 
-const ItemCard = ({ imageURL, color, brand, price }) => {
+const ItemCard = ({ imageURL, color, brand, price, clickFunc }) => {
     return (
-        <div className="itemcard">
+        <div className="itemcard" onClick={() => clickFunc()}>
             <div
                 className={
                     imageURL
@@ -28,7 +28,7 @@ const ItemCard = ({ imageURL, color, brand, price }) => {
                     }
                 >
                     <Text display="inline" color="blue" fontWeight="medium">
-                        <h4>{brand && brand}</h4>
+                        <h5>{brand && brand}</h5>
                     </Text>
                 </div>
                 <div
@@ -39,10 +39,10 @@ const ItemCard = ({ imageURL, color, brand, price }) => {
                     }
                 >
                     <Text display="inline" color="dark" fontWeight="medium">
-                        <h4>
+                        <h5>
                             {color && <strong>Renk: </strong>}
                             {color}
-                        </h4>
+                        </h5>
                     </Text>
                 </div>
             </div>
@@ -54,9 +54,9 @@ const ItemCard = ({ imageURL, color, brand, price }) => {
                 }
             >
                 <Text fontWeight="bold" color="dark">
-                    <h2 style={{ textAlign: "initial" }}>
+                    <h4 style={{ textAlign: "initial" }}>
                         {price && `${price} TL`}
-                    </h2>
+                    </h4>
                 </Text>
             </div>
         </div>
@@ -68,6 +68,7 @@ ItemCard.propTypes = {
     color: PropTypes.string,
     brand: PropTypes.string,
     price: PropTypes.number,
+    clickFunc: PropTypes.func,
 };
 
 export default ItemCard;

@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 
 const CategoryText = ({ name, active, clickFunc }) => {
     return (
-        <h3
+        <h4
             className={`${
                 active ? "categoryText categoryText__active" : "categoryText"
             }`}
             onClick={() => clickFunc && clickFunc()}
         >
             {name}
-        </h3>
+        </h4>
     );
 };
 

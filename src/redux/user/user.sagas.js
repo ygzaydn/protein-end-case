@@ -3,11 +3,10 @@ import { register, user, login } from "../../utils/axios";
 
 import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
-
 function* fetchRegister({ payload }) {
     try {
         const res = yield call(register, { ...payload });
+        const cookies = new Cookies();
         cookies.set("jwt", res.data.jwt, { path: "/" });
 
         yield put({
@@ -27,7 +26,14 @@ function* fetchRegister({ payload }) {
 
 function* fetchUser() {
     try {
-        yield call(user);
+        const res = yield call(user);
+        yield put({
+            type: "CHECK_SUCCESS",
+            payload: {
+                user: res.data.user,
+                jwt: res.data.jwt,
+            },
+        });
     } catch (err) {
         yield put({
             type: "RESET_USER",
@@ -38,6 +44,7 @@ function* fetchUser() {
 function* fetchLogin({ payload }) {
     try {
         const res = yield call(login, { ...payload });
+        const cookies = new Cookies();
         cookies.set("jwt", res.data.jwt, { path: "/" });
         yield put({
             type: "SIGN_IN_SUCCESS",

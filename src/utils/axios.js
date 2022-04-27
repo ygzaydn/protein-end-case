@@ -1,9 +1,6 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
-const jwt = cookies.get("jwt");
-
 const instance = axios.create({
     baseURL: "https://bootcamp.akbolat.net/",
 });
@@ -27,11 +24,16 @@ export const register = async ({ email, password, username }) => {
 };
 
 export const login = async ({ email, password }) => {
-    const res = await instance.post(urls.login, { email, password });
+    const res = await instance.post(urls.login, {
+        identifier: email,
+        password,
+    });
     return res;
 };
 
 export const user = async () => {
+    const cookies = new Cookies();
+    const jwt = cookies.get("jwt");
     const res = await instance.get(urls.userInfo, {
         headers: {
             Authorization: "Bearer " + jwt,
@@ -47,6 +49,11 @@ export const products = async () => {
 
 export const categories = async () => {
     const res = await instance.get(urls.categories);
+    return res;
+};
+
+export const productInfo = async (id) => {
+    const res = await instance.get(urls.categories + "/" + id);
     return res;
 };
 

@@ -1,5 +1,6 @@
 export const UserActionTypes = {
     CHECK_USER: "CHECK_USER",
+    CHECK_SUCCESS: "CHECK_SUCCESS",
     RESET_USER: "RESET_USER",
 
     SIGN_IN_START: "SIGN_IN_START",

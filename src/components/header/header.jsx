@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 
 const Header = ({ auth }) => {
     const navigate = useNavigate();
+
     const navigateToPage = () => {
         if (auth) {
             navigate("/user");
@@ -19,13 +20,18 @@ const Header = ({ auth }) => {
     return (
         <header className="header">
             <div className="header__logodiv">
-                <img src={Logo} alt="ikinciel-logo" />
+                <img
+                    src={Logo}
+                    alt="ikinciel-logo"
+                    onClick={() => navigate("/")}
+                    className="header__logodiv--image"
+                />
             </div>
             <div className="header__buttondiv">
                 <Button color="secondary" size="xsmall" hideTextonMobile>
                     <>
                         <Plus />
-                        <h6>Ürün Ekle</h6>
+                        <h5>Ürün Ekle</h5>
                     </>
                 </Button>
                 <Button
@@ -35,7 +41,7 @@ const Header = ({ auth }) => {
                 >
                     <>
                         <UserLogo />
-                        <h6>{auth ? "Hesabım" : "Giriş Yap"}</h6>
+                        <h5>{auth ? "Hesabım" : "Giriş Yap"}</h5>
                     </>
                 </Button>
             </div>

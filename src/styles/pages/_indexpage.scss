@@ -20,6 +20,7 @@
         max-width: 1448px;
         margin: auto;
         display: flex;
+        justify-content: space-between;
         overflow: auto;
 
         @include respond(tab-port) {
@@ -33,7 +34,7 @@
         margin: auto;
         display: grid;
         grid-gap: 1.25rem;
-        grid-template-columns: repeat(auto-fit, minmax(auto, 23rem));
-        padding: 4rem 0 6rem 0;
+        grid-template-columns: repeat(auto-fit, minmax(auto, 27rem));
+        padding: 2rem 0 6rem 0;
     }
 }

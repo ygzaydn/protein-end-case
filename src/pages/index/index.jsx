@@ -3,6 +3,7 @@ import { Header, CategoryText, ItemCard } from "../../components";
 import { BannerImage } from "../../assets/images/";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router";
 
 const Index = ({
     checkUser,
@@ -13,6 +14,7 @@ const Index = ({
 }) => {
     const [pageCategory, setPageCategory] = useState("");
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getProducts();
@@ -62,13 +64,18 @@ const Index = ({
                     ))}
                 </div>
                 <div className="indexpage__itemdiv">
-                    {filteredProducts.map((el) => (
+                    {filteredProducts?.map((el) => (
                         <ItemCard
                             key={el.id + el.brand}
                             brand={el.brand}
                             color={el.color}
                             price={el.price}
-                            imageURL={el.image.formats.small.url}
+                            imageURL={el.image?.url}
+                            clickFunc={() =>
+                                navigate("/productdetail:" + el.id, {
+                                    state: { item: el },
+                                })
+                            }
                         />
                     ))}
                     <ItemCard

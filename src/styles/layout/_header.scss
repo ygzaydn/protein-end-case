@@ -5,9 +5,10 @@
     align-items: center;
     &__logodiv {
         margin: auto 0;
-        & img {
+        &--image {
             height: 4.2rem;
             width: 12.6rem;
+            cursor: pointer;
         }
     }
     &__buttondiv {

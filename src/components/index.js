@@ -6,6 +6,8 @@ import ItemCard from "./itemCard/itemCard";
 import SignupForm from "./signupForm/signupForm";
 import SignInForm from "./signinForm/signInForm";
 import FormTextInput from "./formInput/formTextInput.jsx";
+import SkeletonImage from "./skeletonImage/skeletonImage";
+import SkeletonText from "./skeletonText/skeletonText";
 
 export {
     Button,
@@ -16,4 +18,6 @@ export {
     SignupForm,
     SignInForm,
     FormTextInput,
+    SkeletonImage,
+    SkeletonText,
 };

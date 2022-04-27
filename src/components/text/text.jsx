@@ -2,8 +2,8 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-const Text = ({ color, display, fontWeight, children }) => {
-    const classNames = ["text"];
+const Text = ({ color, display, fontWeight, children, classes }) => {
+    const classNames = [classes, "text"];
     color === "white" && classNames.push("text__white");
     color === "dark" && classNames.push("text__dark");
     color === "blue" && classNames.push("text__blue");
@@ -17,7 +17,7 @@ const Text = ({ color, display, fontWeight, children }) => {
     fontWeight === "medium" && classNames.push("text__medium");
     fontWeight === "bold" && classNames.push("text__bold");
 
-    return <span className={classNames.join(" ")}>{children}</span>;
+    return <div className={classNames.join(" ")}>{children}</div>;
 };
 
 Text.propTypes = {
@@ -25,6 +25,7 @@ Text.propTypes = {
     display: PropTypes.string,
     fontWeight: PropTypes.string,
     children: PropTypes.node,
+    classes: PropTypes.string,
 };
 
 export default Text;
