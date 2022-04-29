@@ -44,8 +44,16 @@
             flex-direction: column;
             min-height: 15rem;
             justify-content: space-around;
-            min-width: 30rem;
-            margin: 2rem 0;
+            max-width: 35rem;
+            margin: 2rem 0 1rem 0;
+            &--row {
+                display: flex;
+                justify-content: space-between;
+                & > div {
+                    text-align: start;
+                    width: 50%;
+                }
+            }
         }
         &--detailsdiv {
             &--details {
@@ -53,6 +61,17 @@
                 min-height: 1rem;
                 text-align: start;
             }
+        }
+        &--pricediv {
+            margin: 1rem 0;
+            &--price{
+            text-align: start;
+            }
+        }
+        &--buttonsdiv {
+            display: flex;
+            justify-content: flex-start;
+            
         }
     }
 }

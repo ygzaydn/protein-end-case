@@ -7,54 +7,57 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const Header = ({ auth }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const navigateToPage = () => {
-        if (auth) {
-            navigate("/user");
-        } else {
-            navigate("/signup");
-        }
-    };
+  const navigateToPage = () => {
+    if (auth) {
+      navigate("/user");
+    } else {
+      navigate("/signup");
+    }
+  };
 
-    return (
-        <header className="header">
-            <div className="header__logodiv">
-                <img
-                    src={Logo}
-                    alt="ikinciel-logo"
-                    onClick={() => navigate("/")}
-                    className="header__logodiv--image"
-                />
-            </div>
-            <div className="header__buttondiv">
-                <Button color="secondary" size="xsmall" hideTextonMobile>
-                    <>
-                        <Plus />
-                        <h5>Ürün Ekle</h5>
-                    </>
-                </Button>
-                <Button
-                    color="secondary"
-                    size="xsmall"
-                    clickFunc={() => navigateToPage()}
-                >
-                    <>
-                        <UserLogo />
-                        <h5>{auth ? "Hesabım" : "Giriş Yap"}</h5>
-                    </>
-                </Button>
-            </div>
-        </header>
-    );
+  return (
+    <header className="header">
+      <div className="header__logodiv">
+        <img
+          src={Logo}
+          alt="ikinciel-logo"
+          onClick={() => navigate("/")}
+          className="header__logodiv--image"
+        />
+      </div>
+      <div className="header__buttondiv">
+        {auth && (
+          <Button color="secondary" size="xsmall" hideTextonMobile>
+            <>
+              <Plus />
+              <h5>Ürün Ekle</h5>
+            </>
+          </Button>
+        )}
+
+        <Button
+          color="secondary"
+          size="xsmall"
+          clickFunc={() => navigateToPage()}
+        >
+          <>
+            <UserLogo />
+            <h5>{auth ? "Hesabım" : "Giriş Yap"}</h5>
+          </>
+        </Button>
+      </div>
+    </header>
+  );
 };
 
 const mapStateToProps = (state) => ({
-    auth: state.user.authenticated,
+  auth: state.user.authenticated,
 });
 
 Header.propTypes = {
-    auth: PropTypes.bool,
+  auth: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, null)(Header);

@@ -17,11 +17,12 @@
 /*
 break points
 
-0-600px         ->      phone
-600-900px       ->      tablet portrait
-900px-1200px    ->      tablet landscape
-1200 - 1800px   ->      desktop
-1800 - then     ->      big desktop
+0 - 600px         ->      phone
+600pn - 900px       ->      tablet portrait
+900px - 1200px    ->      tablet landscape
+1200px - 1440px ->      small desktop
+1440px - 1800px   ->      desktop
+1800pn - then     ->      big desktop
 
 $breakpoint argument choices:
     -   phone
@@ -49,6 +50,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @if $breakpoint == tab-land {
         @media only screen and (max-width: 75em) {
             // 1200px
+            @content;
+        }
+    }
+    @if $breakpoint==small-desktop {
+        @media only screen and (max-width: 90em) {
+            // 1440px
             @content;
         }
     }
