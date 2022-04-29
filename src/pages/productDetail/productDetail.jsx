@@ -8,6 +8,7 @@ import {
   Text,
   Button,
 } from "../../components";
+import { useWindowContext } from "../../contexts/windowContext";
 
 import PropTypes from "prop-types";
 
@@ -24,6 +25,7 @@ const initialState = {
 const ProductDetail = ({ product }) => {
   const [productDetail, setProductDetail] = useState({ ...initialState });
   const { pathname, state } = useLocation();
+  const mode = useWindowContext();
 
   useEffect(() => {
     if (state?.item) {
@@ -47,7 +49,7 @@ const ProductDetail = ({ product }) => {
           <SkeletonImage
             loading={Boolean(image)}
             url={image?.url}
-            description={description}
+            description={name}
             containerClass="productdetailpage__product--imagediv"
             imageClass="productdetailpage__product--image"
           />
@@ -61,6 +63,18 @@ const ProductDetail = ({ product }) => {
               size="h1"
               color="dark"
             />
+            {mode === "mobile" && (
+              <SkeletonText
+                loading={Boolean(price)}
+                containerClass="productdetailpage__product--pricediv"
+                textClass="productdetailpage__product--pricediv--price"
+                fontWeight="bold"
+                text={`${price} TL`}
+                size="h2"
+                color="dark"
+              />
+            )}
+
             <div className="productdetailpage__product--detailsgrid">
               <div className="productdetailpage__product--detailsgrid--row">
                 <Text fontWeight="bold" color="dark">
@@ -105,24 +119,56 @@ const ProductDetail = ({ product }) => {
                 />
               </div>
             </div>
-            <SkeletonText
-              loading={Boolean(price)}
-              containerClass="productdetailpage__product--pricediv"
-              textClass="productdetailpage__product--pricediv--price"
-              fontWeight="bold"
-              text={`${price} TL`}
-              size="h2"
-              color="dark"
-            />
+
+            {mode === "desktop" && (
+              <SkeletonText
+                loading={Boolean(price)}
+                containerClass="productdetailpage__product--pricediv"
+                textClass="productdetailpage__product--pricediv--price"
+                fontWeight="bold"
+                text={`${price} TL`}
+                size="h2"
+                color="dark"
+              />
+            )}
             <div className="productdetailpage__product--buttonsdiv">
-              <Button size="medium" color="primary">
-                <h3>Satın Al</h3>
+              <Button
+                size="medium"
+                color="primary"
+                classes="productdetailpage__product--buttonsdiv--button"
+              >
+                <Text fontWeight="medium" color="white">
+                  <h5>Satın Al </h5>
+                </Text>
               </Button>
-              <Button size="medium" color="secondary">
-                <h3>Teklif Ver</h3>
+              <Button
+                size="medium"
+                color="secondary"
+                classes="productdetailpage__product--buttonsdiv--button"
+              >
+                <Text fontWeight="medium" color="blue">
+                  <h5>Teklif Ver</h5>
+                </Text>
               </Button>
             </div>
-            <div className="productdetailpage__product--detailsdiv"></div>
+            <div className="productdetailpage__product--detailsdiv">
+              <Text
+                fontWeight="bold"
+                color="dark"
+                classes="productdetailpage__product--detailsdiv--detail"
+              >
+                <h4>Açıklama</h4>
+              </Text>
+              <SkeletonText
+                loading={Boolean(description)}
+                containerClass="productdetailpage__product--detailsdiv"
+                textClass="productdetailpage__product--detailsdiv--detail"
+                fontWeight="medium"
+                text={description}
+                size="h5"
+                color="dark"
+              />
+            </div>
           </div>
         </div>
       </div>

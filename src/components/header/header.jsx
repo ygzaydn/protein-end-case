@@ -11,7 +11,7 @@ const Header = ({ auth }) => {
 
   const navigateToPage = () => {
     if (auth) {
-      navigate("/user");
+      navigate("/account");
     } else {
       navigate("/signup");
     }

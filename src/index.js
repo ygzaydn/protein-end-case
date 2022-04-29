@@ -6,17 +6,20 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { WindowWrapper } from "./contexts/windowContext";
 import "./styles/main.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <PersistGate persistor={persistor}>
-                <App />
-            </PersistGate>
-        </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <WindowWrapper>
+          <App />
+        </WindowWrapper>
+      </PersistGate>
+    </BrowserRouter>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

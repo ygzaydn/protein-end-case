@@ -8,16 +8,18 @@ import SignInForm from "./signinForm/signInForm";
 import FormTextInput from "./formInput/formTextInput.jsx";
 import SkeletonImage from "./skeletonImage/skeletonImage";
 import SkeletonText from "./skeletonText/skeletonText";
+import PageOptions from "./pageOptions/pageOptions";
 
 export {
-    Button,
-    Text,
-    Header,
-    CategoryText,
-    ItemCard,
-    SignupForm,
-    SignInForm,
-    FormTextInput,
-    SkeletonImage,
-    SkeletonText,
+  Button,
+  Text,
+  Header,
+  CategoryText,
+  ItemCard,
+  SignupForm,
+  SignInForm,
+  FormTextInput,
+  SkeletonImage,
+  SkeletonText,
+  PageOptions,
 };
