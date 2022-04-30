@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router";
 
+import { ToastContainer } from "react-toastify";
+
 const Signup = ({ auth }) => {
   const [page, setPage] = useState("signup");
   const navigate = useNavigate();
@@ -17,6 +19,7 @@ const Signup = ({ auth }) => {
 
   return (
     <section className="signup">
+      <ToastContainer />
       <div className="signup__imagediv">
         <img src={Signin} alt="sign-in" className="signup__imagediv--image" />
       </div>

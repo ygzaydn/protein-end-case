@@ -1,35 +1,31 @@
 Üye Ol Sayfa Detayları
 
-- Tasarıma göre design edilmeli
+- Tasarıma göre design edilmeli [ok]
 - Kullanıcılar bu sayfadan üye olabilmeliler [ok]
 - Email ve Password alanları zorunlu alanlar olmalı [ok]
-- Email ve Password alanlarının validasyonu UI tarafında da yapılmalı
+- Email ve Password alanlarının validasyonu UI tarafında da yapılmalı [ok]
 - Email valid olmalı ve en az 8 ve en fazla 20 karakter uzunluğunda bir password girilmeli [ok]
 - İşlem başarılı ise kullanıcı index sayfasına signed-in olarak yönlendirilmeli [ok]
-- İşlem başarısız ise kullanıcıya tasarıma göre hata mesajı gösterilmeli
-- İşlem başarılı ise API'den gelen ve cookie olarak set edilen Auth_Token değeri tüm
-  authentication gerektiren requestlerde header'a Bearer token olarak eklenmeli [ok]
+- İşlem başarısız ise kullanıcıya tasarıma göre hata mesajı gösterilmeli [ok]
+- İşlem başarılı ise API'den gelen ve cookie olarak set edilen Auth_Token değeri tüm authentication gerektiren requestlerde header'a Bearer token olarak eklenmeli [ok]
 - Zaten login olan kullanıcılar bu sayfaya gelmeye çalıştığında bu sayfayı göremeden index sayfasına yönlendirilmeli [ok]
 
 Üye Girişi Sayfa Detayları
 
-- Tasarıma göre design edilmeli
-- Kullanıcılar bu sayfadan üye girişi yapabilmeli
-- Email ve Password alanları zorunlu alanlar olmalı
-- Email ve Password alanlarının validasyonu UI tarafında da yapılmalı
-- Email valid olmalı ve en az 8 ve en fazla 20 karakter uzunluğunda bir password girilmeli
-- İşlem başarılı ise kullanıcı index sayfasına signed-in olarak yönlendirilmeli
-- İşlem başarısız ise kullanıcıya tasarıma göre hata mesajı gösterilmeli
-- İşlem başarılı ise API'den gelen ve cookie olarak set edilen Auth_Token değeri tüm
-  authantication gerektiren requestlerde header'a Bearer token olarak eklenmeli
-- Zaten login olan kullanıcılar bu sayfaya gelmeye çalıştığında bu sayfayı göremeden index
-  sayfasına yönlendirilmeli
+- Tasarıma göre design edilmeli [ok]
+- Kullanıcılar bu sayfadan üye girişi yapabilmeli [ok]
+- Email ve Password alanları zorunlu alanlar olmalı [ok]
+- Email ve Password alanlarının validasyonu UI tarafında da yapılmalı [ok]
+- Email valid olmalı ve en az 8 ve en fazla 20 karakter uzunluğunda bir password girilmeli [ok]
+- İşlem başarılı ise kullanıcı index sayfasına signed-in olarak yönlendirilmeli [ok]
+- İşlem başarısız ise kullanıcıya tasarıma göre hata mesajı gösterilmeli [ok]
+- İşlem başarılı ise API'den gelen ve cookie olarak set edilen Auth_Token değeri tüm authantication gerektiren requestlerde header'a Bearer token olarak eklenmeli [ok]
+- Zaten login olan kullanıcılar bu sayfaya gelmeye çalıştığında bu sayfayı göremeden index sayfasına yönlendirilmeli [ok]
 
 Index Sayfa Detayları
 
 - Tasarıma göre design edilmeli
-- Hesabım ve Ürün Ekle butonları kullanıcı authanticated ise gösterilmeli aksi halde Üye
-  Girişi butonu gözükmeli
+- Hesabım ve Ürün Ekle butonları kullanıcı authanticated ise gösterilmeli aksi halde Üye Girişi butonu gözükmeli
 - Hesabım butonuna tıklanınca Hesabım sayfasına gitmeli
 - Ürün Ekle butonuna tıklanınca ürün ekleme sayfasına gitmeli
 - Tasarıma göre tüm kategoriler listelenmeli ve kullanıcı tıkladığında listelenen ürünler

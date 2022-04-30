@@ -13,7 +13,6 @@ const FormTextInput = ({
   error,
   onBlur,
 }) => {
-  console.log(error);
   return (
     <div className="formtextinput">
       <label className="formtextinput__label" htmlFor={id}>

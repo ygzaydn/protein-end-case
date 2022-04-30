@@ -38,7 +38,7 @@ const ProductDetail = ({ product }) => {
 
   const { name, brand, color, description, isOfferable, price, image, status } =
     productDetail;
-  console.log(productDetail);
+
   return (
     <section className="productdetailpage">
       <div className="productdetailpage__header">

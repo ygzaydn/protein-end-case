@@ -1,5 +1,6 @@
 import { all, put, takeLatest, call } from "redux-saga/effects";
 import { register, user, login } from "../../utils/axios";
+import { toast } from "react-toastify";
 
 import Cookies from "universal-cookie";
 
@@ -17,6 +18,15 @@ function* fetchRegister({ payload }) {
       },
     });
   } catch (error) {
+    toast.error(`Emailinizi veya şifrenizi değiştirmelisiniz.`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     yield put({
       type: "SIGN_UP_FAILURE",
       payload: error.message,
@@ -50,6 +60,15 @@ function* fetchLogin({ payload }) {
       },
     });
   } catch (error) {
+    toast.error(`Emailiniz veya şifreniz hatalı.`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     yield put({
       type: "SIGN_IN_FAILURE",
       payload: error.message,
