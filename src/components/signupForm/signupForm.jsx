@@ -1,70 +1,73 @@
 import React from "react";
-import { useFormik } from "formik";
+import { Formik, Form } from "formik";
 import { FormTextInput, Button } from "../";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { signUpSchema } from "../../constants/schemas";
 
 const SignupForm = ({ fetch }) => {
-    const formik = useFormik({
-        initialValues: {
-            email: "",
-            password: "",
-        },
-        //validate,
-        onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
-        },
-    });
+  return (
+    <Formik
+      initialValues={{
+        email: "",
+        password: "",
+      }}
+      validationSchema={signUpSchema}
+      onSubmit={(values) => {
+        fetch(values.email, values.password, values.email);
+      }}
+    >
+      {({
+        errors,
+        touched,
+        handleSubmit,
+        handleChange,
+        values,
+        handleBlur,
+      }) => (
+        <Form onSubmit={handleSubmit} className="signupform">
+          <FormTextInput
+            id="email"
+            name="email"
+            type="email"
+            onChangeFunc={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
+            labelText="Email"
+            error={Boolean(touched.email && errors.email)}
+          />
 
-    return (
-        <form onSubmit={formik.handleSubmit} className="signupform">
-            <FormTextInput
-                id="email"
-                name="email"
-                type="email"
-                onChangeFunc={formik.handleChange}
-                value={formik.values.email}
-                labelText="Email"
-            />
+          <FormTextInput
+            id="password"
+            name="password"
+            type="password"
+            onChangeFunc={handleChange}
+            value={values.password}
+            onBlur={handleBlur}
+            labelText="Şifre"
+            additionalText=" &nbsp;"
+            error={Boolean(touched.password && errors.password)}
+          />
 
-            <FormTextInput
-                id="password"
-                name="password"
-                type="password"
-                onChangeFunc={formik.handleChange}
-                value={formik.values.password}
-                labelText="Şifre"
-                additionalText=" &nbsp;"
-            />
-
-            <Button
-                type="submit"
-                color="primary"
-                size="xsmall"
-                clickFunc={() =>
-                    fetch(
-                        formik.values.email,
-                        formik.values.password,
-                        formik.values.email
-                    )
-                }
-            >
-                <h5 style={{ textAlign: "center", width: "100%" }}>Üye ol</h5>
-            </Button>
-        </form>
-    );
+          <Button type="submit" color="primary" size="xsmall">
+            <h5 style={{ textAlign: "center", width: "100%" }}>Üye ol</h5>
+          </Button>
+        </Form>
+      )}
+    </Formik>
+  );
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    fetch: (email, password, username) =>
-        dispatch({
-            type: "SIGN_UP_START",
-            payload: { email, password, username },
-        }),
+  fetch: (email, password, username) =>
+    dispatch({
+      type: "SIGN_UP_START",
+      payload: { email, password, username },
+    }),
 });
 
 SignupForm.propTypes = {
-    fetch: PropTypes.func,
+  fetch: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(SignupForm);

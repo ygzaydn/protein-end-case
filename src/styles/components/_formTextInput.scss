@@ -23,5 +23,9 @@
             background-color: $color-blue-2;
             border: 1px solid $color-blue-1;
         }
+        &--error{
+            background-color: $color-red-2;
+            color: $color-red-1;
+        }
     }
 }
