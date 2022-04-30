@@ -10,6 +10,7 @@ import SkeletonImage from "./skeletonImage/skeletonImage";
 import SkeletonText from "./skeletonText/skeletonText";
 import PageOptions from "./pageOptions/pageOptions";
 import AccountItemGrid from "./accountItemGrid/accountItemGrid";
+import AddItemForm from "./addItemForm/addItemForm";
 
 export {
   Button,
@@ -24,4 +25,5 @@ export {
   SkeletonText,
   PageOptions,
   AccountItemGrid,
+  AddItemForm,
 };

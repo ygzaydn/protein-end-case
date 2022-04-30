@@ -6,7 +6,13 @@
         font-size: 1.2rem;
         display: block;
     }
-    &__input {
+
+    &__textarea {
+        height: 10rem;
+        resize: none;
+    }
+
+    &__input, &__textarea {
         display: block;
         outline: none;
         border: none;
@@ -18,6 +24,8 @@
         width: 100%;
         border: 1px solid $color-light-3;
         transition: all 0.4s;
+        font-family: inherit;
+        
         &:focus {
             color: $color-dark-1;
             background-color: $color-blue-2;
@@ -26,6 +34,9 @@
         &--error{
             background-color: $color-red-2;
             color: $color-red-1;
+        }
+        &::placeholder{
+            color: $color-dark-4;
         }
     }
 }
