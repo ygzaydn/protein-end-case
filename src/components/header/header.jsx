@@ -29,7 +29,12 @@ const Header = ({ auth }) => {
       </div>
       <div className="header__buttondiv">
         {auth && (
-          <Button color="secondary" size="xsmall" hideTextonMobile>
+          <Button
+            color="secondary"
+            size="xsmall"
+            hideTextonMobile
+            clickFunc={() => navigate("/addproduct")}
+          >
             <>
               <Plus />
               <h5>Ürün Ekle</h5>

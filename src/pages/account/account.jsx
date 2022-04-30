@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import { Header, Text, PageOptions } from "../../components";
+import { Header, Text, PageOptions, AccountItemGrid } from "../../components";
 import { Profile } from "../../icons";
+import { useNavigate } from "react-router";
 
 import PropTypes from "prop-types";
 
-const Account = ({ checkUser, userInfo }) => {
-  const [option, setOption] = useState(0);
+const Account = ({ checkUser, userInfo, auth }) => {
+  const [option, setOption] = useState("offers");
+  const navigate = useNavigate();
 
   useEffect(() => {
     checkUser();
+    if (!auth) {
+      navigate("/");
+    }
   }, []);
-
-  console.log(userInfo);
 
   return (
     <section className="accountpage">
@@ -24,20 +27,30 @@ const Account = ({ checkUser, userInfo }) => {
         <div className="accountpage__infodiv">
           <Profile />
           <Text color="dark">
-            <h5>{userInfo.email}</h5>
+            <h5>{userInfo?.email}</h5>
           </Text>
         </div>
         <div className="accountpage__productsdiv">
           <div className="accountpage__productsdiv--options">
             <PageOptions
-              active={option === 0}
-              clickFunc={() => setOption(0)}
+              active={option === "offers"}
+              clickFunc={() => setOption("offers")}
               text="Teklif Aldıklarım"
             />
             <PageOptions
-              active={option === 1}
-              clickFunc={() => setOption(1)}
+              active={option === "products"}
+              clickFunc={() => setOption("products")}
               text="Teklif Verdiklerim"
+            />
+          </div>
+          <div className="accountpage__detailsdiv">
+            <AccountItemGrid
+              option={option}
+              nullText={
+                option === "offers"
+                  ? "Listelenmiş bir ürününüz bulunmuyor."
+                  : "Teklif verdiğiniz bir ürün bulunmuyor."
+              }
             />
           </div>
         </div>
@@ -49,10 +62,12 @@ const Account = ({ checkUser, userInfo }) => {
 Header.propTypes = {
   checkUser: PropTypes.func,
   userInfo: PropTypes.object,
+  auth: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
   userInfo: state.user.currentUser,
+  auth: state.user.authenticated,
 });
 
 const mapDispatchToProps = (dispatch) => ({

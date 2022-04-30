@@ -9,6 +9,7 @@ import FormTextInput from "./formInput/formTextInput.jsx";
 import SkeletonImage from "./skeletonImage/skeletonImage";
 import SkeletonText from "./skeletonText/skeletonText";
 import PageOptions from "./pageOptions/pageOptions";
+import AccountItemGrid from "./accountItemGrid/accountItemGrid";
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   SkeletonImage,
   SkeletonText,
   PageOptions,
+  AccountItemGrid,
 };

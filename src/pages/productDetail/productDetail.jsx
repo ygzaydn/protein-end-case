@@ -141,15 +141,17 @@ const ProductDetail = ({ product }) => {
                   <h5>Satın Al </h5>
                 </Text>
               </Button>
-              <Button
-                size="medium"
-                color="secondary"
-                classes="productdetailpage__product--buttonsdiv--button"
-              >
-                <Text fontWeight="medium" color="blue">
-                  <h5>Teklif Ver</h5>
-                </Text>
-              </Button>
+              {isOfferable && (
+                <Button
+                  size="medium"
+                  color="secondary"
+                  classes="productdetailpage__product--buttonsdiv--button"
+                >
+                  <Text fontWeight="medium" color="blue">
+                    <h5>Teklif Ver</h5>
+                  </Text>
+                </Button>
+              )}
             </div>
             <div className="productdetailpage__product--detailsdiv">
               <Text

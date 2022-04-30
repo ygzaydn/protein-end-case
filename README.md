@@ -24,57 +24,45 @@
 
 Index Sayfa Detayları
 
-- Tasarıma göre design edilmeli
-- Hesabım ve Ürün Ekle butonları kullanıcı authanticated ise gösterilmeli aksi halde Üye Girişi butonu gözükmeli
-- Hesabım butonuna tıklanınca Hesabım sayfasına gitmeli
+- Tasarıma göre design edilmeli [ok]
+- Hesabım ve Ürün Ekle butonları kullanıcı authanticated ise gösterilmeli aksi halde Üye Girişi butonu gözükmeli [ok]
+- Hesabım butonuna tıklanınca Hesabım sayfasına gitmeli [ok]
 - Ürün Ekle butonuna tıklanınca ürün ekleme sayfasına gitmeli
-- Tasarıma göre tüm kategoriler listelenmeli ve kullanıcı tıkladığında listelenen ürünler
-  tıklanılan kategoriye göre filtrelenmeli, default olarak tüm ürünler çekilmeli
-- Herhangi bir kategori tıklandığı zaman, seçili kategori queryde tutulmalı. Kullanıcı URL
-  üzerinden siteye geldiğinde queryde bir kategori değeri varsa, o kategori seçili gelmeli
+- Tasarıma göre tüm kategoriler listelenmeli ve kullanıcı tıkladığında listelenen ürünler tıklanılan kategoriye göre filtrelenmeli, default olarak tüm ürünler çekilmeli [ok]
+- Herhangi bir kategori tıklandığı zaman, seçili kategori queryde tutulmalı. Kullanıcı URL üzerinden siteye geldiğinde queryde bir kategori değeri varsa, o kategori seçili gelmeli [ok]
 
 Ürün Detay Sayfa Detayları
 
 - Tasarıma göre design edilmeli
-- Teklif Ver butonu üründen gelen data içerisindeki isOfferable alanına göre gösterilmeli ya
-  da gösterilmemeli
-- Teklif Ver butonuna tıklanınca tasarımdaki gibi bir pop-up çıkmalı ve oradan hazır teklifler
-  yapılmalı ya da kullanıcı kendisi teklif girebilmeli. Teklif girme alanı number olmalı ve
-  buraya validasyon eklenmeli
-- Hazır yüzdelik tekliflerden birisi seçildiğinde, fiyat üzerinden ilgili değer hesaplanıp API
-  tarafına yollanmalı (offeredPrice), mesela, 100₺ olan ürün için %40 değeri seçilirse, 40₺
-  teklif yapılmalı
-- Eğer bir kullanıcı bir ürüne teklif verdiyse, o ürünün detayına gelince Teklif Ver butonu
-  yerine Teklifi Geri Çek butonu gözükmeli. Tıklanınca teklif geri çekilmeli
-- Kullanıcı teklif yapmadan bir ürünü direk satın alabilir. Satın Al butonuna tıklanınca ilgili
-  pop-up gözükmeli ve kullanıcı aksiyonuna göre hareket edilmeli
-- Kullanıcı ürünü satın alınca, ilgili ürün içerisindeki Satın Al ve Teklif Ver butonları
-  gizlenmeli. Bu Ürün Satışta Değil şeklinde tasarımdaki gibi bir yazı gösterilmeli. Bu yazı
-  ürün datası içerisindeki isSold alanının değerine göre gösterilmeli
+- Teklif Ver butonu üründen gelen data içerisindeki isOfferable alanına göre gösterilmeli ya da gösterilmemeli [ok]
+- Teklif Ver butonuna tıklanınca tasarımdaki gibi bir pop-up çıkmalı ve oradan hazır teklifler yapılmalı ya da kullanıcı kendisi teklif girebilmeli. Teklif girme alanı number olmalı ve buraya validasyon eklenmeli
+- Hazır yüzdelik tekliflerden birisi seçildiğinde, fiyat üzerinden ilgili değer hesaplanıp API tarafına yollanmalı (offeredPrice), mesela, 100₺ olan ürün için %40 değeri seçilirse, 40₺ teklif yapılmalı
+- Eğer bir kullanıcı bir ürüne teklif verdiyse, o ürünün detayına gelince Teklif Ver butonu yerine Teklifi Geri Çek butonu gözükmeli. Tıklanınca teklif geri çekilmeli
+- Kullanıcı teklif yapmadan bir ürünü direk satın alabilir. Satın Al butonuna tıklanınca ilgili pop-up gözükmeli ve kullanıcı aksiyonuna göre hareket edilmeli
+- Kullanıcı ürünü satın alınca, ilgili ürün içerisindeki Satın Al ve Teklif Ver butonları gizlenmeli. Bu Ürün Satışta Değil şeklinde tasarımdaki gibi bir yazı gösterilmeli. Bu yazı ürün datası içerisindeki isSold alanının değerine göre gösterilmeli
 
 Hesabım Sayfa Detayları
 
 - Tasarıma göre design edilmeli
-- Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli
+- Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli [ok]
 - Tasarıma göre aktif olan tab için ilgili offer'lar listelenmeli
 - Alınan tekliflere Onayla ve Reddet butonları ile cevap verilebilmeli
 - Verilen teklif onaylandığında yanında satın al butonu gözükmeli
-- Ürün detay sayfasındaki gibi Satın Al butonuna tıklanınca ilgili pop-up gözükmeli. Satın
-  Al'a tıklayınca Teklif Verdiklerim listesindeki ürünün durumu güncellenmeli
-- Ürün Ekleme Sayfa Detayları
+- Ürün detay sayfasındaki gibi Satın Al butonuna tıklanınca ilgili pop-up gözükmeli.Satın Al'a tıklayınca Teklif Verdiklerim listesindeki ürünün durumu güncellenmeli
+
+Ürün Ekleme Sayfa Detayları
+
 - Tasarıma göre design edilmeli
 - Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli
 - İlgili validasyonlar eklenmeli:
 - Ürün Adı alanı maksimum 100 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı
 - Açıklama alanı maksimum 500 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı
-- Kategori alanı ilgili endpointten çekilen kategorileri listelemeli ve en fazla bir kategori
-  seçilebilmeli. Bu alan zorunlu bir alan olmalı
+- Kategori alanı ilgili endpointten çekilen kategorileri listelemeli ve en fazla bir kategori seçilebilmeli. Bu alan zorunlu bir alan olmalı
 - Renk alanı ilgili endpointten çekilen renkleri listelemeli ve en fazla bir renk seçilebilmeli.
   Bu alan zorunlu bir alan olmamalı
 - Marka alanı ilgili endpointten çekilen markaları listelemeli ve en fazla bir marka
   seçilebilmeli. Bu alan zorunlu bir alan olmamalı
-- Kullanım Durumu alanı ilgili endpointten çekilen kullanım durumlarını listelemeli ve en
-  fazla bir kullanım durumu seçilebilmeli. Bu alan zorunlu bir alan olmalı
+- Kullanım Durumu alanı ilgili endpointten çekilen kullanım durumlarını listelemeli ve en fazla bir kullanım durumu seçilebilmeli. Bu alan zorunlu bir alan olmalı
 - Ürün Görseli alanından en fazla bir ürün görseli eklenmeli. Eklenen ürün görseli
   istenildiği zaman silinebilmeli. Bu alan zorunlu bir alan olmalı. Sadece png/jpg/jpeg
   formatında görseller eklenmeli. Maksimum 400kb değerinde görseller eklenilebilmeli

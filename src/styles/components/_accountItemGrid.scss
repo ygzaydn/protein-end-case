@@ -1,0 +1,11 @@
+.accountitemgrid{
+    padding: 2rem 4rem;
+    position: relative;
+    min-height: 70rem;
+    &__nullText{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+}

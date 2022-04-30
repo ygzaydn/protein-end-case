@@ -8,6 +8,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { WindowWrapper } from "./contexts/windowContext";
 import "./styles/main.scss";
+import { CategoryContextProvider } from "./contexts/categoryContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +16,9 @@ root.render(
     <BrowserRouter>
       <PersistGate persistor={persistor}>
         <WindowWrapper>
-          <App />
+          <CategoryContextProvider>
+            <App />
+          </CategoryContextProvider>
         </WindowWrapper>
       </PersistGate>
     </BrowserRouter>

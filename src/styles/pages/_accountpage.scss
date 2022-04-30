@@ -1,16 +1,17 @@
 .accountpage{
     min-height: 100vh;
     &__headerdiv{
-        max-width: 1448px;
+        max-width: 148rem;
         margin: auto;
     }
     &__contentdiv{
         background-color: $color-light-4;
         padding: 2rem 0;
+        height: 91vh;
     }
     &__infodiv{
         background-color: $color-light-1;
-        max-width: 1448px;
+        max-width: 148rem;
         margin: auto;
         padding: 1rem 4rem;
         display: flex;
@@ -22,13 +23,20 @@
     }
     &__productsdiv{
         background-color: $color-light-1;
-        max-width: 1448px;
+        max-width: 148rem;
         margin: 1rem auto;
         border-radius: 10px;
-        padding: 1rem 4rem;
+        padding: 1rem 0;
         &--options{
             display: flex;
             border-bottom: .5px solid $color-light-4;
+            padding:0;
         }
+    }
+    &__detailsdiv{
+        min-height: 70rem;
+        background-color: $color-light-1;
+        max-width: 148rem;
+        margin: 0 auto;
     }
 }
