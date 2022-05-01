@@ -1,6 +1,13 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { FormTextInput, Button, FormSelectInput, FormCheckboxInput } from "..";
+import {
+  FormTextInput,
+  Button,
+  FormSelectInput,
+  FormCheckboxInput,
+  Text,
+  FormUploadInput,
+} from "..";
 
 import PropTypes from "prop-types";
 
@@ -18,6 +25,7 @@ const AddItemForm = ({}) => {
         usage: "",
         price: "",
         option: false,
+        file: "",
       }}
       validationSchema={addItemSchema}
       onSubmit={(values) => {}}
@@ -32,6 +40,16 @@ const AddItemForm = ({}) => {
       }) => (
         <Form onSubmit={handleSubmit} className="additemform">
           <div className="additemform__grid">
+            <div className="additemform__grid--title">
+              <Text
+                fontWeight="bold"
+                color="dark"
+                classes="addproductpage__content--detailsdiv--title"
+              >
+                <h2>Ürün Detayları</h2>
+              </Text>
+            </div>
+
             <div className="additemform__grid--name">
               <FormTextInput
                 id="name"
@@ -119,6 +137,18 @@ const AddItemForm = ({}) => {
                 value={values.option}
               />
             </div>
+          </div>
+          <div className="additemform__upload">
+            <div className="additemform__upload--title">
+              <Text
+                fontWeight="bold"
+                color="dark"
+                classes="addproductpage__content--detailsdiv--title"
+              >
+                <h2>Ürün Görseli</h2>
+              </Text>
+            </div>
+            <FormUploadInput value={values.file} onChangeFunc={handleChange} />
           </div>
         </Form>
       )}

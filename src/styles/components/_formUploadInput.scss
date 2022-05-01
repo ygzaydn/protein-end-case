@@ -1,0 +1,36 @@
+.formuploadinput {
+    padding: 1rem 2rem;
+    margin: 4rem auto;
+    border: 2px dashed $color-light-4;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & svg {
+        margin: .5rem 0;
+    }
+    &__uppertext{
+        margin: .5rem 0;
+        color: $color-dark-2;
+        font-size: 1.4rem;
+        text-align: center;
+    }
+    &__label {
+        margin: .5rem 0;
+        background-color: $color-light-4;
+        border-radius: 15px;
+        color: $color-dark-3;
+        padding: .75rem 1.75rem;
+        font-size: 1.4rem;
+        cursor: pointer;
+    }
+    &__input{
+        display: none;
+    }
+    &__lowertext{
+        margin: .5rem 0;
+        font-size: 1.2rem;
+        color: #b1b1b1;
+    }
+}

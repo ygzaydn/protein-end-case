@@ -13,6 +13,7 @@ import AccountItemGrid from "./accountItemGrid/accountItemGrid";
 import AddItemForm from "./addItemForm/addItemForm";
 import FormSelectInput from "./formInput/formSelectInput";
 import FormCheckboxInput from "./formInput/formCheckboxInput";
+import FormUploadInput from "./formInput/formUploadInput";
 
 export {
   Button,
@@ -30,4 +31,5 @@ export {
   AddItemForm,
   FormSelectInput,
   FormCheckboxInput,
+  FormUploadInput,
 };

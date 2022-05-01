@@ -1,15 +1,25 @@
 .additemform {
+    display: flex;
+    width: 100%;
+    padding: 2rem 0;
     &__grid{
-        padding: 2rem 0;
+        width: 50%;
+        padding: 0rem 2rem 4rem 0; 
+        margin: 2rem 0;
         display: grid;
         grid-gap: 3rem 2rem;
-        grid-template-areas: 'name name'
+        border-right: 1px solid $color-light-3;
+        grid-template-areas: 'title title'
+        'name name'
         'details details'
         'category brand'
         'color usage'
         'price price'
         'option option';
 
+        &--title {
+            grid-area: title;
+        }
         &--name {
             grid-area: name;
         }
@@ -28,5 +38,9 @@
         &--option {
             grid-area: option;
         }
+    }
+    &__upload{
+        width: 50%;
+        padding: 2rem;
     }
 }

@@ -9,25 +9,7 @@ const AddProduct = ({}) => {
       </div>
       <div className="addproductpage__contentdiv">
         <div className="addproductpage__content">
-          <div className="addproductpage__content--detailsdiv">
-            <Text
-              fontWeight="bold"
-              color="dark"
-              classes="addproductpage__content--detailsdiv--title"
-            >
-              <h2>Ürün Detayları</h2>
-            </Text>
-            <AddItemForm />
-          </div>
-          <div className="addproductpage__content--uploaddiv">
-            <Text
-              fontWeight="bold"
-              color="dark"
-              classes="addproductpage__content--uploaddiv--title"
-            >
-              <h2>Ürün Görseli</h2>
-            </Text>
-          </div>
+          <AddItemForm />
         </div>
       </div>
     </section>
