@@ -14,7 +14,11 @@ const FormTextInput = ({
   onBlur,
   placeholder,
   multiline,
+  priceLabel,
 }) => {
+  const inputClass = ["formtextinput__input"];
+  error && inputClass.push("formtextinput__input--error");
+
   return (
     <div className="formtextinput">
       <label className="formtextinput__label" htmlFor={id}>
@@ -36,20 +40,18 @@ const FormTextInput = ({
           placeholder={placeholder}
         />
       ) : (
-        <input
-          className={
-            error
-              ? "formtextinput__input formtextinput__input--error"
-              : "formtextinput__input"
-          }
-          id={id}
-          name={name}
-          type={type}
-          onChange={onChangeFunc}
-          value={value}
-          onBlur={onBlur}
-          placeholder={placeholder}
-        />
+        <div className={priceLabel ? "formtextinput__input--priceLabel" : ""}>
+          <input
+            className={inputClass.join(" ")}
+            id={id}
+            name={name}
+            type={type}
+            onChange={onChangeFunc}
+            value={value}
+            onBlur={onBlur}
+            placeholder={placeholder}
+          />
+        </div>
       )}
 
       {additionalText?.length && (
@@ -81,6 +83,7 @@ FormTextInput.propTypes = {
   onBlur: PropTypes.func,
   placeholder: PropTypes.string,
   multiline: PropTypes.bool,
+  priceLabel: PropTypes.bool,
 };
 
 export default FormTextInput;

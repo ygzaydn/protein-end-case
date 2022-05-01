@@ -11,9 +11,12 @@
 @import "components/categoryText";
 @import "components/itemCard";
 @import "components/formTextInput";
+@import "components/formSelectInput";
+@import "components/formCheckboxInput";
 @import "components/signUpForm";
 @import "components/pageOptions";
 @import "components/accountItemGrid";
+
 
 @import "pages/indexpage";
 @import "pages/signinpage";
@@ -25,3 +28,5 @@
 @import "layout/footer";
 
 @import "toastify/main.scss";
+
+@import "utils/utils.scss";

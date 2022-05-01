@@ -1,0 +1,47 @@
+.formcheckboxinput{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+    min-width: 23rem;
+    position: relative;
+    height: 100%;
+    &__label{
+        font-family: inherit;
+        color: $color-dark-4;
+        font-size: 1.4rem;
+    }
+    &__input{
+        visibility: hidden;  
+    }
+    &__inputdiv {
+        position: relative;
+        width: 4.4rem;
+        height: 2.4rem;
+        border-radius: 20px;
+        padding: .2rem;
+        background:#EBEBEB;
+        transition: all .4s;
+        &--checked {
+            background: $color-blue-1;
+        }
+        & label {
+            transition: all .4s;
+        }
+        &__label {
+            position: absolute;
+            content: "";
+            width: 2rem;
+            height: 2rem;
+            border-radius: 20px;
+            background: $color-light-1;
+            top: 50%;
+            left: .2rem;
+            transform: translateY(-50%);
+            &--checked {
+                left:2.2rem;
+            }
+        }
+        
+    }
+}

@@ -11,6 +11,8 @@ import SkeletonText from "./skeletonText/skeletonText";
 import PageOptions from "./pageOptions/pageOptions";
 import AccountItemGrid from "./accountItemGrid/accountItemGrid";
 import AddItemForm from "./addItemForm/addItemForm";
+import FormSelectInput from "./formInput/formSelectInput";
+import FormCheckboxInput from "./formInput/formCheckboxInput";
 
 export {
   Button,
@@ -26,4 +28,6 @@ export {
   PageOptions,
   AccountItemGrid,
   AddItemForm,
+  FormSelectInput,
+  FormCheckboxInput,
 };

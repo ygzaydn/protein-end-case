@@ -1,0 +1,38 @@
+.formselectinput {
+    
+    &__label {
+        margin-bottom: 0.2rem;
+        font-size: 1.2rem;
+        display: block;
+    }
+
+    &__input {
+        display: block;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        background-color: $color-light-3;
+        padding: 1rem;
+        margin: 0.2rem 0;
+        color: $color-dark-4;
+        width: 100%;
+        border: 1px solid $color-light-3;
+        transition: all 0.4s;
+        font-family: inherit;
+    
+        &:focus {
+            color: $color-dark-1;
+            background-color: $color-blue-2;
+            border: 1px solid $color-blue-1;
+        }
+    
+        &--error {
+            background-color: $color-red-2;
+            color: $color-red-1;
+        }
+    
+        &::placeholder {
+            color: $color-dark-4;
+        }
+    }
+}
