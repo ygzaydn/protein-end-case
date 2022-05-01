@@ -6,6 +6,10 @@
     min-width: 23rem;
     position: relative;
     height: 100%;
+    @include respond(tab-port) {
+        width: 100%;
+        min-width: 0;
+    }
     &__label{
         font-family: inherit;
         color: $color-dark-1;

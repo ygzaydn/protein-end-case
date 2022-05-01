@@ -37,6 +37,7 @@ const AddItemForm = ({}) => {
         handleChange,
         values,
         handleBlur,
+        setFieldValue,
       }) => (
         <Form onSubmit={handleSubmit} className="additemform">
           <div className="additemform__grid">
@@ -148,7 +149,17 @@ const AddItemForm = ({}) => {
                 <h2>Ürün Görseli</h2>
               </Text>
             </div>
-            <FormUploadInput value={values.file} onChangeFunc={handleChange} />
+            <FormUploadInput
+              id="file"
+              name="file"
+              value={values.file}
+              onChangeFunc={setFieldValue}
+            />
+            <div className="additemform__upload--button">
+              <Button type="submit" color="primary" size="large">
+                <h5 style={{ textAlign: "center", width: "100%" }}>Kaydet</h5>
+              </Button>
+            </div>
           </div>
         </Form>
       )}

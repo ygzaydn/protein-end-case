@@ -30,7 +30,7 @@ const Index = ({
 
   const filterProducts = () => {
     if (category !== "") {
-      return products.filter((el) => el.category.name === category);
+      return products.filter((el) => el?.category?.name === category);
     } else {
       return products;
     }

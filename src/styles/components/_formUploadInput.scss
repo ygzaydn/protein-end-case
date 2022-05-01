@@ -7,6 +7,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    &--selected {
+        border: none;
+    }
     & svg {
         margin: .5rem 0;
     }
@@ -32,5 +35,34 @@
         margin: .5rem 0;
         font-size: 1.2rem;
         color: #b1b1b1;
+    }
+    &__uploadeddiv {
+        align-self: flex-start;
+        position: relative;
+        margin: 2rem 0;
+        &--image{
+            border-radius: 15px;
+            min-height: 5rem;
+            min-width: 5rem;
+            max-width: 15rem;
+            
+        }
+        &--cross{
+            position:absolute;
+            height: 2rem;
+            width: 2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: $color-dark-1;
+            color: $color-light-1;
+            top:-1rem;
+            right: -1rem;
+            & p {
+                position: relative;
+                top:.25rem;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+        }
     }
 }
