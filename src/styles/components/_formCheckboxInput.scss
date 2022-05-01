@@ -8,8 +8,11 @@
     height: 100%;
     &__label{
         font-family: inherit;
-        color: $color-dark-4;
+        color: $color-dark-1;
         font-size: 1.4rem;
+        &--checked {
+            color: $color-dark-1;
+        }
     }
     &__input{
         visibility: hidden;  

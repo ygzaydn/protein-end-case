@@ -1,0 +1,32 @@
+.additemform {
+    &__grid{
+        padding: 2rem 0;
+        display: grid;
+        grid-gap: 3rem 2rem;
+        grid-template-areas: 'name name'
+        'details details'
+        'category brand'
+        'color usage'
+        'price price'
+        'option option';
+
+        &--name {
+            grid-area: name;
+        }
+        &--details {
+            grid-area: details;
+        }
+        &--category {
+            grid-area: category;
+        }
+        &--usage {
+            grid-area: usage;
+        }
+        &--price {
+            grid-area: price;
+        }
+        &--option {
+            grid-area: option;
+        }
+    }
+}

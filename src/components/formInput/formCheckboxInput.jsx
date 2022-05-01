@@ -13,7 +13,13 @@ const FormCheckboxInput = ({
 }) => {
   return (
     <div className="formcheckboxinput">
-      <p className="formcheckboxinput__label">
+      <p
+        className={
+          !value
+            ? "formcheckboxinput__label"
+            : "formcheckboxinput__label formcheckboxinput__label--checked"
+        }
+      >
         {value ? checkedText : uncheckedText}
       </p>
       <div

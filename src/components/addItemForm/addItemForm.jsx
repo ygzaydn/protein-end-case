@@ -31,83 +31,95 @@ const AddItemForm = ({}) => {
         handleBlur,
       }) => (
         <Form onSubmit={handleSubmit} className="additemform">
-          <FormTextInput
-            id="name"
-            name="name"
-            type="name"
-            onChangeFunc={handleChange}
-            onBlur={handleBlur}
-            value={values.name}
-            labelText="Ürün Adı"
-            placeholder="Örnek: Iphone 12 Pro Max"
-          />
-
-          <FormTextInput
-            id="details"
-            name="details"
-            type="details"
-            onChangeFunc={handleChange}
-            onBlur={handleBlur}
-            value={values.details}
-            labelText="Açıklama"
-            placeholder="Ürün açıklaması girin"
-            multiline
-          />
-          <div className="grid-2">
-            <FormSelectInput
-              id="category"
-              name="category"
-              labelText="Kategori"
-              placeholder="Kategori Seç"
-              options={[1, 2, 3, 4, 5]}
-            />
-
-            <FormSelectInput
-              id="color"
-              name="color"
-              labelText="Marka"
-              placeholder="Marka seç"
-              options={[1, 2, 3, 4, 5]}
-            />
-
-            <FormSelectInput
-              id="color"
-              name="color"
-              labelText="Renk"
-              placeholder="Renk Seç"
-              options={[1, 2, 3, 4, 5]}
-            />
-
-            <FormSelectInput
-              id="usage"
-              name="usage"
-              labelText="Kullanım Durumu"
-              placeholder="Kullanım Durumu Seç"
-              options={[1, 2, 3, 4, 5]}
-            />
+          <div className="additemform__grid">
+            <div className="additemform__grid--name">
+              <FormTextInput
+                id="name"
+                name="name"
+                type="name"
+                onChangeFunc={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                labelText="Ürün Adı"
+                placeholder="Örnek: Iphone 12 Pro Max"
+              />
+            </div>
+            <div className="additemform__grid--details">
+              <FormTextInput
+                id="details"
+                name="details"
+                type="details"
+                onChangeFunc={handleChange}
+                onBlur={handleBlur}
+                value={values.details}
+                labelText="Açıklama"
+                placeholder="Ürün açıklaması girin"
+                multiline
+              />
+            </div>
+            <div className="additemform__grid--category">
+              <FormSelectInput
+                id="category"
+                name="category"
+                labelText="Kategori"
+                placeholder="Kategori Seç"
+                options={[1, 2, 3, 4, 5]}
+              />
+            </div>
+            <div className="additemform__grid--brand">
+              <FormSelectInput
+                id="brand"
+                name="brand"
+                labelText="Marka"
+                placeholder="Marka seç"
+                options={[1, 2, 3, 4, 5]}
+              />
+            </div>
+            <div className="additemform__grid--color">
+              <FormSelectInput
+                id="color"
+                name="color"
+                labelText="Renk"
+                placeholder="Renk Seç"
+                options={[1, 2, 3, 4, 5]}
+              />
+            </div>
+            <div className="additemform__grid--usage">
+              <FormSelectInput
+                id="usage"
+                name="usage"
+                labelText="Kullanım Durumu"
+                placeholder="Kullanım Durumu Seç"
+                options={[1, 2, 3, 4, 5]}
+              />
+            </div>
+            <div className="additemform__grid--price">
+              <FormTextInput
+                id="price"
+                name="price"
+                type="price"
+                onChangeFunc={handleChange}
+                onBlur={handleBlur}
+                value={values.price}
+                labelText="Fiyat"
+                placeholder="Bir Fiyat Girin"
+                priceLabel
+              />
+            </div>
+            <div className="additemform__grid--option">
+              <FormCheckboxInput
+                id="option"
+                name="option"
+                type="option"
+                uncheckedText="Teklif Opsiyonu"
+                checkedText="Fiyat ve Teklif Opsiyonu"
+                onChangeFunc={handleChange}
+                onBlur={handleBlur}
+                errors={errors.option && touched.option}
+                value={values.option}
+              />
+            </div>
           </div>
-          <FormTextInput
-            id="price"
-            name="price"
-            type="price"
-            onChangeFunc={handleChange}
-            onBlur={handleBlur}
-            value={values.price}
-            labelText="Fiyat"
-            placeholder="Bir Fiyat Girin"
-            priceLabel
-          />
-          <FormCheckboxInput
-            id="option"
-            name="option"
-            type="price"
-            uncheckedText="Teklif Opsiyonu"
-            checkedText="Fiyat ve Teklif Opsiyonu"
-            onChangeFunc={handleChange}
-            onBlur={handleBlur}
-            errors={errors.option && touched.option}
-            value={values.option}
-          />
         </Form>
       )}
     </Formik>
