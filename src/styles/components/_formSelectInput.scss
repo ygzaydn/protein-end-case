@@ -35,4 +35,12 @@
             color: $color-dark-4;
         }
     }
+
+    &__datalist {
+        height: 10rem;
+        &--option{
+            padding: 0 .5rem;
+            color:red;
+        }
+    }
 }

@@ -75,7 +75,7 @@ FormTextInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChangeFunc: PropTypes.func,
   labelText: PropTypes.string,
   additionalText: PropTypes.string,

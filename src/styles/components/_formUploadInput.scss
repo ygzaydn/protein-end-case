@@ -7,6 +7,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    &-error{
+        border: 2px dashed $color-red-1;
+    }
     &--selected {
         border: none;
     }
@@ -64,5 +67,9 @@
                 text-align: center;
             }
         }
+    }
+    &__error {
+        color: $color-red-1;
+        font-size: 1.4rem;
     }
 }

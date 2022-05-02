@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const FormSelectInput = ({
@@ -11,12 +11,47 @@ const FormSelectInput = ({
   placeholder,
   options,
 }) => {
+  const [newOption, setNewOption] = useState("");
+
   return (
     <div className="formselectinput">
       <label className="formselectinput__label" htmlFor={id}>
         {labelText}
       </label>
-      <select
+
+      <input
+        type="text"
+        list={id}
+        name={name}
+        onBlur={onBlur}
+        onChange={onChangeFunc}
+        placeholder={placeholder}
+        className={
+          error
+            ? "formselectinput__input formselectinput__input--error"
+            : "formselectinput__input"
+        }
+      />
+      <datalist id={id} className="formselectinput__datalist">
+        <option
+          className="formselectinput__datalist--option"
+          disabled
+          defaultValue
+          hidden
+        >
+          {placeholder}
+        </option>
+        {options.map((el) => (
+          <option
+            className="formselectinput__datalist--option"
+            key={el}
+            value={el}
+          >
+            {el}
+          </option>
+        ))}
+      </datalist>
+      {/* <select
         id={id}
         name={name}
         onBlur={onBlur}
@@ -36,7 +71,8 @@ const FormSelectInput = ({
             {el}
           </option>
         ))}
-      </select>
+        
+      </select>*/}
     </div>
   );
 };
@@ -50,6 +86,7 @@ FormSelectInput.propTypes = {
   onBlur: PropTypes.func,
   placeholder: PropTypes.string,
   options: PropTypes.array,
+  newOptionFlag: PropTypes.bool,
 };
 
 export default FormSelectInput;

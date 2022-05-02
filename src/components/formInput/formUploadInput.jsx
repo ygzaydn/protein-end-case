@@ -1,11 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Upload } from "../../icons";
 
-const FormUploadInput = ({ value, onChangeFunc, id, name }) => {
-  console.log(value);
+const FormUploadInput = ({ onChangeFunc, id, name, error }) => {
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
+  const ref = useRef(null);
+
+  console.log(error);
+
+  useEffect(() => {
+    if (ref?.current) {
+      ref?.current.addEventListener("dragover", handleDragOver);
+      ref?.current.addEventListener("drop", handleDrop);
+    }
+
+    return () => {
+      if (ref?.current) {
+        ref?.current.removeEventListener("dragover", handleDragOver);
+        ref?.current.removeEventListener("drop", handleDrop);
+      }
+    };
+  }, [ref]);
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const { files } = e.dataTransfer;
+
+    if (files && files.length) {
+      setSelectedFile(files[0]);
+      onChangeFunc("file", files[0]);
+    }
+  };
+
   useEffect(() => {
     if (!selectedFile) {
       setPreview(undefined);
@@ -38,6 +72,7 @@ const FormUploadInput = ({ value, onChangeFunc, id, name }) => {
           ? "formuploadinput formuploadinput--selected"
           : "formuploadinput"
       }
+      ref={ref}
     >
       {selectedFile ? (
         <div className="formuploadinput__uploadeddiv">
@@ -75,6 +110,9 @@ const FormUploadInput = ({ value, onChangeFunc, id, name }) => {
           </p>
         </>
       )}
+      {error && selectedFile && (
+        <p className="formuploadinput__error">{error}</p>
+      )}
     </div>
   );
 };
@@ -84,6 +122,7 @@ FormUploadInput.propTypes = {
   onChangeFunc: PropTypes.func,
   id: PropTypes.string,
   name: PropTypes.string,
+  error: PropTypes.string,
 };
 
 export default FormUploadInput;
