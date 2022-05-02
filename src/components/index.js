@@ -14,6 +14,7 @@ import AddItemForm from "./addItemForm/addItemForm";
 import FormSelectInput from "./formInput/formSelectInput";
 import FormCheckboxInput from "./formInput/formCheckboxInput";
 import FormUploadInput from "./formInput/formUploadInput";
+import AccountProductItem from "./accountProductItem/accountProductItem";
 
 export {
   Button,
@@ -32,4 +33,5 @@ export {
   FormSelectInput,
   FormCheckboxInput,
   FormUploadInput,
+  AccountProductItem,
 };

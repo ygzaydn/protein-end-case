@@ -7,12 +7,13 @@ import { useNavigate } from "react-router";
 
 import PropTypes from "prop-types";
 
-const Account = ({ checkUser, userInfo, auth }) => {
-  const [option, setOption] = useState("offers");
+const Account = ({ updateUser, checkUser, userInfo, auth }) => {
+  const [option, setOption] = useState("products");
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkUser();
+    updateUser(userInfo.id);
+
     if (!auth) {
       navigate("/");
     }
@@ -33,23 +34,24 @@ const Account = ({ checkUser, userInfo, auth }) => {
         <div className="accountpage__productsdiv">
           <div className="accountpage__productsdiv--options">
             <PageOptions
-              active={option === "offers"}
-              clickFunc={() => setOption("offers")}
+              active={option === "products"}
+              clickFunc={() => setOption("products")}
               text="Teklif Aldıklarım"
             />
             <PageOptions
-              active={option === "products"}
-              clickFunc={() => setOption("products")}
+              active={option === "offers"}
+              clickFunc={() => setOption("offers")}
               text="Teklif Verdiklerim"
             />
           </div>
           <div className="accountpage__detailsdiv">
             <AccountItemGrid
+              data={option === "offers" ? userInfo.offers : userInfo.products}
               option={option}
               nullText={
                 option === "offers"
-                  ? "Listelenmiş bir ürününüz bulunmuyor."
-                  : "Teklif verdiğiniz bir ürün bulunmuyor."
+                  ? "Teklif verdiğiniz bir ürün bulunmuyor."
+                  : "Listelenmiş bir ürününüz bulunmuyor."
               }
             />
           </div>
@@ -63,6 +65,7 @@ Header.propTypes = {
   checkUser: PropTypes.func,
   userInfo: PropTypes.object,
   auth: PropTypes.bool,
+  updateUser: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -72,6 +75,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   checkUser: () => dispatch({ type: "CHECK_USER" }),
+  updateUser: (id) => dispatch({ type: "UPDATE_USER", payload: { id } }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);

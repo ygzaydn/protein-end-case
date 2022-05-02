@@ -7,8 +7,6 @@ const FormUploadInput = ({ onChangeFunc, id, name, error }) => {
   const [preview, setPreview] = useState();
   const ref = useRef(null);
 
-  console.log(error);
-
   useEffect(() => {
     if (ref?.current) {
       ref?.current.addEventListener("dragover", handleDragOver);

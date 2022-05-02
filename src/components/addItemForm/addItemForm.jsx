@@ -67,7 +67,7 @@ const AddItemForm = ({ categories, userId }) => {
           option,
           file,
         } = values;
-        console.log(file);
+
         if (!brandList.find((el) => el.name === brand)) {
         }
         if (!categories.find((el) => el.name === category)) {
@@ -87,8 +87,9 @@ const AddItemForm = ({ categories, userId }) => {
           price: parseInt(price),
           isOfferable: option,
           isSold: false,
-          user_permissions_user: userId,
+          users_permissions_user: userId,
         };
+
         const stringifiedData = JSON.stringify(data);
         let formData = new FormData();
         formData.append("files.image", file);

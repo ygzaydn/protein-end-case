@@ -1,5 +1,5 @@
 import { all, put, takeLatest, call } from "redux-saga/effects";
-import { register, user, login } from "../../utils/axios";
+import { register, user, login, getOffersAndProducts } from "../../utils/axios";
 import { toast } from "react-toastify";
 
 import Cookies from "universal-cookie";
@@ -76,6 +76,24 @@ function* fetchLogin({ payload }) {
   }
 }
 
+function* fetchUserUpdate({ payload }) {
+  try {
+    const res = yield call(getOffersAndProducts, { ...payload });
+    yield put({
+      type: "UPDATE_SUCCESS",
+      payload: {
+        products: res.products,
+        offers: res.offers,
+      },
+    });
+  } catch (error) {
+    yield put({
+      type: "UPDATE_FAILURE",
+      payload: error.message,
+    });
+  }
+}
+
 export function* startRegister() {
   yield takeLatest("SIGN_UP_START", fetchRegister);
 }
@@ -88,6 +106,10 @@ export function* checkUser() {
   yield takeLatest("CHECK_USER", fetchUser);
 }
 
+export function* updateUser() {
+  yield takeLatest("UPDATE_USER", fetchUserUpdate);
+}
+
 export default function* userSagas() {
-  yield all([startRegister(), checkUser(), startLogin()]);
+  yield all([startRegister(), checkUser(), startLogin(), updateUser()]);
 }

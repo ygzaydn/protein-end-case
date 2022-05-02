@@ -1,0 +1,31 @@
+.accountproductitem {
+    display: flex;
+    padding: 4rem 2rem;
+    &__imagediv{
+        padding: .2rem 2rem;
+        &--image{
+            height: 8.4rem;
+            width: auto;
+        }
+    }
+    &__contentdiv{ 
+        padding: .2rem 2rem;
+        margin: 0 auto 0 0;
+        display: flex;
+        flex-direction: column;
+        &--title{
+            text-align: start;
+        }
+        &--offer{
+
+        }
+    }
+    &__buttondiv{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &--button{
+
+        }
+    }
+}

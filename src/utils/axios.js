@@ -8,6 +8,8 @@ const instance = axios.create({
 export const urls = {
   login: "/auth/local",
   register: "/auth/local/register",
+  userProducts: "/products?users_permissions_user=",
+  userOffers: "/offers?users_permissions_user=",
   userInfo: "/users/me",
   categories: "/categories",
   products: "/products",
@@ -42,7 +44,25 @@ export const user = async () => {
       Authorization: "Bearer " + jwt,
     },
   });
+  console.log(res);
   return res;
+};
+
+export const getOffersAndProducts = async (id) => {
+  const cookies = new Cookies();
+  const jwt = cookies.get("jwt");
+  const products = await instance.get(urls.userProducts + id.id, {
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+  });
+  const offers = await instance.get(urls.userOffers + id.id, {
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+  });
+
+  return { products: products.data, offers: offers.data };
 };
 
 export const products = async () => {
@@ -151,7 +171,7 @@ export const uploadProduct = async (formData) => {
       Authorization: "Bearer " + jwt,
     },
   });
-  console.log(res);
+  return res;
 };
 
 export default instance;
