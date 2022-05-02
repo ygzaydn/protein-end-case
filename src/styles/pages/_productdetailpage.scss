@@ -115,7 +115,13 @@
                     margin: 0 1rem 0 0;
                     padding: 1.25rem 4rem;
                     width: 50%;
-                    
+                }
+                &--sold{
+                    cursor: default;
+                    @include respond(tab-port) {
+                        width: 100%;
+                        justify-content: center;
+                    }
                 }
             }
         }

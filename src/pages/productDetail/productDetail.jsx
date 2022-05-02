@@ -26,7 +26,7 @@ const ProductDetail = ({ product }) => {
   const [productDetail, setProductDetail] = useState({ ...initialState });
   const { pathname, state } = useLocation();
   const mode = useWindowContext();
-
+  console.log(productDetail);
   useEffect(() => {
     if (state?.item) {
       setProductDetail(state.item);
@@ -36,8 +36,17 @@ const ProductDetail = ({ product }) => {
     }
   }, []);
 
-  const { name, brand, color, description, isOfferable, price, image, status } =
-    productDetail;
+  const {
+    name,
+    brand,
+    color,
+    description,
+    isSold,
+    isOfferable,
+    price,
+    image,
+    status,
+  } = productDetail;
 
   return (
     <section className="productdetailpage">
@@ -132,16 +141,19 @@ const ProductDetail = ({ product }) => {
               />
             )}
             <div className="productdetailpage__product--buttonsdiv">
-              <Button
-                size="medium"
-                color="primary"
-                classes="productdetailpage__product--buttonsdiv--button"
-              >
-                <Text fontWeight="medium" color="white">
-                  <h5>Satın Al </h5>
-                </Text>
-              </Button>
-              {isOfferable && (
+              {!isSold && (
+                <Button
+                  size="medium"
+                  color="primary"
+                  classes="productdetailpage__product--buttonsdiv--button"
+                >
+                  <Text fontWeight="medium" color="white">
+                    <h5>Satın Al </h5>
+                  </Text>
+                </Button>
+              )}
+
+              {!isSold && isOfferable && (
                 <Button
                   size="medium"
                   color="secondary"
@@ -149,6 +161,17 @@ const ProductDetail = ({ product }) => {
                 >
                   <Text fontWeight="medium" color="blue">
                     <h5>Teklif Ver</h5>
+                  </Text>
+                </Button>
+              )}
+              {isSold && (
+                <Button
+                  size="medium"
+                  color="orange"
+                  classes="productdetailpage__product--buttonsdiv--button--sold"
+                >
+                  <Text fontWeight="medium" color="orange">
+                    <h5>Bu Ürün Satışta Değil</h5>
                   </Text>
                 </Button>
               )}

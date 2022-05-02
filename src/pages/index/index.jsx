@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router";
 import { useCategoryContext } from "../../contexts/categoryContext";
+import { useWindowContext } from "../../contexts/windowContext";
 
 const Index = ({
   checkUser,
@@ -16,7 +17,9 @@ const Index = ({
   setCategory,
 }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [compressedProducts, setCompressedProducts] = useState([]);
   const navigate = useNavigate();
+  const { mode } = useWindowContext();
 
   useEffect(() => {
     getProducts();
@@ -25,7 +28,34 @@ const Index = ({
   }, []);
 
   useEffect(() => {
+    const onScroll = () => {
+      let height = parseInt(
+        (2.5 *
+          (window.pageYOffset + window.innerHeight / 2 - window.innerHeight)) /
+          window.innerHeight
+      );
+      if (mode === "mobile") {
+        height = height + 1;
+      } else {
+        height = (height + 1) * 10;
+      }
+
+      if (compressedProducts.length < height) {
+        setCompressedProducts(filteredProducts.slice(0, height));
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [compressedProducts.length]);
+
+  useEffect(() => {
     setFilteredProducts(filterProducts());
+    if (filteredProducts.length > 0) {
+      setCompressedProducts(filteredProducts.slice(0, 10));
+    } else {
+      setCompressedProducts(filterProducts().slice(0, 10));
+    }
   }, [category]);
 
   const filterProducts = () => {
@@ -66,7 +96,7 @@ const Index = ({
           ))}
         </div>
         <div className="indexpage__itemdiv">
-          {filteredProducts?.map((el) => (
+          {compressedProducts?.map((el) => (
             <ItemCard
               key={el.id + el.brand}
               brand={el.brand}
