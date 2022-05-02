@@ -12,17 +12,31 @@ const AccountProductItem = ({ item }) => {
         />
       </div>
       <div className="accountproductitem__contentdiv">
-        <div className="accountproductitem__contentdiv--title">
-          <Text color="dark" fontWeight="medium">
+        <div>
+          <Text
+            color="dark"
+            fontWeight="medium"
+            classes="accountproductitem__contentdiv--title"
+          >
             <h2>{item.name}</h2>
           </Text>
         </div>
-        <div className="accountproductitem__contentdiv--offer">
-          {item.offers.length ? "asd" : null}
+        <div>
+          {item.offers.length ? (
+            "asd"
+          ) : (
+            <Text
+              fontWeight="light"
+              color="red"
+              classes="accountproductitem__contentdiv--offer"
+            >
+              <h5>Üründe herhangi bir teklif yok</h5>
+            </Text>
+          )}
         </div>
       </div>
       <div className="accountproductitem__buttondiv">
-        {!item.isSold && (
+        {!item.isSold && item.offers.length > 0 && (
           <Button
             classes="accountproductitem__buttondiv--button"
             color="primary"
@@ -33,7 +47,7 @@ const AccountProductItem = ({ item }) => {
             </Text>
           </Button>
         )}
-        {!item.isSold && (
+        {!item.isSold && item.offers.length > 0 && (
           <Button
             classes="accountproductitem__buttondiv--button"
             color="red"
