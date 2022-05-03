@@ -31,7 +31,7 @@ const Account = ({ updateUser, checkUser, userInfo, auth }) => {
 
   return (
     <section className="accountpage">
-      {dialogBox && (
+      {dialogBox.open && (
         <ProductDetailPurchaseDialog
           closeFunc={closeDialogBox}
           item={dialogBox.item}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
+
 import {
   Header,
   SkeletonImage,
@@ -10,6 +11,7 @@ import {
   ProductDetailOfferDialog,
   ProductDetailPurchaseDialog,
 } from "../../components";
+
 import { useWindowContext } from "../../contexts/windowContext";
 
 import PropTypes from "prop-types";
@@ -31,6 +33,14 @@ const ProductDetail = ({ product }) => {
     purchase: false,
   });
   const { pathname, state } = useLocation();
+
+  const openOfferDialogBox = () => {
+    setDialogBoxes((prev) => ({ ...prev, offer: true }));
+  };
+
+  const openPurchaseDialogBox = () => {
+    setDialogBoxes((prev) => ({ ...prev, purchase: true }));
+  };
 
   const closeOfferDialogBox = () => {
     setDialogBoxes((prev) => ({ ...prev, offer: false }));
@@ -77,7 +87,6 @@ const ProductDetail = ({ product }) => {
           item={productDetail}
         />
       )}
-
       <div className="productdetailpage__header">
         <Header />
       </div>
@@ -186,6 +195,7 @@ const ProductDetail = ({ product }) => {
                   size="medium"
                   color="secondary"
                   classes="productdetailpage__product--buttonsdiv--button"
+                  clickFunc={() => openOfferDialogBox()}
                 >
                   <Text fontWeight="medium" color="blue">
                     <h5>Teklif Ver</h5>

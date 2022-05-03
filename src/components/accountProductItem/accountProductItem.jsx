@@ -1,8 +1,7 @@
 import React from "react";
-import { Text, Button } from "../";
+import { Text, Button } from "..";
 
 const AccountProductItem = ({ item }) => {
-  console.log(item);
   return (
     <div className="accountproductitem">
       <div className="accountproductitem__imagediv">
@@ -23,12 +22,22 @@ const AccountProductItem = ({ item }) => {
         </div>
         <div>
           {item.offers.length ? (
-            "asd"
+            <Text
+              classes="accountproductitem__contentdiv--offer"
+              fontWeight="light"
+            >
+              <h5>
+                Alınan Teklif:{" "}
+                <strong>
+                  {item.offers[item.offers.length - 1].offerPrice} TL{" "}
+                </strong>
+              </h5>
+            </Text>
           ) : (
             <Text
               fontWeight="light"
               color="red"
-              classes="accountproductitem__contentdiv--offer"
+              classes="accountproductitem__contentdiv--nooffer"
             >
               <h5>Üründe herhangi bir teklif yok</h5>
             </Text>

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { AccountProductItem, Text } from "../";
+import { AccountProductItem, Text, AccountOfferItem } from "../";
 
 const AccountItemGrid = ({ option, nullText, userInfo, data }) => {
-  const len = userInfo[option].length;
+  const len = userInfo[option]?.length;
 
   return (
     <div className="accountitemgrid">
@@ -12,7 +12,9 @@ const AccountItemGrid = ({ option, nullText, userInfo, data }) => {
         <div>
           {option === "products"
             ? data.map((el) => <AccountProductItem item={el} key={el.id} />)
-            : null}
+            : data.map((el) => (
+                <AccountOfferItem item={el.product} key={el.id} />
+              ))}
         </div>
       ) : (
         <div className="accountitemgrid__nullText">

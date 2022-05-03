@@ -1,8 +1,11 @@
 .accountproductitem {
     display: flex;
-    padding: 4rem 2rem;
+    padding: 2rem;
+    border: 1px solid $color-light-4;
+    border-radius: 10px; 
+
     @include respond (tab-port){
-        padding: 1rem 0;
+        padding: 1rem;
         flex-wrap: wrap;
     }
     &__imagediv{
@@ -29,6 +32,19 @@
             text-align: start;
         }
         &--offer{
+            padding: 1rem 1.5rem;
+            background-color: $color-light-4;
+            border-radius: 10px;
+            padding-right: 5rem;
+            margin: 1rem 0;
+            & h5 {
+                color: $color-dark-3;
+                & strong {
+                    color: $color-dark-1;
+                }
+            }
+        }
+        &--nooffer{
             margin: .5rem 0;
         }
     }

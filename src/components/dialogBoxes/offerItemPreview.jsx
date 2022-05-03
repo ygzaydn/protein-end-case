@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { Text } from "../";
 
 const OfferItemPreview = ({ item }) => {
-  console.log(item);
   return (
     <div className="offeritempreview">
       <img

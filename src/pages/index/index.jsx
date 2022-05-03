@@ -4,8 +4,9 @@ import { BannerImage } from "../../assets/images/";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router";
-import { useCategoryContext } from "../../contexts/categoryContext";
 import { useWindowContext } from "../../contexts/windowContext";
+
+import { resetStore } from "../../redux/store";
 
 const Index = ({
   checkUser,
@@ -22,6 +23,7 @@ const Index = ({
   const { mode } = useWindowContext();
 
   useEffect(() => {
+    //resetStore();
     getProducts();
     getCategories();
     checkUser();
@@ -86,7 +88,7 @@ const Index = ({
             active={category === ""}
             name="Hepsi"
           />
-          {categories.map((el) => (
+          {categories?.map((el) => (
             <CategoryText
               active={el === category}
               key={el}
@@ -124,9 +126,9 @@ const Index = ({
 };
 
 const mapStateToProps = (state) => ({
-  products: state.products,
-  categories: state.categories.items.map((el) => el.name),
-  category: state.categories.selectedCategory,
+  products: state?.products,
+  categories: state?.categories?.items?.map((el) => el.name),
+  category: state?.categories?.selectedCategory,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -17,6 +17,7 @@ export const urls = {
   brands: "/brands",
   colors: "/colors",
   usage: "/using-statuses",
+  offers: "/offers",
 };
 
 export const register = async ({ email, password, username }) => {
@@ -44,7 +45,7 @@ export const user = async () => {
       Authorization: "Bearer " + jwt,
     },
   });
-  console.log(res);
+
   return res;
 };
 
@@ -167,6 +168,35 @@ export const uploadProduct = async (formData) => {
   const jwt = cookies.get("jwt");
 
   const res = await instance.post(urls.products, formData, {
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+  });
+  return res;
+};
+
+export const makeOffer = async (val, item, userId) => {
+  const cookies = new Cookies();
+  const jwt = cookies.get("jwt");
+
+  const { price } = item;
+  let offer;
+  if (val.includes("%")) {
+    let percentage = parseInt(val.split("%")[0]);
+    offer = (percentage * price) / 100;
+  } else {
+    offer = val;
+  }
+
+  const data = {
+    product: item.id,
+    users_permissions_user: userId,
+    offerPrice: offer,
+    isStatus: true,
+    published_at: new Date(),
+  };
+
+  const res = await instance.post(urls.offers, data, {
     headers: {
       Authorization: "Bearer " + jwt,
     },

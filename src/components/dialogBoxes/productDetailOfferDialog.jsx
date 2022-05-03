@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Text, Offerbox, OfferInput, OfferItemPreview, Button } from "../";
 
 import PropTypes from "prop-types";
+import { makeOffer } from "../../utils/axios";
+import { connect } from "react-redux";
 
-const ProductDetailOfferDialog = ({ closeFunc, item }) => {
+const ProductDetailOfferDialog = ({ closeFunc, item, userId }) => {
   const [offer, setOffer] = useState(0);
+
   return (
     <div className="dialogbox">
       <div className="dialogbox__content productdetailofferdialog">
@@ -33,6 +36,7 @@ const ProductDetailOfferDialog = ({ closeFunc, item }) => {
           color="primary"
           size="large"
           classes="productdetailofferdialog__button"
+          clickFunc={() => makeOffer(offer, item, userId)}
         >
           Onayla
         </Button>
@@ -44,6 +48,11 @@ const ProductDetailOfferDialog = ({ closeFunc, item }) => {
 ProductDetailOfferDialog.propTypes = {
   item: PropTypes.object,
   closeFunc: PropTypes.func,
+  userId: PropTypes.string,
 };
 
-export default ProductDetailOfferDialog;
+const mapStateToProps = (state) => ({
+  userId: state?.user?.currentUser?.id,
+});
+
+export default connect(mapStateToProps, null)(ProductDetailOfferDialog);

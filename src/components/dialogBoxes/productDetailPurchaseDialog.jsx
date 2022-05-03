@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Text, Button } from "..";
+import React from "react";
+import { Text, Button } from "../";
 
 import PropTypes from "prop-types";
 
