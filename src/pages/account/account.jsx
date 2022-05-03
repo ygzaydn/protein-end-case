@@ -13,7 +13,7 @@ import { useNavigate } from "react-router";
 
 import PropTypes from "prop-types";
 
-const Account = ({ updateUser, checkUser, userInfo, auth }) => {
+const Account = ({ updateUser, userInfo, auth }) => {
   const [dialogBox, setDialogBox] = useState({ open: false, item: null });
   const [option, setOption] = useState("products");
   const navigate = useNavigate();
@@ -90,7 +90,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  checkUser: () => dispatch({ type: "CHECK_USER" }),
   updateUser: (id) => dispatch({ type: "UPDATE_USER", payload: { id } }),
 });
 

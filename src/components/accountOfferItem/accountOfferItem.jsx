@@ -3,8 +3,22 @@ import { ToastContainer } from "react-toastify";
 import { Text, Button } from "..";
 
 import { buyItem } from "../../utils/axios";
+import { connect } from "react-redux";
 
-const AccountOfferItem = ({ item }) => {
+import PropTypes from "prop-types";
+
+const AccountOfferItem = ({ item, updateUser, userInfo }) => {
+  const buy = async (item) => {
+    try {
+      const res = await buyItem(item);
+      if (res) {
+        updateUser(userInfo.id);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="accountproductitem">
       <ToastContainer theme="colored" />
@@ -46,7 +60,7 @@ const AccountOfferItem = ({ item }) => {
             classes="accountproductitem__buttondiv--button"
             color="primary"
             size="xsmall"
-            clickFunc={() => buyItem(item)}
+            clickFunc={() => buy(item)}
           >
             <Text fontWeight="light">
               <h5>Satın Al</h5>
@@ -68,4 +82,18 @@ const AccountOfferItem = ({ item }) => {
   );
 };
 
-export default AccountOfferItem;
+AccountOfferItem.propTypes = {
+  item: PropTypes.object,
+  userInfo: PropTypes.object,
+  updateUser: PropTypes.func,
+};
+
+const mapStateToProps = (state) => ({
+  userInfo: state.user.currentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateUser: (id) => dispatch({ type: "UPDATE_USER", payload: { id } }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountOfferItem);

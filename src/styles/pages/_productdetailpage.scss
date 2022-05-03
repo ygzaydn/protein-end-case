@@ -32,7 +32,12 @@
             justify-content: center;
             align-items: center;
             border-radius: 10px;
-            @include respond(tab-port) {
+            @include respond(small-desktop) {
+                width: 50rem;
+                height: 52.64rem;
+                
+            }
+            @include respond(tab-land) {
                width: 100%;
                height: auto;
                margin:0;
@@ -46,8 +51,8 @@
             height: 100%;
             border-radius: 10px;
 
-            @include respond(tab-port) {
-                width: 100%;
+            @include respond(tab-land) {
+               
                 height: auto;   
             }
         }

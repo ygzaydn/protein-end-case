@@ -27,6 +27,7 @@ break points
 $breakpoint argument choices:
     -   phone
     -   tab-port
+    -   small-desktop
     -   tab-land
     -   big-desktop
 
@@ -53,7 +54,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
             @content;
         }
     }
-    @if $breakpoint==small-desktop {
+    @if $breakpoint== small-desktop {
         @media only screen and (max-width: 90em) {
             // 1440px
             @content;

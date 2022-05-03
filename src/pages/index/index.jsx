@@ -38,7 +38,7 @@ const Index = ({
 
   useEffect(() => {
     setFilteredProducts(filterProducts());
-  }, [category]);
+  }, [category, products]);
 
   return (
     <section className="indexpage">
