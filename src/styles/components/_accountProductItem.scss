@@ -11,6 +11,8 @@
     }
     &__imagediv{
         padding: .2rem 2rem;
+        min-width: 5rem;
+        min-height: auto;
         @include respond (phone) {
             padding: .2rem;
             padding: .2rem 2rem .2rem 0rem;

@@ -1,11 +1,13 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 import { Text, Button } from "..";
 
-import { acceptOffer } from "../../utils/axios";
+import { acceptOffer, declineOffer } from "../../utils/axios";
 
 const AccountProductItem = ({ item }) => {
   return (
     <div className="accountproductitem">
+      <ToastContainer theme="colored" />
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"
@@ -23,7 +25,7 @@ const AccountProductItem = ({ item }) => {
           </Text>
         </div>
         <div>
-          {item.offers.length ? (
+          {item?.offers?.length ? (
             <Text
               classes="accountproductitem__contentdiv--offer"
               fontWeight="light"
@@ -41,7 +43,7 @@ const AccountProductItem = ({ item }) => {
               color="red"
               classes="accountproductitem__contentdiv--nooffer"
             >
-              <h5>Üründe herhangi bir teklif yok</h5>
+              {!item.isSold && <h5>Üründe herhangi bir teklif yok</h5>}
             </Text>
           )}
         </div>
@@ -64,12 +66,30 @@ const AccountProductItem = ({ item }) => {
             classes="accountproductitem__buttondiv--button"
             color="red"
             size="xsmall"
+            clickFunc={() => declineOffer(item.offers[item.offers.length - 1])}
           >
             <Text fontWeight="light">
               <h5>Reddet</h5>
             </Text>
           </Button>
         )}
+        {item.isSold && (
+          <Text color="green" fontWeight="light">
+            <h4>Satın alındı</h4>
+          </Text>
+        )}
+        {!item?.isSold &&
+          item?.offers[item.offers.length - 1]?.isStatus === true && (
+            <Text color="blue" fontWeight="light">
+              <h4>Onaylandı</h4>
+            </Text>
+          )}
+        {!item?.isSold &&
+          item?.offers[item.offers.length - 1]?.isStatus === false && (
+            <Text color="red" fontWeight="light">
+              <h4>Reddedildi</h4>
+            </Text>
+          )}
       </div>
     </div>
   );

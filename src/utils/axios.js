@@ -231,7 +231,47 @@ export const acceptOffer = async (offer) => {
       Authorization: "Bearer " + jwt,
     },
   });
+  if (res) {
+    toast.success(`Teklif başarı ile kabul edildi.`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+  return res;
+};
 
+export const declineOffer = async (offer) => {
+  const cookies = new Cookies();
+  const jwt = cookies.get("jwt");
+
+  const { id } = offer;
+
+  const data = {
+    ...offer,
+    isStatus: false,
+  };
+
+  const res = instance.put(urls.offers + "/" + id, data, {
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+  });
+  if (res) {
+    toast.success(`Teklif başarı ile reddedildi.`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
   return res;
 };
 

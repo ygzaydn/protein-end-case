@@ -66,7 +66,7 @@ const Account = ({ updateUser, checkUser, userInfo, auth }) => {
               option={option}
               nullText={
                 option === "offers"
-                  ? "Teklif verdiğiniz bir ürün bulunmuyor."
+                  ? "Mevcut bir teklifiniz bulunmuyor."
                   : "Listelenmiş bir ürününüz bulunmuyor."
               }
             />
