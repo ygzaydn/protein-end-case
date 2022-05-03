@@ -6,6 +6,7 @@ import {
   Text,
   PageOptions,
   AccountItemGrid,
+  ProductDetailPurchaseDialog,
 } from "../../components";
 import { Profile } from "../../icons";
 import { useNavigate } from "react-router";
@@ -13,8 +14,12 @@ import { useNavigate } from "react-router";
 import PropTypes from "prop-types";
 
 const Account = ({ updateUser, checkUser, userInfo, auth }) => {
+  const [dialogBox, setDialogBox] = useState({ open: false, item: null });
   const [option, setOption] = useState("products");
   const navigate = useNavigate();
+
+  const closeDialogBox = () =>
+    setDialogBox((prev) => ({ ...prev, open: false }));
 
   useEffect(() => {
     updateUser(userInfo.id);
@@ -26,6 +31,12 @@ const Account = ({ updateUser, checkUser, userInfo, auth }) => {
 
   return (
     <section className="accountpage">
+      {dialogBox && (
+        <ProductDetailPurchaseDialog
+          closeFunc={closeDialogBox}
+          item={dialogBox.item}
+        />
+      )}
       <div className="accountpage__headerdiv">
         <Header />
       </div>
