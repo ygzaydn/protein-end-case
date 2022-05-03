@@ -35,6 +35,12 @@
         display: grid;
         grid-gap: 1.25rem;
         grid-template-columns: repeat(auto-fit, minmax(auto, 27.75rem));
+        @include respond(tab-port) {
+            grid-template-columns: repeat(auto-fit, minmax(auto, 17.75rem));
+        }
+        @include respond(phone) {
+            grid-template-columns: repeat(auto-fit, minmax(auto, 14.75rem));
+        }
         padding: 2rem 0 6rem 0;
        
        

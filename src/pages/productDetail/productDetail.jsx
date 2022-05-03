@@ -7,6 +7,8 @@ import {
   SkeletonText,
   Text,
   Button,
+  ProductDetailOfferDialog,
+  ProductDetailPurchaseDialog,
 } from "../../components";
 import { useWindowContext } from "../../contexts/windowContext";
 
@@ -24,9 +26,22 @@ const initialState = {
 
 const ProductDetail = ({ product }) => {
   const [productDetail, setProductDetail] = useState({ ...initialState });
+  const [dialogBoxes, setDialogBoxes] = useState({
+    offer: false,
+    purchase: false,
+  });
   const { pathname, state } = useLocation();
+
+  const closeOfferDialogBox = () => {
+    setDialogBoxes((prev) => ({ ...prev, offer: false }));
+  };
+
+  const closePurchaseDialogBox = () => {
+    setDialogBoxes((prev) => ({ ...prev, purchase: false }));
+  };
+
   const mode = useWindowContext();
-  console.log(productDetail);
+
   useEffect(() => {
     if (state?.item) {
       setProductDetail(state.item);
@@ -50,6 +65,19 @@ const ProductDetail = ({ product }) => {
 
   return (
     <section className="productdetailpage">
+      {dialogBoxes.offer && (
+        <ProductDetailOfferDialog
+          closeFunc={() => closeOfferDialogBox()}
+          item={productDetail}
+        />
+      )}
+      {dialogBoxes.purchase && (
+        <ProductDetailPurchaseDialog
+          closeFunc={() => closePurchaseDialogBox()}
+          item={productDetail}
+        />
+      )}
+
       <div className="productdetailpage__header">
         <Header />
       </div>

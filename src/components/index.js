@@ -15,6 +15,11 @@ import FormSelectInput from "./formInput/formSelectInput";
 import FormCheckboxInput from "./formInput/formCheckboxInput";
 import FormUploadInput from "./formInput/formUploadInput";
 import AccountProductItem from "./accountProductItem/accountProductItem";
+import ProductDetailOfferDialog from "./dialogBoxes/productDetailOfferDialog";
+import OfferItemPreview from "./dialogBoxes/offerItemPreview";
+import Offerbox from "./dialogBoxes/offerBox";
+import OfferInput from "./dialogBoxes/offerInput";
+import ProductDetailPurchaseDialog from "./dialogBoxes/productDetailPurchaseDialog";
 
 export {
   Button,
@@ -34,4 +39,9 @@ export {
   FormCheckboxInput,
   FormUploadInput,
   AccountProductItem,
+  ProductDetailOfferDialog,
+  ProductDetailPurchaseDialog,
+  OfferItemPreview,
+  Offerbox,
+  OfferInput,
 };

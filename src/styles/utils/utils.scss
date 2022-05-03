@@ -1,0 +1,21 @@
+.dialogbox {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color-blue-1 ,0.7);
+    z-index: 1;
+    &__content {
+        min-height: 15rem;
+        min-width: 40rem;
+        @include respond(phone){
+            min-width: 10rem;
+            width: 90%;
+        }
+        background-color: $color-light-1;
+        border-radius: 15px;
+        padding: 2rem;
+    }
+}

@@ -1,0 +1,17 @@
+.productdetailpurchasedialog{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    & > div {
+        margin: 1rem 0;
+    }
+    &--buttondiv {
+        display: flex;
+        align-self: center;
+    }
+    &--button {
+        font-weight: 500;
+        font-size: 1.8rem;
+        font-family: inherit;
+    }
+}

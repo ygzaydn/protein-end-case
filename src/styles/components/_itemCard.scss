@@ -13,6 +13,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        @include respond (tab-port){
+            height: 25rem;
+        }
+        @include respond (phone) {
+            height: 20rem;
+        }
     }
 
     &__image {
@@ -30,6 +36,7 @@
         border-radius: 5px;
         &--brand {
             margin: 0 0.2rem;
+            text-align: end;
         }
     }
     &__pricediv {

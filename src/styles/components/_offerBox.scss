@@ -1,0 +1,35 @@
+.offerbox{
+    display: flex;
+    padding: 1rem;
+    transition: all .4s;
+    border: 1px solid $color-dark-5;
+    background-color: $color-light-1;
+    align-items: center;
+    border-radius: 10px;
+
+    & svg {
+        margin-right: 1rem;
+    }
+
+    &--active{
+        display: flex;
+        padding: 1rem;
+        transition: all .4s;
+        background-color: $color-blue-2;
+        border: 1px solid $color-blue-1;
+        border-radius: 10px;
+
+        & svg {
+            margin-right: 1rem;
+        }
+
+    }
+    &__text{
+        text-align: center;
+        color: $color-dark-1;
+    }
+    &__active{
+        color: $color-blue-1;
+
+    }
+}

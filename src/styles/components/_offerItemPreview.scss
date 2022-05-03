@@ -1,0 +1,21 @@
+.offeritempreview {
+    display: flex;
+    background-color: $color-blue-2;
+    border-radius: 15px;
+    height: 6rem;
+    padding: .5rem;
+    &__image{
+        height: 5rem;
+        width: auto;
+        border-radius: 10px;
+        margin-right: 1rem;
+    }
+    &__text{
+        padding: .2rem .4rem;
+    }
+    &__price{
+        margin: 0 0 0 auto;
+        align-self: center;
+        padding-right: .5rem;
+    }
+}

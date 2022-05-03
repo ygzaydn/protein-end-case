@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import { Header, Text, PageOptions, AccountItemGrid } from "../../components";
+import {
+  Header,
+  Text,
+  PageOptions,
+  AccountItemGrid,
+} from "../../components";
 import { Profile } from "../../icons";
 import { useNavigate } from "react-router";
 

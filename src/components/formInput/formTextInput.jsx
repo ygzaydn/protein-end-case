@@ -84,6 +84,7 @@ FormTextInput.propTypes = {
   placeholder: PropTypes.string,
   multiline: PropTypes.bool,
   priceLabel: PropTypes.bool,
+  classes: PropTypes.string,
 };
 
 export default FormTextInput;
