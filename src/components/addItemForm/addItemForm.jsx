@@ -18,14 +18,20 @@ import {
   usages,
   addBrand,
 } from "../../utils/axios";
+
 import PropTypes from "prop-types";
 
 import { addItemSchema } from "../../constants/schemas/";
+import { ToastContainer, toast } from "react-toastify";
+
+import { useNavigate } from "react-router";
 
 const AddItemForm = ({ categories, userId }) => {
   const [brandList, setBrandList] = useState([]);
   const [colorList, setColorList] = useState([]);
   const [usageList, setUsageList] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -94,8 +100,25 @@ const AddItemForm = ({ categories, userId }) => {
         let formData = new FormData();
         formData.append("files.image", file);
         formData.append("data", stringifiedData);
-
-        uploadProduct(formData);
+        try {
+          const res = uploadProduct(formData);
+          if (res) {
+            toast.success(`Ürün başarı ile listelendi.`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            setTimeout(() => {
+              navigate("/");
+            }, 3000);
+          }
+        } catch (err) {
+          console.log(err);
+        }
       }}
     >
       {({
@@ -108,6 +131,7 @@ const AddItemForm = ({ categories, userId }) => {
         setFieldValue,
       }) => (
         <Form onSubmit={handleSubmit} className="additemform">
+          <ToastContainer theme="colored" />
           <div className="additemform__grid">
             <div className="additemform__grid--title">
               <Text

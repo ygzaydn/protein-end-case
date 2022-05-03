@@ -4,12 +4,14 @@ import { Text, Offerbox, OfferInput, OfferItemPreview, Button } from "../";
 import PropTypes from "prop-types";
 import { makeOffer } from "../../utils/axios";
 import { connect } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 const ProductDetailOfferDialog = ({ closeFunc, item, userId }) => {
   const [offer, setOffer] = useState(0);
 
   return (
     <div className="dialogbox">
+      <ToastContainer theme="colored" />
       <div className="dialogbox__content productdetailofferdialog">
         <Text color="dark" classes="productdetailofferdialog__title">
           <h2>Teklif Ver</h2>

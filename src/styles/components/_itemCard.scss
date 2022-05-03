@@ -37,6 +37,9 @@
         margin: 1rem 0;
         border-radius: 5px;
         &--brand {
+            text-align: start;
+        }
+        &--color {
             margin: 0 0.2rem;
             text-align: end;
         }

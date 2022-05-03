@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, Button } from "..";
 
+import { acceptOffer } from "../../utils/axios";
+
 const AccountProductItem = ({ item }) => {
   return (
     <div className="accountproductitem">
@@ -45,18 +47,19 @@ const AccountProductItem = ({ item }) => {
         </div>
       </div>
       <div className="accountproductitem__buttondiv">
-        {!item.isSold && item.offers.length > 0 && (
+        {!item.isSold && item.offers[item.offers.length - 1]?.isStatus == null && (
           <Button
             classes="accountproductitem__buttondiv--button"
             color="primary"
             size="xsmall"
+            clickFunc={() => acceptOffer(item.offers[item.offers.length - 1])}
           >
             <Text fontWeight="light">
               <h5>Onayla</h5>
             </Text>
           </Button>
         )}
-        {!item.isSold && item.offers.length > 0 && (
+        {!item.isSold && item.offers[item.offers.length - 1]?.isStatus == null && (
           <Button
             classes="accountproductitem__buttondiv--button"
             color="red"

@@ -18,7 +18,6 @@ const Index = ({
   setCategory,
 }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [compressedProducts, setCompressedProducts] = useState([]);
   const navigate = useNavigate();
   const { mode } = useWindowContext();
 
@@ -29,37 +28,6 @@ const Index = ({
     checkUser();
   }, []);
 
-  useEffect(() => {
-    const onScroll = () => {
-      let height = parseInt(
-        (2.5 *
-          (window.pageYOffset + window.innerHeight / 2 - window.innerHeight)) /
-          window.innerHeight
-      );
-      if (mode === "mobile") {
-        height = height + 1;
-      } else {
-        height = (height + 1) * 10;
-      }
-
-      if (compressedProducts.length < height) {
-        setCompressedProducts(filteredProducts.slice(0, height));
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [compressedProducts.length]);
-
-  useEffect(() => {
-    setFilteredProducts(filterProducts());
-    if (filteredProducts.length > 0) {
-      setCompressedProducts(filteredProducts.slice(0, 10));
-    } else {
-      setCompressedProducts(filterProducts().slice(0, 10));
-    }
-  }, [category]);
-
   const filterProducts = () => {
     if (category !== "") {
       return products.filter((el) => el?.category?.name === category);
@@ -67,6 +35,10 @@ const Index = ({
       return products;
     }
   };
+
+  useEffect(() => {
+    setFilteredProducts(filterProducts());
+  }, [category]);
 
   return (
     <section className="indexpage">
@@ -98,7 +70,7 @@ const Index = ({
           ))}
         </div>
         <div className="indexpage__itemdiv">
-          {compressedProducts?.map((el) => (
+          {filteredProducts?.map((el) => (
             <ItemCard
               key={el.id + el.brand}
               brand={el.brand}

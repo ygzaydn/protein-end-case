@@ -4,20 +4,22 @@
         color: var(--toastify-text-color-dark);
     }
     &-theme--light {
-        color: $color-red-1;
-        background: $color-red-2;
+        z-index: 500;
+        /*color: $color-red-1;
+        background: $color-red-2;*/
     }
     &-theme--colored#{&}--default {
         background: var(--toastify-color-light);
         color: var(--toastify-text-color-light);
     }
     &-theme--colored#{&}--info {
-        color: var(--toastify-text-color-info);
-        background: var(--toastify-color-info);
+        color: $color-green-1;
+        background: $color-green-2;
     }
     &-theme--colored#{&}--success {
-        color: var(--toastify-text-color-success);
-        background: var(--toastify-color-success);
+        color: $color-green-1;
+        background: $color-green-2;
+        
     }
     &-theme--colored#{&}--warning {
         color: var(--toastify-text-color-warning);

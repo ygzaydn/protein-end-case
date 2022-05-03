@@ -7,7 +7,7 @@ const OfferInput = ({ value, onChangeFunc, placeholder }) => {
       <input
         className="offerinput__input"
         type="text"
-        onChange={onChangeFunc}
+        onChange={(e) => onChangeFunc(e.target.value)}
         value={value}
         placeholder={placeholder}
       />

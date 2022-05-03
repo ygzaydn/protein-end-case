@@ -1,6 +1,8 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 
+import { toast } from "react-toastify";
+
 const instance = axios.create({
   baseURL: "https://bootcamp.akbolat.net/",
 });
@@ -192,8 +194,6 @@ export const makeOffer = async (val, item, userId) => {
     product: item.id,
     users_permissions_user: userId,
     offerPrice: offer,
-    isStatus: true,
-    published_at: new Date(),
   };
 
   const res = await instance.post(urls.offers, data, {
@@ -201,6 +201,65 @@ export const makeOffer = async (val, item, userId) => {
       Authorization: "Bearer " + jwt,
     },
   });
+  if (res) {
+    toast.success(`Teklif başarı ile yapıldı.`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+  return res;
+};
+
+export const acceptOffer = async (offer) => {
+  const cookies = new Cookies();
+  const jwt = cookies.get("jwt");
+
+  const { id } = offer;
+
+  const data = {
+    ...offer,
+    isStatus: true,
+  };
+
+  const res = instance.put(urls.offers + "/" + id, data, {
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+  });
+
+  return res;
+};
+
+export const buyItem = async (product) => {
+  const cookies = new Cookies();
+  const jwt = cookies.get("jwt");
+
+  const { id } = product;
+
+  const data = { ...product, isOfferable: false, isSold: true };
+
+  const res = instance.put(urls.products + "/" + id, data, {
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+  });
+
+  if (res) {
+    toast.success(`Satın alma başarılı.`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
   return res;
 };
 

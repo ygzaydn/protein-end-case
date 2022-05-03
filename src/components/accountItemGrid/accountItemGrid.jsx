@@ -5,16 +5,14 @@ import { AccountProductItem, Text, AccountOfferItem } from "../";
 
 const AccountItemGrid = ({ option, nullText, userInfo, data }) => {
   const len = userInfo[option]?.length;
-
+  //console.log(userInfo[option]);
   return (
     <div className="accountitemgrid">
       {len ? (
         <div>
           {option === "products"
             ? data.map((el) => <AccountProductItem item={el} key={el.id} />)
-            : data.map((el) => (
-                <AccountOfferItem item={el.product} key={el.id} />
-              ))}
+            : data.map((el) => <AccountOfferItem item={el} key={el.id} />)}
         </div>
       ) : (
         <div className="accountitemgrid__nullText">

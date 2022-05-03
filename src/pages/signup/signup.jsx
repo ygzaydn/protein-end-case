@@ -19,7 +19,7 @@ const Signup = ({ auth }) => {
 
   return (
     <section className="signup">
-      <ToastContainer />
+      <ToastContainer theme="colored" />
       <div className="signup__imagediv">
         <img src={Signin} alt="sign-in" className="signup__imagediv--image" />
       </div>
