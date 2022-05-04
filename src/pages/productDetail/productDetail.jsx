@@ -82,18 +82,18 @@ const ProductDetail = ({ products, auth, getProducts }) => {
 
   return (
     <section className="productdetailpage">
-      {dialogBoxes.offer && (
-        <ProductDetailOfferDialog
-          closeFunc={() => closeOfferDialogBox()}
-          item={productDetail}
-        />
-      )}
-      {dialogBoxes.purchase && (
-        <ProductDetailPurchaseDialog
-          closeFunc={() => closePurchaseDialogBox()}
-          item={productDetail}
-        />
-      )}
+      <ProductDetailOfferDialog
+        closeFunc={() => closeOfferDialogBox()}
+        item={productDetail}
+        open={dialogBoxes.offer}
+      />
+
+      <ProductDetailPurchaseDialog
+        closeFunc={() => closePurchaseDialogBox()}
+        item={productDetail}
+        open={dialogBoxes.purchase}
+      />
+
       <div className="productdetailpage__header">
         <Header />
       </div>

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
-import { Text, Button } from "..";
+import { Text, Button, ProductDetailPurchaseDialog } from "..";
 
 import { acceptOffer, declineOffer } from "../../utils/axios";
 
@@ -9,6 +9,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const AccountProductItem = ({ item, updateUser, userInfo }) => {
+  const [dialog, setDialog] = useState(false);
+
   const takeOffer = async (item) => {
     try {
       const res = await acceptOffer(item);
@@ -29,8 +31,17 @@ const AccountProductItem = ({ item, updateUser, userInfo }) => {
       console.log(err);
     }
   };
+  const closeDialog = () => setDialog(false);
   return (
     <div className="accountproductitem">
+      <ProductDetailPurchaseDialog
+        open={dialog}
+        clickFunc={
+          dialog === "accept" ? () => acceptOffer() : () => declineOffer()
+        }
+        item={item}
+        closeFunc={() => closeDialog()}
+      />
       <ToastContainer theme="colored" />
       <div className="accountproductitem__imagediv">
         <img
@@ -107,7 +118,7 @@ const AccountProductItem = ({ item, updateUser, userInfo }) => {
             fontWeight="light"
             classes="accountproductitem__buttondiv--text"
           >
-            <h4>Satın alındı</h4>
+            <h4>Satıldı</h4>
           </Text>
         )}
         {!item?.isSold &&

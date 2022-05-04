@@ -6,11 +6,20 @@ import { makeOffer } from "../../utils/axios";
 import { connect } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
-const ProductDetailOfferDialog = ({ closeFunc, item, userId }) => {
+const ProductDetailOfferDialog = ({ closeFunc, item, userId, open }) => {
   const [offer, setOffer] = useState(0);
 
+  const offerItem = async (offer, item, userId) => {
+    const res = await makeOffer(offer, item, userId);
+    if (res) {
+      setTimeout(() => {
+        closeFunc();
+      }, 1000);
+    }
+  };
+
   return (
-    <div className="dialogbox">
+    <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <ToastContainer theme="colored" />
       <div className="dialogbox__content productdetailofferdialog">
         <Text color="dark" classes="productdetailofferdialog__title">
@@ -38,7 +47,7 @@ const ProductDetailOfferDialog = ({ closeFunc, item, userId }) => {
           color="primary"
           size="large"
           classes="productdetailofferdialog__button"
-          clickFunc={() => makeOffer(offer, item, userId)}
+          clickFunc={() => offerItem(offer, item, userId)}
         >
           Onayla
         </Button>
@@ -51,6 +60,7 @@ ProductDetailOfferDialog.propTypes = {
   item: PropTypes.object,
   closeFunc: PropTypes.func,
   userId: PropTypes.string,
+  open: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

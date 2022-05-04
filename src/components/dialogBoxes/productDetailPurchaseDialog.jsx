@@ -7,19 +7,24 @@ import { ToastContainer } from "react-toastify";
 
 import { connect } from "react-redux";
 
-const ProductDetailPurchaseDialog = ({ closeFunc, item, getProducts }) => {
+const ProductDetailPurchaseDialog = ({
+  closeFunc,
+  item,
+  getProducts,
+  open,
+}) => {
   const buy = async (item) => {
     const res = await buyItem(item);
     if (res) {
+      getProducts();
       setTimeout(() => {
-        getProducts();
         closeFunc();
-      }, 2000);
+      }, 1000);
     }
   };
 
   return (
-    <div className="dialogbox">
+    <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <ToastContainer theme="colored" />
       <div className="dialogbox__content productdetailpurchasedialog">
         <Text color="dark">
@@ -55,6 +60,7 @@ ProductDetailPurchaseDialog.propTypes = {
   item: PropTypes.object,
   closeFunc: PropTypes.func,
   getProducts: PropTypes.func,
+  open: PropTypes.bool,
 };
 
 const mapDispatchToProps = (dispatch) => ({

@@ -31,12 +31,11 @@ const Account = ({ updateUser, userInfo, auth }) => {
 
   return (
     <section className="accountpage">
-      {dialogBox.open && (
-        <ProductDetailPurchaseDialog
-          closeFunc={closeDialogBox}
-          item={dialogBox.item}
-        />
-      )}
+      <ProductDetailPurchaseDialog
+        closeFunc={closeDialogBox}
+        item={dialogBox.item}
+        open={dialogBox.open}
+      />
       <div className="accountpage__headerdiv">
         <Header />
       </div>

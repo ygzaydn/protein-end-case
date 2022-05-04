@@ -1,7 +1,7 @@
 .offerbox{
     display: flex;
     padding: 1rem;
-    transition: all .4s;
+    
     border: 1px solid $color-dark-5;
     background-color: $color-light-1;
     align-items: center;
@@ -14,7 +14,7 @@
     &--active{
         display: flex;
         padding: 1rem;
-        transition: all .4s;
+        
         background-color: $color-blue-2;
         border: 1px solid $color-blue-1;
         border-radius: 10px;
