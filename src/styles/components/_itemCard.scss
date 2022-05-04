@@ -5,6 +5,7 @@
     border: 5px solid $color-light-1;
     cursor: pointer;
     transition: all 0.4s;
+    box-shadow: $shadow;
 
     @include respond (tab-port) {
        padding: 0;

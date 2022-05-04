@@ -63,7 +63,7 @@ ItemCard.propTypes = {
   imageURL: PropTypes.string,
   color: PropTypes.string,
   brand: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.string,
   clickFunc: PropTypes.func,
 };
 

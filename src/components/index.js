@@ -1,26 +1,39 @@
+/* Generic Components */
+import Header from "./header/header";
 import Button from "./button/button";
 import Text from "./text/text";
-import Header from "./header/header";
 import CategoryText from "./categoryText/categoryText";
 import ItemCard from "./itemCard/itemCard";
-import SignupForm from "./signupForm/signupForm";
-import SignInForm from "./signinForm/signInForm";
-import FormTextInput from "./formInput/formTextInput.jsx";
 import SkeletonImage from "./skeletonImage/skeletonImage";
 import SkeletonText from "./skeletonText/skeletonText";
-import PageOptions from "./pageOptions/pageOptions";
+
+/* Sign up & Sign in Components */
+import SignupForm from "./signupForm/signupForm";
+import SignInForm from "./signinForm/signInForm";
+
+/* Account Page Components */
 import AccountItemGrid from "./accountItemGrid/accountItemGrid";
-import AddItemForm from "./addItemForm/addItemForm";
+import AccountProductItem from "./accountProductItem/accountProductItem";
+import AccountOfferItem from "./accountOfferItem/accountOfferItem";
+import PageOptions from "./pageOptions/pageOptions";
+
+/* Form Components */
+import FormTextInput from "./formInput/formTextInput.jsx";
 import FormSelectInput from "./formInput/formSelectInput";
 import FormCheckboxInput from "./formInput/formCheckboxInput";
 import FormUploadInput from "./formInput/formUploadInput";
-import AccountProductItem from "./accountProductItem/accountProductItem";
-import AccountOfferItem from "./accountOfferItem/accountOfferItem";
-import ProductDetailOfferDialog from "./dialogBoxes/productDetailOfferDialog";
-import ProductDetailPurchaseDialog from "./dialogBoxes/productDetailPurchaseDialog";
+
+/* Product Detail Components*/
 import OfferItemPreview from "./dialogBoxes/offerItemPreview";
 import Offerbox from "./dialogBoxes/offerBox";
 import OfferInput from "./dialogBoxes/offerInput";
+
+/* New Product Components */
+import AddItemForm from "./addItemForm/addItemForm";
+
+/* Dialog Components */
+import ProductDetailOfferDialog from "./dialogBoxes/productDetailOfferDialog";
+import ProductDetailPurchaseDialog from "./dialogBoxes/productDetailPurchaseDialog";
 
 export {
   Button,

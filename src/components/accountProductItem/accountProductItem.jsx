@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const AccountProductItem = ({ item, updateUser, userInfo }) => {
-  console.log(item);
   const takeOffer = async (item) => {
     try {
       const res = await acceptOffer(item);
@@ -74,9 +73,9 @@ const AccountProductItem = ({ item, updateUser, userInfo }) => {
         </div>
       </div>
       <div className="accountproductitem__buttondiv">
-        {!item.isSold &&
-          item.offers.length > 0 &&
-          item.offers[item.offers.length - 1]?.isStatus == null && (
+        {!item?.isSold &&
+          item?.offers &&
+          item?.offers[item.offers.length - 1]?.isStatus == null && (
             <Button
               classes="accountproductitem__buttondiv--button"
               color="primary"
@@ -88,9 +87,9 @@ const AccountProductItem = ({ item, updateUser, userInfo }) => {
               </Text>
             </Button>
           )}
-        {!item.isSold &&
-          item.offers.length > 0 &&
-          item.offers[item.offers.length - 1]?.isStatus == null && (
+        {!item?.isSold &&
+          item?.offers &&
+          item?.offers[item.offers.length - 1]?.isStatus == null && (
             <Button
               classes="accountproductitem__buttondiv--button"
               color="red"
@@ -103,17 +102,23 @@ const AccountProductItem = ({ item, updateUser, userInfo }) => {
             </Button>
           )}
         {item.isSold && (
-          <Text color="green" fontWeight="light">
+          <Text
+            color="green"
+            fontWeight="light"
+            classes="accountproductitem__buttondiv--text"
+          >
             <h4>Satın alındı</h4>
           </Text>
         )}
         {!item?.isSold &&
+          item?.offers &&
           item?.offers[item.offers.length - 1]?.isStatus === true && (
             <Text color="blue" fontWeight="light">
               <h4>Onaylandı</h4>
             </Text>
           )}
         {!item?.isSold &&
+          item?.offers &&
           item?.offers[item.offers.length - 1]?.isStatus === false && (
             <Text color="red" fontWeight="light">
               <h4>Reddedildi</h4>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 import {
   Header,
@@ -26,14 +26,14 @@ const initialState = {
   image: null,
 };
 
-const ProductDetail = ({ product, auth }) => {
+const ProductDetail = ({ products, auth, getProducts }) => {
   const [productDetail, setProductDetail] = useState({ ...initialState });
   const [dialogBoxes, setDialogBoxes] = useState({
     offer: false,
     purchase: false,
   });
-  const { pathname, state } = useLocation();
-
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const openOfferDialogBox = () => {
     setDialogBoxes((prev) => ({ ...prev, offer: true }));
   };
@@ -53,13 +53,20 @@ const ProductDetail = ({ product, auth }) => {
   const mode = useWindowContext();
 
   useEffect(() => {
-    if (state?.item) {
-      setProductDetail(state.item);
+    getProducts();
+    const index = pathname.split(":")[1];
+    const res = products.filter((el) => el.id == index)[0];
+    if (res?.id) {
+      setProductDetail(products.filter((el) => el.id == index)[0]);
     } else {
-      const index = pathname.split(":")[1];
-      setProductDetail(product(index)[0]);
+      navigate("/");
     }
   }, []);
+
+  useEffect(() => {
+    const index = pathname.split(":")[1];
+    setProductDetail(products.filter((el) => el.id == index)[0]);
+  }, [products]);
 
   const {
     name,
@@ -183,6 +190,7 @@ const ProductDetail = ({ product, auth }) => {
                   size="medium"
                   color="primary"
                   classes="productdetailpage__product--buttonsdiv--button"
+                  clickFunc={() => openPurchaseDialogBox()}
                 >
                   <Text fontWeight="medium" color="white">
                     <h5>Satın Al </h5>
@@ -249,13 +257,18 @@ const ProductDetail = ({ product, auth }) => {
 };
 
 const mapStateToProps = (state) => ({
-  product: (id) => state.products.filter((el) => el.id === id),
+  products: state.products,
   auth: state.user.authenticated,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  getProducts: () => dispatch({ type: "GET_PRODUCT_START" }),
+});
+
 ProductDetail.propTypes = {
-  product: PropTypes.func,
+  products: PropTypes.array,
   auth: PropTypes.bool,
+  getProducts: PropTypes.func,
 };
 
-export default connect(mapStateToProps, null)(ProductDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

@@ -51,7 +51,11 @@ const AccountOfferItem = ({ item, updateUser, userInfo }) => {
       </div>
       <div className="accountproductitem__buttondiv">
         {item?.isSold && (
-          <Text color="green" fontWeight="light">
+          <Text
+            color="green"
+            fontWeight="light"
+            classes="accountproductitem__buttondiv--text"
+          >
             <h4>Satın alındı</h4>
           </Text>
         )}
