@@ -36,7 +36,11 @@ const Signup = ({ auth }) => {
             <Text color="dark" fontWeight="bold">
               <h1>{page === "signup" ? "Üye ol" : "Giriş yap"}</h1>
             </Text>
-            <Text color="dark" fontWeight="medium">
+            <Text
+              color="dark"
+              fontWeight="light"
+              classes="signup__formdiv--lowertext"
+            >
               <h5>
                 {page === "signup"
                   ? "Fırsatlardan yararlanmak için üye ol!"
@@ -44,31 +48,33 @@ const Signup = ({ auth }) => {
               </h5>
             </Text>
           </div>
+
           {page === "signup" ? <SignupForm /> : <SignInForm />}
-        </div>
-        <div className="signup__lowerdiv">
-          <Text color="dark" display="inline" fontWeight="medium">
-            <h6>
-              {page === "signup" ? " Hesabın var mı? " : " Hesabın yok mu? "}
-            </h6>
-          </Text>
-          <Text color="blue" display="inline" fontWeight="medium">
-            {page === "signup" ? (
-              <h6
-                style={{ cursor: "pointer" }}
-                onClick={() => setPage("signin")}
-              >
-                Giriş yap
+
+          <div className="signup__lowerdiv">
+            <Text color="dark" display="inline" fontWeight="medium">
+              <h6>
+                {page === "signup" ? " Hesabın var mı? " : " Hesabın yok mu? "}
               </h6>
-            ) : (
-              <h6
-                style={{ cursor: "pointer" }}
-                onClick={() => setPage("signup")}
-              >
-                Üye ol
-              </h6>
-            )}
-          </Text>
+            </Text>
+            <Text color="blue" display="inline" fontWeight="medium">
+              {page === "signup" ? (
+                <h6
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setPage("signin")}
+                >
+                  &nbsp;Giriş yap
+                </h6>
+              ) : (
+                <h6
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setPage("signup")}
+                >
+                  &nbsp;Üye ol
+                </h6>
+              )}
+            </Text>
+          </div>
         </div>
       </div>
     </section>

@@ -1,8 +1,7 @@
 .accountpage{
     min-height: 100vh;
     &__headerdiv{
-        max-width: 148rem;
-        margin: auto;
+        @include centerDivOnDesktop;
     }
     &__contentdiv{
         background-color: $color-light-4;
@@ -11,8 +10,8 @@
     }
     &__infodiv{
         background-color: $color-light-1;
-        max-width: 148rem;
-        margin: auto;
+        @include centerDivOnDesktop;
+        margin: 0rem auto 1rem auto;
         padding: 1rem 4rem;
         display: flex;
         align-items: center;
@@ -23,8 +22,7 @@
     }
     &__productsdiv{
         background-color: $color-light-1;
-        max-width: 148rem;
-        margin: 1rem auto;
+        @include centerDivOnDesktop;
         border-radius: 10px;
         padding: 1rem 0;
         &--options{

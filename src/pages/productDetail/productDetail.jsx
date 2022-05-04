@@ -26,7 +26,7 @@ const initialState = {
   image: null,
 };
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ product, auth }) => {
   const [productDetail, setProductDetail] = useState({ ...initialState });
   const [dialogBoxes, setDialogBoxes] = useState({
     offer: false,
@@ -178,7 +178,7 @@ const ProductDetail = ({ product }) => {
               />
             )}
             <div className="productdetailpage__product--buttonsdiv">
-              {!isSold && (
+              {auth && !isSold && (
                 <Button
                   size="medium"
                   color="primary"
@@ -190,7 +190,7 @@ const ProductDetail = ({ product }) => {
                 </Button>
               )}
 
-              {!isSold && isOfferable && (
+              {auth && !isSold && isOfferable && (
                 <Button
                   size="medium"
                   color="secondary"
@@ -201,6 +201,15 @@ const ProductDetail = ({ product }) => {
                     <h5>Teklif Ver</h5>
                   </Text>
                 </Button>
+              )}
+              {!auth && !isSold && (
+                <Text
+                  fontWeight="light"
+                  color="red"
+                  classes="productdetailpage__product--detailsdiv--detail"
+                >
+                  <h3>Ürünü satın alabilmek için giriş yapmalısınız.</h3>
+                </Text>
               )}
               {isSold && (
                 <Button
@@ -241,12 +250,12 @@ const ProductDetail = ({ product }) => {
 
 const mapStateToProps = (state) => ({
   product: (id) => state.products.filter((el) => el.id === id),
+  auth: state.user.authenticated,
 });
-
-const mapDispatchToProps = null;
 
 ProductDetail.propTypes = {
   product: PropTypes.func,
+  auth: PropTypes.bool,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
+export default connect(mapStateToProps, null)(ProductDetail);

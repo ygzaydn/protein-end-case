@@ -34,6 +34,7 @@ const SignupForm = ({ fetch }) => {
             onBlur={handleBlur}
             value={values.email}
             labelText="Email"
+            placeholder="Email@example.com"
             error={Boolean(touched.email && errors.email)}
           />
 
@@ -46,6 +47,7 @@ const SignupForm = ({ fetch }) => {
             onBlur={handleBlur}
             labelText="Şifre"
             additionalText=" &nbsp;"
+            placeholder="Şifre"
             error={Boolean(touched.password && errors.password)}
           />
 

@@ -6,6 +6,10 @@
     cursor: pointer;
     transition: all 0.4s;
 
+    @include respond (tab-port) {
+       padding: 0;
+    }
+
     &__imagediv {
         width: 100%;
         height: 30rem;
@@ -43,6 +47,16 @@
             margin: 0 0.2rem;
             text-align: end;
         }
+        @include respond(tab-port){
+            height: 4rem;
+            flex-direction: column;
+            margin: 1rem 0;
+            align-items: flex-start;
+            &--color {
+                margin: 0 ;
+                text-align: start;
+            }
+        }
     }
     &__pricediv {
         height: 3rem;
@@ -53,6 +67,9 @@
         & > span {
             position: relative;
             top: 1rem;
+        }
+        @include respond(tab-port) {
+            margin: 0;
         }
     }
 

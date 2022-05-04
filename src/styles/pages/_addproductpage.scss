@@ -2,8 +2,7 @@
     min-height: 100vh;
     
     &__headerdiv {
-        max-width: 1448px;
-        margin: auto;
+        @include centerDivOnDesktop;
     }
     &__contentdiv {
         background-color: $color-light-4;
@@ -13,8 +12,7 @@
     }
     &__content {
         background-color: $color-light-1;
-        max-width: 148rem;
-        margin: auto;
+        @include centerDivOnDesktop;
         padding: 1rem 4rem;
         display: flex;
         min-height: 81.2rem;

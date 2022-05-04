@@ -35,6 +35,7 @@ const SignInForm = ({ fetch }) => {
             onBlur={handleBlur}
             value={values.email}
             labelText="Email"
+            placeholder="Email@example.com"
             error={Boolean(touched.email && errors.email)}
           />
 
@@ -47,6 +48,7 @@ const SignInForm = ({ fetch }) => {
             onBlur={handleBlur}
             labelText="Şifre"
             additionalText="Şifremi Unuttum"
+            placeholder="Şifre"
             error={Boolean(touched.password && errors.password)}
           />
 

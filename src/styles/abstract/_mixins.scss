@@ -13,6 +13,11 @@
     scrollbar-width: none;
 }
 
+@mixin centerDivOnDesktop {
+    max-width: 148rem;
+    margin: 0 auto;
+}
+
 // Media query manager
 /*
 break points

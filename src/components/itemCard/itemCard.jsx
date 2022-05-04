@@ -50,7 +50,9 @@ const ItemCard = ({ imageURL, color, brand, price, clickFunc }) => {
         }
       >
         <Text fontWeight="bold" color="dark">
-          <h4 style={{ textAlign: "initial" }}>{price && `${price} TL`}</h4>
+          <h3 style={{ textAlign: "initial" }}>
+            {Boolean(price) && `${price} TL`}
+          </h3>
         </Text>
       </div>
     </div>
