@@ -32,5 +32,10 @@
         &::placeholder {
             color: $color-dark-4;
         }
+        &--error{
+            background-color: $color-red-2;
+            color:$color-red-1;
+            border-color: $color-red-2;
+        }
     }
 }

@@ -2,21 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const OfferInput = ({ value, onChangeFunc, placeholder }) => {
+  const val = value && value?.includes("%") ? value?.split("%")[0] : value;
   return (
     <div className="offerinput">
       <input
-        className="offerinput__input"
+        className={
+          /^[0-9]+$/.test(val)
+            ? "offerinput__input"
+            : "offerinput__input offerinput__input--error"
+        }
         type="text"
-        onChange={(e) => onChangeFunc(e.target.value)}
-        value={value}
+        onChange={(e) => {
+          onChangeFunc(e.target.value);
+        }}
         placeholder={placeholder}
+        defaultValue={10}
       />
     </div>
   );
 };
 
 OfferInput.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.any,
   onChangeFunc: PropTypes.func,
   placeholder: PropTypes.string,
 };

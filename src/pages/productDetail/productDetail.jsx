@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
+import _ from "lodash";
 
 import {
   Header,
@@ -18,6 +19,7 @@ import { useWindowContext } from "../../contexts/windowContext";
 
 import PropTypes from "prop-types";
 import { productdetailpageText } from "../../constants/texts";
+import { makeOffer, widthdrawOffer } from "../../utils/axios";
 
 const initialState = {
   name: null,
@@ -29,7 +31,7 @@ const initialState = {
   image: null,
 };
 
-const ProductDetail = ({ products, auth, getProducts, loading }) => {
+const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
   const [productDetail, setProductDetail] = useState({ ...initialState });
   const [dialogBoxes, setDialogBoxes] = useState({
     offer: false,
@@ -37,8 +39,8 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
   });
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const openOfferDialogBox = () => {
-    setDialogBoxes((prev) => ({ ...prev, offer: true }));
+  const openOfferDialogBox = (mode) => {
+    setDialogBoxes((prev) => ({ ...prev, offer: mode }));
   };
 
   const openPurchaseDialogBox = () => {
@@ -71,25 +73,23 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
     setProductDetail(products.filter((el) => el.id == index)[0]);
   }, [products]);
 
-  const {
-    name,
-    brand,
-    color,
-    description,
-    isSold,
-    isOfferable,
-    price,
-    image,
-    status,
-  } = productDetail;
+  const offered = _.some(
+    productDetail.offers,
+    (el) => el.users_permissions_user === userId
+  );
+
+  const { name, brand, color, description, isSold, price, image, status } =
+    productDetail;
 
   return (
     <section className="productdetailpage">
       <ToastContainer theme="colored" />
       <ProductDetailOfferDialog
-        closeFunc={() => closeOfferDialogBox()}
         item={productDetail}
-        open={dialogBoxes.offer}
+        open={Boolean(dialogBoxes.offer)}
+        approveFunc={dialogBoxes.offer === "make" ? makeOffer : widthdrawOffer}
+        closeFunc={() => closeOfferDialogBox()}
+        mode={Boolean(dialogBoxes.offer) ? dialogBoxes.offer : "make"}
       />
 
       <ProductDetailPurchaseDialog
@@ -203,15 +203,28 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
                 </Button>
               )}
 
-              {auth && !isSold && isOfferable && (
+              {auth && !isSold && !offered && (
                 <Button
                   size="medium"
                   color="secondary"
                   classes="productdetailpage__product--buttonsdiv--button"
-                  clickFunc={() => openOfferDialogBox()}
+                  clickFunc={() => openOfferDialogBox("make")}
                 >
                   <Text fontWeight="medium" color="blue">
                     <h5>{productdetailpageText.offer}</h5>
+                  </Text>
+                </Button>
+              )}
+
+              {auth && !isSold && offered && (
+                <Button
+                  size="medium"
+                  color="red"
+                  classes="productdetailpage__product--buttonsdiv--button"
+                  clickFunc={() => openOfferDialogBox("withdraw")}
+                >
+                  <Text fontWeight="medium" color="white">
+                    <h5>{productdetailpageText.cancelOffer}</h5>
                   </Text>
                 </Button>
               )}
@@ -265,6 +278,7 @@ const mapStateToProps = (state) => ({
   products: state.products.items,
   loading: state.products.loading,
   auth: state.user.authenticated,
+  userId: state?.user?.currentUser?.id,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -276,6 +290,7 @@ ProductDetail.propTypes = {
   auth: PropTypes.bool,
   getProducts: PropTypes.func,
   loading: PropTypes.bool,
+  userId: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

@@ -1,7 +1,13 @@
 const dialogText = {
   productDetailOffer: {
-    offer: "Teklif Ver",
-    approve: "Onayla",
+    make: {
+      offer: "Teklif Ver",
+      approve: "Onayla",
+    },
+    withdraw: {
+      offer: "Teklifi Geri Çek",
+      approve: "Onayla",
+    },
   },
   offerBox: {
     amount: " Kadar Teklif Ver",

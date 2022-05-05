@@ -217,6 +217,32 @@ export const makeOffer = async (val, item, userId) => {
   return res;
 };
 
+export const widthdrawOffer = async (offers, userId) => {
+  const cookies = new Cookies();
+  const jwt = cookies.get("jwt");
+
+  const myOffer = offers.filter((el) => el.users_permissions_user === userId);
+
+  const res = instance.delete(urls.offers + "/" + myOffer[0].id, {
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+  });
+
+  if (res) {
+    toast.info(`Teklif geri çekildi.`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+  return res;
+};
+
 export const acceptOffer = async (offer) => {
   const cookies = new Cookies();
   const jwt = cookies.get("jwt");

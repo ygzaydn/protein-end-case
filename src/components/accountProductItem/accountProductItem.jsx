@@ -46,7 +46,9 @@ const AccountProductItem = ({
       finishOffer();
     }
   };
+
   const closeDialog = () => setDialog(false);
+
   return (
     <div className="accountproductitem">
       <AccountOfferDialog

@@ -7,6 +7,7 @@ const productdetailpageText = {
   error: "Ürünü satın alabilmek için giriş yapmalısınız",
   sold: "Bu Ürün Satışta Değil",
   explain: "Açıklama",
+  cancelOffer: "Teklifi Geri Çek",
 };
 
 export default productdetailpageText;
