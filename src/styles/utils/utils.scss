@@ -22,4 +22,10 @@
         border-radius: 15px;
         padding: 2rem;
     }
+    &__loader {
+        min-height: 10rem;
+        min-width: 10rem;
+        padding: 2rem;
+        background-color: transparent;
+    }
 }

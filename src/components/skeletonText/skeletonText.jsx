@@ -10,13 +10,19 @@ const SkeletonText = ({
   text,
   fontWeight,
   color,
+  display,
 }) => {
   return (
     <div
       className={loading ? containerClass : `${containerClass}  loading-box`}
     >
       {loading && (
-        <Text fontWeight={fontWeight} classes={textClass} color={color}>
+        <Text
+          fontWeight={fontWeight}
+          display={display}
+          classes={textClass}
+          color={color}
+        >
           {size === "h1" && <h1>{text}</h1>}
           {size === "h2" && <h2>{text}</h2>}
           {size === "h3" && <h3>{text}</h3>}
@@ -39,6 +45,7 @@ SkeletonText.propTypes = {
   size: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"]),
   fontWeight: PropTypes.oneOf(["light", "medium", "bold"]),
   color: PropTypes.string,
+  display: PropTypes.string,
 };
 
 export default SkeletonText;

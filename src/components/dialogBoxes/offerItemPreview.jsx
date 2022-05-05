@@ -2,6 +2,7 @@ import React from "react";
 
 import PropTypes from "prop-types";
 import { Text } from "../";
+import { baseURL } from "../../utils/axios";
 
 const OfferItemPreview = ({ item }) => {
   return (
@@ -9,7 +10,7 @@ const OfferItemPreview = ({ item }) => {
       <img
         className="offeritempreview__image"
         alt="item-image"
-        src={`https://bootcamp.akbolat.net${item?.image?.url}`}
+        src={`${baseURL}${item?.image?.url}`}
       />
       <Text color="dark" fontWeight="light" classes="offeritempreview__text">
         <h6>{item?.name}</h6>

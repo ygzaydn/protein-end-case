@@ -1,60 +1,57 @@
 import React from "react";
 
-import { Text } from "../../components";
+import { SkeletonImage, SkeletonText } from "../../components";
 import PropTypes from "prop-types";
+import { indexpageText } from "../../constants/texts";
 
 const ItemCard = ({ imageURL, color, brand, price, clickFunc }) => {
   return (
     <div className="itemcard" onClick={() => clickFunc()}>
-      <div
-        className={
-          imageURL ? "itemcard__imagediv" : "itemcard__imagediv loading-box"
-        }
-      >
-        <img
-          className="itemcard__image"
-          alt={imageURL ? brand + " " + color + " image" : ""}
-          src={imageURL && `https://bootcamp.akbolat.net${imageURL}`}
+      <SkeletonImage
+        loading={Boolean(imageURL)}
+        containerClass="itemcard__imagecontainer"
+        imageClass="itemcard__imagecontainer--image"
+        url={`${imageURL}`}
+        description={brand + " " + color + " image"}
+      />
+
+      <div className="itemcard__info">
+        <SkeletonText
+          loading={Boolean(brand)}
+          fontWeight="medium"
+          color="blue"
+          size="h5"
+          containerClass="itemcard__info--brand"
+          textClass=" "
+          text={brand}
+          display="inline"
+        />
+
+        <SkeletonText
+          loading={Boolean(color)}
+          fontWeight="medium"
+          color="dark"
+          size="h5"
+          containerClass="itemcard__info--color"
+          textClass=" "
+          text={
+            <>
+              <strong>{indexpageText.itemCard.color} </strong> {color}
+            </>
+          }
+          display="inline"
         />
       </div>
-      <div className="itemcard__infodiv">
-        <div
-          className={
-            brand
-              ? "itemcard__infodiv--brand"
-              : "itemcard__infodiv--brand loading-box"
-          }
-        >
-          <Text display="inline" color="blue" fontWeight="medium">
-            <h5>{brand && brand}</h5>
-          </Text>
-        </div>
-        <div
-          className={
-            color
-              ? "itemcard__infodiv--color"
-              : "itemcard__infodiv--color loading-box"
-          }
-        >
-          <Text display="inline" color="dark" fontWeight="medium">
-            <h5>
-              {color && <strong>Renk: </strong>}
-              {color}
-            </h5>
-          </Text>
-        </div>
-      </div>
-      <div
-        className={
-          price ? "itemcard__pricediv" : "itemcard__pricediv loading-box"
-        }
-      >
-        <Text fontWeight="bold" color="dark">
-          <h3 style={{ textAlign: "initial" }}>
-            {Boolean(price) && `${price} TL`}
-          </h3>
-        </Text>
-      </div>
+
+      <SkeletonText
+        loading={Boolean(price)}
+        size="h3"
+        containerClass="itemcard__price"
+        textClass="itemcard__price--text"
+        text={`${price} TL`}
+        fontWeight="bold"
+        color="dark"
+      />
     </div>
   );
 };

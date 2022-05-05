@@ -3,29 +3,30 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Text = ({ color, display, fontWeight, children, classes }) => {
-    const classNames = [classes, "text"];
-    color === "white" && classNames.push("text__white");
-    color === "dark" && classNames.push("text__dark");
-    color === "blue" && classNames.push("text__blue");
-    color === "red" && classNames.push("text__red");
-    color === "green" && classNames.push("text__green");
+  const classNames = [classes, "text"];
 
-    display === "block" && classNames.push("text__block");
-    display === "inline" && classNames.push("text__inline");
+  color === "white" && classNames.push("text__white");
+  color === "dark" && classNames.push("text__dark");
+  color === "blue" && classNames.push("text__blue");
+  color === "red" && classNames.push("text__red");
+  color === "green" && classNames.push("text__green");
 
-    fontWeight === "light" && classNames.push("text__light");
-    fontWeight === "medium" && classNames.push("text__medium");
-    fontWeight === "bold" && classNames.push("text__bold");
+  display === "block" && classNames.push("text__block");
+  display === "inline" && classNames.push("text__inline");
 
-    return <div className={classNames.join(" ")}>{children}</div>;
+  fontWeight === "light" && classNames.push("text__light");
+  fontWeight === "medium" && classNames.push("text__medium");
+  fontWeight === "bold" && classNames.push("text__bold");
+
+  return <div className={classNames.join(" ")}>{children}</div>;
 };
 
 Text.propTypes = {
-    color: PropTypes.string,
-    display: PropTypes.string,
-    fontWeight: PropTypes.string,
-    children: PropTypes.node,
-    classes: PropTypes.string,
+  color: PropTypes.string,
+  display: PropTypes.string,
+  fontWeight: PropTypes.string,
+  children: PropTypes.node,
+  classes: PropTypes.string,
 };
 
 export default Text;

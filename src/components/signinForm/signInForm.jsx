@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import { signInSchema } from "../../constants/schemas/";
+import { signpageText } from "../../constants/texts";
 
 const SignInForm = ({ fetch }) => {
   return (
@@ -34,8 +35,8 @@ const SignInForm = ({ fetch }) => {
             onChangeFunc={handleChange}
             onBlur={handleBlur}
             value={values.email}
-            labelText="Email"
-            placeholder="Email@example.com"
+            labelText={signpageText.signinForm.email.label}
+            placeholder={signpageText.signinForm.email.placeholder}
             error={Boolean(touched.email && errors.email)}
           />
 
@@ -46,9 +47,9 @@ const SignInForm = ({ fetch }) => {
             onChangeFunc={handleChange}
             value={values.password}
             onBlur={handleBlur}
-            labelText="Şifre"
-            additionalText="Şifremi Unuttum"
-            placeholder="Şifre"
+            labelText={signpageText.signinForm.password.label}
+            additionalText={signpageText.signinForm.password.additionalText}
+            placeholder={signpageText.signinForm.password.placeholder}
             error={Boolean(touched.password && errors.password)}
           />
 
@@ -58,7 +59,9 @@ const SignInForm = ({ fetch }) => {
             size="xsmall"
             classes={"signupform__button"}
           >
-            <h5 style={{ textAlign: "center", width: "100%" }}>Giriş</h5>
+            <h5 style={{ textAlign: "center", width: "100%" }}>
+              {signpageText.signinForm.button}
+            </h5>
           </Button>
         </Form>
       )}

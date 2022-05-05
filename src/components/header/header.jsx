@@ -5,6 +5,7 @@ import Logo from "../../assets/images/logo.png";
 import { useNavigate } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { headerText } from "../../constants/texts";
 
 const Header = ({ auth }) => {
   const navigate = useNavigate();
@@ -13,21 +14,21 @@ const Header = ({ auth }) => {
     if (auth) {
       navigate("/account");
     } else {
-      navigate("/signup");
+      navigate("/sign");
     }
   };
 
   return (
     <header className="header">
-      <div className="header__logodiv">
+      <div className="header__logo">
         <img
           src={Logo}
           alt="ikinciel-logo"
           onClick={() => navigate("/")}
-          className="header__logodiv--image"
+          className="header__logo--image"
         />
       </div>
-      <div className="header__buttondiv">
+      <div className="header__buttons">
         {auth && (
           <Button
             color="secondary"
@@ -37,7 +38,7 @@ const Header = ({ auth }) => {
           >
             <>
               <Plus />
-              <h5>Ürün Ekle</h5>
+              <h5>{headerText.addProduct}</h5>
             </>
           </Button>
         )}
@@ -46,10 +47,11 @@ const Header = ({ auth }) => {
           color="secondary"
           size="xsmall"
           clickFunc={() => navigateToPage()}
+          classes="header__buttons--button"
         >
           <>
             <UserLogo />
-            <h5>{auth ? "Hesabım" : "Giriş Yap"}</h5>
+            <h5>{auth ? headerText.account : headerText.login}</h5>
           </>
         </Button>
       </div>

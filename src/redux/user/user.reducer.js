@@ -6,10 +6,17 @@ const INITIAL_STATE = {
   error: null,
   authenticated: false,
   token: null,
+  loading: false,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case UserActionTypes.SIGN_IN_START:
+    case UserActionTypes.SIGN_UP_START:
+      return {
+        ...state,
+        loading: true,
+      };
     case UserActionTypes.SIGN_IN_SUCCESS:
     case UserActionTypes.SIGN_UP_SUCCESS:
       return {
@@ -18,24 +25,19 @@ const userReducer = (state = INITIAL_STATE, action) => {
         token: action.payload.jwt,
         error: null,
         authenticated: true,
+        loading: false,
       };
     case UserActionTypes.UPDATE_SUCCESS:
       return {
         ...state,
+        loading: false,
         currentUser: {
           ...state.currentUser,
           offers: [...action.payload.offers],
           products: [...action.payload.products],
         },
       };
-    case UserActionTypes.SIGN_OUT_SUCCESS:
-      return {
-        ...state,
-        currentUser: null,
-        error: null,
-      };
     case UserActionTypes.SIGN_IN_FAILURE:
-    case UserActionTypes.SIGN_OUT_FAILURE:
     case UserActionTypes.SIGN_UP_FAILURE:
     case UserActionTypes.UPDATE_FAILURE:
       return {
@@ -43,6 +45,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         error: action.payload,
         authenticated: false,
         token: null,
+        loading: false,
       };
     case UserActionTypes.RESET_USER:
       return {

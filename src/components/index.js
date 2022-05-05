@@ -6,6 +6,7 @@ import CategoryText from "./categoryText/categoryText";
 import ItemCard from "./itemCard/itemCard";
 import SkeletonImage from "./skeletonImage/skeletonImage";
 import SkeletonText from "./skeletonText/skeletonText";
+import Loader from "./loader/loader";
 
 /* Sign up & Sign in Components */
 import SignupForm from "./signupForm/signupForm";
@@ -59,4 +60,5 @@ export {
   OfferItemPreview,
   Offerbox,
   OfferInput,
+  Loader,
 };

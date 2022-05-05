@@ -36,9 +36,9 @@ const Account = ({ updateUser, userInfo, auth }) => {
         item={dialogBox.item}
         open={dialogBox.open}
       />
-      <div className="accountpage__headerdiv">
-        <Header />
-      </div>
+
+      <Header />
+
       <div className="accountpage__contentdiv">
         <div className="accountpage__infodiv">
           <Profile />

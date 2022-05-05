@@ -4,7 +4,7 @@ import Cookies from "universal-cookie";
 import { toast } from "react-toastify";
 
 const instance = axios.create({
-  baseURL: "https://bootcamp.akbolat.net/",
+  baseURL: "https://bootcamp.akbolat.net",
 });
 
 export const urls = {
@@ -21,6 +21,8 @@ export const urls = {
   usage: "/using-statuses",
   offers: "/offers",
 };
+
+export const baseURL = "https://bootcamp.akbolat.net";
 
 export const register = async ({ email, password, username }) => {
   const res = await instance.post(urls.register, {

@@ -6,6 +6,7 @@ import { buyItem } from "../../utils/axios";
 import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
+import { baseURL } from "../../utils/axios";
 
 const AccountOfferItem = ({ item, updateUser, userInfo }) => {
   const buy = async (item) => {
@@ -25,7 +26,7 @@ const AccountOfferItem = ({ item, updateUser, userInfo }) => {
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"
-          src={"https://bootcamp.akbolat.net" + item?.image?.url}
+          src={baseURL + item?.image?.url}
         />
       </div>
       <div className="accountproductitem__contentdiv">

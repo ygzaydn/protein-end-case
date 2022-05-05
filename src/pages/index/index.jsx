@@ -4,9 +4,10 @@ import { BannerImage } from "../../assets/images/";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router";
-import { useWindowContext } from "../../contexts/windowContext";
 
 import { resetStore } from "../../redux/store";
+
+import { indexpageText } from "../../constants/texts";
 
 const Index = ({
   checkUser,
@@ -19,7 +20,6 @@ const Index = ({
 }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const navigate = useNavigate();
-  const { mode } = useWindowContext();
 
   useEffect(() => {
     //resetStore();
@@ -42,23 +42,20 @@ const Index = ({
 
   return (
     <section className="indexpage">
-      <div className="indexpage__header">
-        <Header />
-      </div>
-
+      <Header />
       <div className="indexpage__content">
-        <div className="indexpage__bannerdiv">
+        <div className="indexpage__banner">
           <img
             src={BannerImage}
             alt="indexpage-banner-image"
-            className="indexpage__bannerdiv__image"
+            className="indexpage__banner__image"
           />
         </div>
-        <div className="indexpage__categorydiv">
+        <div className="indexpage__categories">
           <CategoryText
             clickFunc={() => setCategory("")}
             active={category === ""}
-            name="Hepsi"
+            name={indexpageText.allProducts}
           />
           {categories?.map((el) => (
             <CategoryText
@@ -69,7 +66,7 @@ const Index = ({
             />
           ))}
         </div>
-        <div className="indexpage__itemdiv">
+        <div className="indexpage__items">
           {filteredProducts?.map((el) => (
             <ItemCard
               key={el.id + el.brand}

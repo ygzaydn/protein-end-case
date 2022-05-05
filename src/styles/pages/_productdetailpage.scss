@@ -4,10 +4,8 @@
 
     &__header {
         background-color: $color-light-1;
-        @include centerDivOnDesktop;
     }
     &__content {
-        
         padding: 2rem;
         @include respond(tab-port) {
             padding: 1rem;
@@ -20,7 +18,7 @@
         display: flex;
         border-radius: 10px;
         box-shadow: $shadow;
-
+        
         @include respond(tab-port){
             flex-direction:column;
         }

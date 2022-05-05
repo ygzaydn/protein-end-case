@@ -1,9 +1,16 @@
 .header {
-    padding: 2rem;
+    padding: 2rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    &__logodiv {
+   
+    @include centerDivOnDesktop;
+
+    @include respond(small-desktop){
+        padding: 2rem;
+    }
+
+    &__logo {
         margin: auto 0;
         &--image {
             height: 4.2rem;
@@ -11,10 +18,16 @@
             cursor: pointer;
         }
     }
-    &__buttondiv {
+    &__buttons {
         display: flex;
         align-items: stretch;
+        &--button {
+            & svg {
+                margin-right: 1rem;
+            }
+        }
     }
+    
     @include respond(small-desktop) {
         padding: 2rem;
     }

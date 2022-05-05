@@ -5,6 +5,7 @@ import { Text, Button, ProductDetailPurchaseDialog } from "..";
 import { acceptOffer, declineOffer } from "../../utils/axios";
 
 import { connect } from "react-redux";
+import { baseURL } from "../../utils/axios";
 
 import PropTypes from "prop-types";
 
@@ -31,6 +32,7 @@ const AccountProductItem = ({ item, updateUser, userInfo }) => {
       console.log(err);
     }
   };
+
   const closeDialog = () => setDialog(false);
   return (
     <div className="accountproductitem">
@@ -46,7 +48,7 @@ const AccountProductItem = ({ item, updateUser, userInfo }) => {
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"
-          src={"https://bootcamp.akbolat.net" + item.image.url}
+          src={baseURL + item.image.url}
         />
       </div>
       <div className="accountproductitem__contentdiv">

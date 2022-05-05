@@ -9,7 +9,7 @@
             padding: 1rem;
         }
     }
-    &__bannerdiv {
+    &__banner {
         @include centerDivOnDesktop;
 
         &__image {
@@ -17,7 +17,7 @@
             height: auto;
         }
     }
-    &__categorydiv {
+    &__categories {
         @include centerDivOnDesktop;
         display: flex;
         justify-content: space-between;
@@ -28,7 +28,7 @@
             @include hideScrollBar;
         }
     }
-    &__itemdiv {
+    &__items {
         @include centerDivOnDesktop;
         justify-content: space-around; 
         display: grid;

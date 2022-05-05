@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Signin, Logo2 } from "../../assets/images";
-import { Text, SignupForm, SignInForm } from "../../components";
+import { Text, SignupForm, SignInForm, Loader } from "../../components";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router";
 
 import { ToastContainer } from "react-toastify";
+import { signpageText } from "../../constants/texts";
 
-const Signup = ({ auth }) => {
+const Sign = ({ auth, loading }) => {
   const [page, setPage] = useState("signup");
   const navigate = useNavigate();
 
@@ -18,43 +19,50 @@ const Signup = ({ auth }) => {
   }, [auth]);
 
   return (
-    <section className="signup">
+    <section className="sign">
       <ToastContainer theme="colored" />
-      <div className="signup__imagediv">
-        <img src={Signin} alt="sign-in" className="signup__imagediv--image" />
+      <Loader open={loading} />
+      <div className="sign__imagecontainer">
+        <img src={Signin} alt="sign" className="sign__imagecontainer--image" />
       </div>
-      <div className="signup__contentdiv">
-        <div className="signup__logodiv">
+
+      <div className="sign__content">
+        <div className="sign__logocontainer">
           <img
             src={Logo2}
             alt="ikinciel-logo"
-            className="signup__logodiv--logo"
+            className="sign__logocontainer--logo"
           />
         </div>
-        <div className="signup__formdiv">
-          <div className="signup__formdiv--text">
+
+        <div className="sign__form">
+          <div className="sign__form--text">
             <Text color="dark" fontWeight="bold">
-              <h1>{page === "signup" ? "Üye ol" : "Giriş yap"}</h1>
+              <h1>
+                {page === "signup" ? signpageText.signup : signpageText.signin}
+              </h1>
             </Text>
             <Text
               color="dark"
               fontWeight="light"
-              classes="signup__formdiv--lowertext"
+              classes="sign__form--lowertext"
             >
               <h5>
                 {page === "signup"
-                  ? "Fırsatlardan yararlanmak için üye ol!"
-                  : "Fırsatlardan yararlanmak için giriş yap!"}
+                  ? signpageText.signupHeader
+                  : signpageText.signinHeader}
               </h5>
             </Text>
           </div>
 
           {page === "signup" ? <SignupForm /> : <SignInForm />}
 
-          <div className="signup__lowerdiv">
+          <div className="sign__lowercontainer">
             <Text color="dark" display="inline" fontWeight="medium">
               <h6>
-                {page === "signup" ? " Hesabın var mı? " : " Hesabın yok mu? "}
+                {page === "signup"
+                  ? signpageText.accountText1
+                  : signpageText.accountText2}
               </h6>
             </Text>
             <Text color="blue" display="inline" fontWeight="medium">
@@ -63,14 +71,14 @@ const Signup = ({ auth }) => {
                   style={{ cursor: "pointer" }}
                   onClick={() => setPage("signin")}
                 >
-                  &nbsp;Giriş yap
+                  &nbsp;{signpageText.signin}
                 </h6>
               ) : (
                 <h6
                   style={{ cursor: "pointer" }}
                   onClick={() => setPage("signup")}
                 >
-                  &nbsp;Üye ol
+                  &nbsp;{signpageText.signup}
                 </h6>
               )}
             </Text>
@@ -83,10 +91,12 @@ const Signup = ({ auth }) => {
 
 const mapStateToProps = (state) => ({
   auth: state.user.authenticated,
+  loading: state.user.loading,
 });
 
-Signup.propTypes = {
+Sign.propTypes = {
   auth: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
-export default connect(mapStateToProps, null)(Signup);
+export default connect(mapStateToProps, null)(Sign);

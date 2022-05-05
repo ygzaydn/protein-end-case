@@ -7,7 +7,7 @@ import {
   Index,
   Product,
   ProductDetail,
-  SignUp,
+  Sign,
 } from "../pages/";
 
 const Router = () => (
@@ -16,7 +16,7 @@ const Router = () => (
     <Route path="/account" element={<Account />} />
     <Route path="/product" element={<Product />} />
     <Route path="/productdetail:id" element={<ProductDetail />} />
-    <Route path="/signup" element={<SignUp />} />
+    <Route path="/sign" element={<Sign />} />
     <Route path="/addproduct" element={<AddProduct />} />
   </Routes>
 );

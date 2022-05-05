@@ -5,5 +5,6 @@ import Profile from "./profile";
 import Upload from "./upload";
 import Checked from "./checked";
 import Unchecked from "./unchecked";
+import Loading from "./loading";
 
-export { Logo, Plus, UserLogo, Profile, Upload, Checked, Unchecked };
+export { Logo, Plus, UserLogo, Profile, Upload, Checked, Unchecked, Loading };
