@@ -8,6 +8,7 @@ const AccountItemGrid = ({ option, nullText, userInfo, data }) => {
   const parseOfferArray = () => {
     let filteredData = [];
     let res = [];
+
     data.forEach((el) => {
       const data = {
         offerId: el.id,

@@ -41,7 +41,6 @@ const Account = ({ updateUser, userInfo, auth, loading }) => {
         open={dialogBox.open}
       />
 
-      <Loader open={loading} />
       <Header />
 
       <div className="accountpage__contentdiv">
@@ -77,6 +76,7 @@ const Account = ({ updateUser, userInfo, auth, loading }) => {
           </div>
         </div>
       </div>
+      <Loader open={loading} />
     </section>
   );
 };

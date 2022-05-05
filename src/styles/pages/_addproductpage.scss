@@ -4,7 +4,7 @@
     &__headerdiv {
         @include centerDivOnDesktop;
     }
-    &__contentdiv {
+    &__contentcontainer {
         background-color: $color-light-4;
         padding: 2rem 0;
         height: 91vh;
@@ -13,6 +13,7 @@
     &__content {
         background-color: $color-light-1;
         @include centerDivOnDesktop;
+        box-shadow: $shadow;
         padding: 1rem 4rem;
         display: flex;
         min-height: 81.2rem;

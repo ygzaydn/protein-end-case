@@ -19,14 +19,16 @@ import {
   addBrand,
 } from "../../utils/axios";
 
+import { additemformText } from "../../constants/texts";
+
 import PropTypes from "prop-types";
 
 import { addItemSchema } from "../../constants/schemas/";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { useNavigate } from "react-router";
 
-const AddItemForm = ({ categories, userId }) => {
+const AddItemForm = ({ categories, userId, startOffer, finishOffer }) => {
   const [brandList, setBrandList] = useState([]);
   const [colorList, setColorList] = useState([]);
   const [usageList, setUsageList] = useState([]);
@@ -100,9 +102,11 @@ const AddItemForm = ({ categories, userId }) => {
         let formData = new FormData();
         formData.append("files.image", file);
         formData.append("data", stringifiedData);
+        startOffer();
         try {
-          const res = uploadProduct(formData);
+          const res = await uploadProduct(formData);
           if (res) {
+            finishOffer();
             toast.success(`Ürün başarı ile listelendi.`, {
               position: "top-right",
               autoClose: 5000,
@@ -112,12 +116,18 @@ const AddItemForm = ({ categories, userId }) => {
               draggable: true,
               progress: undefined,
             });
-            setTimeout(() => {
-              navigate("/");
-            }, 3000);
           }
         } catch (err) {
-          console.log(err);
+          finishOffer();
+          toast.error(`Ürün listelemede hata oldu.`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       }}
     >
@@ -131,7 +141,6 @@ const AddItemForm = ({ categories, userId }) => {
         setFieldValue,
       }) => (
         <Form onSubmit={handleSubmit} className="additemform">
-          <ToastContainer theme="colored" />
           <div className="additemform__grid">
             <div className="additemform__grid--title">
               <Text
@@ -139,7 +148,7 @@ const AddItemForm = ({ categories, userId }) => {
                 color="dark"
                 classes="addproductpage__content--detailsdiv--title"
               >
-                <h2>Ürün Detayları</h2>
+                <h2>{additemformText.title}</h2>
               </Text>
             </div>
 
@@ -151,8 +160,8 @@ const AddItemForm = ({ categories, userId }) => {
                 onChangeFunc={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
-                labelText="Ürün Adı*"
-                placeholder="Örnek: Iphone 12 Pro Max"
+                labelText={additemformText.name.label}
+                placeholder={additemformText.name.placeholder}
                 error={errors.name && touched.name}
               />
             </div>
@@ -164,8 +173,8 @@ const AddItemForm = ({ categories, userId }) => {
                 onChangeFunc={handleChange}
                 onBlur={handleBlur}
                 value={values.details}
-                labelText="Açıklama*"
-                placeholder="Ürün açıklaması girin"
+                labelText={additemformText.details.label}
+                placeholder={additemformText.details.placeholder}
                 multiline
                 error={errors.details && touched.details}
               />
@@ -174,8 +183,8 @@ const AddItemForm = ({ categories, userId }) => {
               <FormSelectInput
                 id="category"
                 name="category"
-                labelText="Kategori*"
-                placeholder="Kategori Seç"
+                labelText={additemformText.category.label}
+                placeholder={additemformText.category.placeholder}
                 options={categories.map((el) => el.name)}
                 onChangeFunc={handleChange}
                 error={errors.category && touched.category}
@@ -185,8 +194,8 @@ const AddItemForm = ({ categories, userId }) => {
               <FormSelectInput
                 id="brand"
                 name="brand"
-                labelText="Marka*"
-                placeholder="Marka seç"
+                labelText={additemformText.brand.label}
+                placeholder={additemformText.brand.placeholder}
                 options={brandList.map((el) => el.name)}
                 onChangeFunc={handleChange}
                 error={errors.brand && touched.brand}
@@ -196,8 +205,8 @@ const AddItemForm = ({ categories, userId }) => {
               <FormSelectInput
                 id="color"
                 name="color"
-                labelText="Renk*"
-                placeholder="Renk Seç"
+                labelText={additemformText.color.label}
+                placeholder={additemformText.color.placeholder}
                 options={colorList.map((el) => el.name)}
                 onChangeFunc={handleChange}
                 error={errors.color && touched.color}
@@ -207,8 +216,8 @@ const AddItemForm = ({ categories, userId }) => {
               <FormSelectInput
                 id="usage"
                 name="usage"
-                labelText="Kullanım Durumu*"
-                placeholder="Kullanım Durumu Seç"
+                labelText={additemformText.usage.label}
+                placeholder={additemformText.usage.placeholder}
                 options={usageList.map((el) => el.name)}
                 onChangeFunc={handleChange}
                 error={errors.usage && touched.usage}
@@ -222,8 +231,8 @@ const AddItemForm = ({ categories, userId }) => {
                 onChangeFunc={handleChange}
                 onBlur={handleBlur}
                 value={values.price}
-                labelText="Fiyat*"
-                placeholder="Bir Fiyat Girin"
+                labelText={additemformText.price.label}
+                placeholder={additemformText.price.placeholder}
                 priceLabel
                 error={errors.price && touched.price}
               />
@@ -233,8 +242,8 @@ const AddItemForm = ({ categories, userId }) => {
                 id="option"
                 name="option"
                 type="option"
-                uncheckedText="Teklif Opsiyonu"
-                checkedText="Fiyat ve Teklif Opsiyonu"
+                uncheckedText={additemformText.option.uncheckedText}
+                checkedText={additemformText.option.checkedText}
                 onChangeFunc={handleChange}
                 onBlur={handleBlur}
                 error={errors.option && touched.option}
@@ -249,7 +258,7 @@ const AddItemForm = ({ categories, userId }) => {
                 color="dark"
                 classes="addproductpage__content--detailsdiv--title"
               >
-                <h2>Ürün Görseli</h2>
+                <h2>{additemformText.image.text}</h2>
               </Text>
             </div>
             <FormUploadInput
@@ -260,13 +269,10 @@ const AddItemForm = ({ categories, userId }) => {
               error={errors.file}
             />
             <div className="additemform__upload--button">
-              <Button
-                type="submit"
-                color="primary"
-                size="large"
-                //clickFunc={() => upload(values.file)}
-              >
-                <h5 style={{ textAlign: "center", width: "100%" }}>Kaydet</h5>
+              <Button type="submit" color="primary" size="large">
+                <h5 style={{ textAlign: "center", width: "100%" }}>
+                  {additemformText.save}
+                </h5>
               </Button>
             </div>
           </div>
@@ -279,6 +285,8 @@ const AddItemForm = ({ categories, userId }) => {
 AddItemForm.propTypes = {
   categories: PropTypes.array,
   userId: PropTypes.number,
+  startOffer: PropTypes.func,
+  finishOffer: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -286,4 +294,9 @@ const mapStateToProps = (state) => ({
   userId: state.user.currentUser.id,
 });
 
-export default connect(mapStateToProps, null)(AddItemForm);
+const mapDispatchToProps = (dispatch) => ({
+  startOffer: () => dispatch({ type: "START_OFFER" }),
+  finishOffer: () => dispatch({ type: "END_OFFER" }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddItemForm);

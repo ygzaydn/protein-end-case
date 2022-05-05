@@ -4,6 +4,7 @@ import { Text, Offerbox, OfferInput, OfferItemPreview, Button } from "../";
 import PropTypes from "prop-types";
 import { makeOffer } from "../../utils/axios";
 import { connect } from "react-redux";
+import { dialogText } from "../../constants/texts";
 
 const ProductDetailOfferDialog = ({
   closeFunc,
@@ -28,7 +29,7 @@ const ProductDetailOfferDialog = ({
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <div className="dialogbox__content productdetailofferdialog">
         <Text color="dark" classes="productdetailofferdialog__title">
-          <h2>Teklif Ver</h2>
+          <h2>{dialogText.productDetailOffer.offer}</h2>
         </Text>
         <span
           className="productdetailofferdialog__closebutton"
@@ -37,7 +38,7 @@ const ProductDetailOfferDialog = ({
           X
         </span>
         <OfferItemPreview item={item} />
-        <div className="productdetailofferdialog__offerboxdiv">
+        <div className="productdetailofferdialog__offerboxcontainer">
           <Offerbox active={offer === "20%"} amount={20} setFunc={setOffer} />
           <Offerbox active={offer === "30%"} amount={30} setFunc={setOffer} />
           <Offerbox active={offer === "40%"} amount={40} setFunc={setOffer} />
@@ -45,7 +46,7 @@ const ProductDetailOfferDialog = ({
         <OfferInput
           priceLabel
           onChangeFunc={setOffer}
-          placeholder="Teklif Belirle"
+          placeholder={dialogText.offerInput.placeholder}
           classes="productdetailofferdialog__input"
         />
         <Button
@@ -54,7 +55,7 @@ const ProductDetailOfferDialog = ({
           classes="productdetailofferdialog__button"
           clickFunc={() => offerItem(offer, item, userId)}
         >
-          Onayla
+          {dialogText.productDetailOffer.approve}
         </Button>
       </div>
     </div>

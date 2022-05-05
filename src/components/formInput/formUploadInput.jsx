@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Upload } from "../../icons";
+import { additemformText } from "../../constants/texts";
 
 const FormUploadInput = ({ onChangeFunc, id, name, error }) => {
   const [selectedFile, setSelectedFile] = useState();
@@ -90,10 +91,10 @@ const FormUploadInput = ({ onChangeFunc, id, name, error }) => {
         <>
           <Upload />
           <p className="formuploadinput__uppertext">
-            Sürükleyip bırakarak yükle <br /> veya
+            {additemformText.upload.upperText} <br /> veya
           </p>
           <label htmlFor={id} className="formuploadinput__label">
-            Görsel Seçin
+            {additemformText.upload.label}
           </label>
           <input
             type="file"
@@ -104,7 +105,7 @@ const FormUploadInput = ({ onChangeFunc, id, name, error }) => {
           />
 
           <p className="formuploadinput__lowertext">
-            PNG ve JPEG Dosya boyutu max. 100kb
+            {additemformText.upload.constraint}
           </p>
         </>
       )}

@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 import { useWindowContext } from "../../contexts/windowContext";
 
 import PropTypes from "prop-types";
+import { productdetailpageText } from "../../constants/texts";
 
 const initialState = {
   name: null,
@@ -97,6 +98,7 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
         open={dialogBoxes.purchase}
       />
       <Loader open={loading} />
+
       <div className="productdetailpage__header">
         <Header />
       </div>
@@ -134,7 +136,7 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
             <div className="productdetailpage__product--detailsgrid">
               <div className="productdetailpage__product--detailsgrid--row">
                 <Text fontWeight="bold" color="dark">
-                  <h5>Marka: </h5>
+                  <h5>{productdetailpageText.brand}</h5>
                 </Text>
                 <SkeletonText
                   loading={Boolean(brand)}
@@ -148,7 +150,7 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
               </div>
               <div className="productdetailpage__product--detailsgrid--row">
                 <Text fontWeight="bold" color="dark">
-                  <h5>Renk: </h5>
+                  <h5>{productdetailpageText.color}</h5>
                 </Text>
                 <SkeletonText
                   loading={Boolean(color)}
@@ -162,7 +164,7 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
               </div>
               <div className="productdetailpage__product--detailsgrid--row">
                 <Text fontWeight="bold" color="dark">
-                  <h5>Kullanım Durumu: </h5>
+                  <h5>{productdetailpageText.usage}</h5>
                 </Text>
                 <SkeletonText
                   loading={Boolean(status)}
@@ -196,7 +198,7 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
                   clickFunc={() => openPurchaseDialogBox()}
                 >
                   <Text fontWeight="medium" color="white">
-                    <h5>Satın Al </h5>
+                    <h5>{productdetailpageText.buy}</h5>
                   </Text>
                 </Button>
               )}
@@ -209,7 +211,7 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
                   clickFunc={() => openOfferDialogBox()}
                 >
                   <Text fontWeight="medium" color="blue">
-                    <h5>Teklif Ver</h5>
+                    <h5>{productdetailpageText.offer}</h5>
                   </Text>
                 </Button>
               )}
@@ -219,7 +221,7 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
                   color="red"
                   classes="productdetailpage__product--detailsdiv--detail"
                 >
-                  <h3>Ürünü satın alabilmek için giriş yapmalısınız.</h3>
+                  <h3>{productdetailpageText.error}</h3>
                 </Text>
               )}
               {isSold && (
@@ -229,7 +231,7 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
                   classes="productdetailpage__product--buttonsdiv--button--sold"
                 >
                   <Text fontWeight="medium" color="orange">
-                    <h5>Bu Ürün Satışta Değil</h5>
+                    <h5>{productdetailpageText.sold}</h5>
                   </Text>
                 </Button>
               )}
@@ -240,7 +242,7 @@ const ProductDetail = ({ products, auth, getProducts, loading }) => {
                 color="dark"
                 classes="productdetailpage__product--detailsdiv--detail"
               >
-                <h4>Açıklama</h4>
+                <h4>{productdetailpageText.explain}</h4>
               </Text>
               <SkeletonText
                 loading={Boolean(description)}

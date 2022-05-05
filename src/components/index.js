@@ -35,6 +35,8 @@ import AddItemForm from "./addItemForm/addItemForm";
 /* Dialog Components */
 import ProductDetailOfferDialog from "./dialogBoxes/productDetailOfferDialog";
 import ProductDetailPurchaseDialog from "./dialogBoxes/productDetailPurchaseDialog";
+import AccountOfferDialog from "./dialogBoxes/accountOfferDialog";
+import AccountPurchaseDialog from "./dialogBoxes/accountPurchaseDialog";
 
 export {
   Button,
@@ -61,4 +63,6 @@ export {
   Offerbox,
   OfferInput,
   Loader,
+  AccountOfferDialog,
+  AccountPurchaseDialog,
 };

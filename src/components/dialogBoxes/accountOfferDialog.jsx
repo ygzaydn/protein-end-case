@@ -1,38 +1,26 @@
-import React from "react";
-import { Text, Button } from "../";
+import React, { useEffect, useState } from "react";
+import { Text, Button } from "..";
 
 import PropTypes from "prop-types";
-import { buyItem } from "../../utils/axios";
 
 import { connect } from "react-redux";
 import { dialogText } from "../../constants/texts";
 
-const ProductDetailPurchaseDialog = ({
+const AccountPurchaseDialog = ({
+  approveFunc,
   closeFunc,
-  item,
-  getProducts,
+  id,
   open,
-  startOffer,
-  finishOffer,
+  dialog,
 }) => {
-  const buy = async (item) => {
-    startOffer();
-    const res = await buyItem(item);
-    if (res) {
-      getProducts();
-      finishOffer();
-      closeFunc();
-    }
-  };
-
   return (
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <div className="dialogbox__content productdetailpurchasedialog">
         <Text color="dark">
-          <h2>{dialogText.productDetailPurchase.buy}</h2>
+          <h2>{dialogText.accountOffer[dialog].offer}</h2>
         </Text>
         <Text color="dark" fontWeight="light">
-          <h3>{dialogText.productDetailPurchase.question}</h3>
+          <h3>{dialogText.accountOffer[dialog].question}</h3>
         </Text>
         <div className="productdetailpurchasedialog--buttondiv">
           <Button
@@ -41,15 +29,15 @@ const ProductDetailPurchaseDialog = ({
             classes="productdetailpurchasedialog--button"
             clickFunc={() => closeFunc()}
           >
-            {dialogText.productDetailPurchase.back}
+            {dialogText.accountOffer[dialog].back}
           </Button>
           <Button
             color="primary"
             size="small"
             classes="productdetailpurchasedialog--button"
-            clickFunc={() => buy(item)}
+            clickFunc={() => approveFunc(id)}
           >
-            {dialogText.productDetailPurchase.buy}
+            {dialogText.accountOffer[dialog].offer}
           </Button>
         </div>
       </div>
@@ -57,13 +45,12 @@ const ProductDetailPurchaseDialog = ({
   );
 };
 
-ProductDetailPurchaseDialog.propTypes = {
-  item: PropTypes.object,
+AccountPurchaseDialog.propTypes = {
+  id: PropTypes.object,
+  approveFunc: PropTypes.func,
   closeFunc: PropTypes.func,
-  getProducts: PropTypes.func,
   open: PropTypes.bool,
-  startOffer: PropTypes.func,
-  finishOffer: PropTypes.func,
+  dialog: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -72,4 +59,4 @@ const mapDispatchToProps = (dispatch) => ({
   finishOffer: () => dispatch({ type: "END_OFFER" }),
 });
 
-export default connect(null, mapDispatchToProps)(ProductDetailPurchaseDialog);
+export default connect(null, mapDispatchToProps)(AccountPurchaseDialog);

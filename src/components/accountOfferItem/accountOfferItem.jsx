@@ -1,5 +1,5 @@
-import React from "react";
-import { Text, Button, Loader } from "..";
+import React, { useState } from "react";
+import { Text, Button, AccountPurchaseDialog } from "..";
 
 import { buyItem } from "../../utils/axios";
 import { connect } from "react-redux";
@@ -11,10 +11,11 @@ const AccountOfferItem = ({
   item,
   updateUser,
   userInfo,
-  loading,
   startOffer,
   finishOffer,
 }) => {
+  const [dialog, setDialog] = useState(false);
+
   const buy = async (item) => {
     startOffer();
     try {
@@ -22,17 +23,23 @@ const AccountOfferItem = ({
       if (res) {
         updateUser(userInfo.id);
         finishOffer();
+        setDialog(false);
       }
     } catch (err) {
       console.log(err);
       finishOffer();
+      setDialog(false);
     }
   };
 
   return (
     <div className="accountproductitem">
-      <Loader open={loading} />
-
+      <AccountPurchaseDialog
+        open={Boolean(dialog)}
+        approveFunc={(id) => buy(id)}
+        id={item}
+        closeFunc={() => setDialog(false)}
+      />
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"
@@ -75,7 +82,7 @@ const AccountOfferItem = ({
             classes="accountproductitem__buttondiv--button"
             color="primary"
             size="xsmall"
-            clickFunc={() => buy(item)}
+            clickFunc={() => setDialog(true)}
           >
             <Text fontWeight="light">
               <h5>Satın Al</h5>
@@ -101,14 +108,12 @@ AccountOfferItem.propTypes = {
   item: PropTypes.object,
   userInfo: PropTypes.object,
   updateUser: PropTypes.func,
-  loading: PropTypes.bool,
   startOffer: PropTypes.func,
   finishOffer: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   userInfo: state.user.currentUser,
-  loading: state.product.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

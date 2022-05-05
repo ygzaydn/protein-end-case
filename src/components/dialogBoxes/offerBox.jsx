@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Checked, Unchecked } from "../../icons";
 import { Text } from "../";
+import { dialogText } from "../../constants/texts";
 
 const Offerbox = ({ active, setFunc, amount }) => {
   return (
@@ -15,7 +16,9 @@ const Offerbox = ({ active, setFunc, amount }) => {
         fontWeight="light"
         classes={active ? "offerbox__text--active" : "offerbox__text"}
       >
-        <h4>%{amount} Kadar Teklif Ver</h4>
+        <h4>
+          %{amount} {dialogText.offerBox.amount}
+        </h4>
       </Text>
     </div>
   );

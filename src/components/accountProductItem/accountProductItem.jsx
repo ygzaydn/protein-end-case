@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, Button, ProductDetailPurchaseDialog } from "..";
+import { Text, Button, AccountOfferDialog } from "..";
 
 import { acceptOffer, declineOffer } from "../../utils/axios";
 
@@ -7,13 +7,11 @@ import { connect } from "react-redux";
 import { baseURL } from "../../utils/axios";
 
 import PropTypes from "prop-types";
-import Loader from "../loader/loader";
 
 const AccountProductItem = ({
   item,
   updateUser,
   userInfo,
-  loading,
   startOffer,
   finishOffer,
 }) => {
@@ -26,16 +24,19 @@ const AccountProductItem = ({
       if (res) {
         updateUser(userInfo.id);
         finishOffer();
+        setDialog(false);
       }
     } catch (err) {
       console.log(err);
       finishOffer();
+      setDialog(false);
     }
   };
+
   const rejectOffer = async (item) => {
     startOffer();
     try {
-      const res = await rejectOffer(item);
+      const res = await declineOffer(item);
       if (res) {
         updateUser(userInfo.id);
         finishOffer();
@@ -45,20 +46,19 @@ const AccountProductItem = ({
       finishOffer();
     }
   };
-
   const closeDialog = () => setDialog(false);
   return (
     <div className="accountproductitem">
-      <ProductDetailPurchaseDialog
-        open={dialog}
-        clickFunc={
-          dialog === "accept" ? () => acceptOffer() : () => declineOffer()
+      <AccountOfferDialog
+        open={Boolean(dialog)}
+        approveFunc={
+          dialog === "accept" ? (id) => takeOffer(id) : (id) => rejectOffer(id)
         }
-        item={item}
+        id={item?.offers[item.offers.length - 1]}
         closeFunc={() => closeDialog()}
+        dialog={dialog === "accept" ? "accept" : "reject"}
       />
 
-      <Loader open={loading} />
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"
@@ -102,12 +102,13 @@ const AccountProductItem = ({
       <div className="accountproductitem__buttondiv">
         {!item?.isSold &&
           item?.offers &&
+          item?.offers.length > 0 &&
           item?.offers[item.offers.length - 1]?.isStatus == null && (
             <Button
               classes="accountproductitem__buttondiv--button"
               color="primary"
               size="xsmall"
-              clickFunc={() => takeOffer(item.offers[item.offers.length - 1])}
+              clickFunc={() => setDialog("accept")}
             >
               <Text fontWeight="light">
                 <h5>Onayla</h5>
@@ -116,12 +117,13 @@ const AccountProductItem = ({
           )}
         {!item?.isSold &&
           item?.offers &&
+          item?.offers.length > 0 &&
           item?.offers[item.offers.length - 1]?.isStatus == null && (
             <Button
               classes="accountproductitem__buttondiv--button"
               color="red"
               size="xsmall"
-              clickFunc={() => rejectOffer(item.offers[item.offers.length - 1])}
+              clickFunc={() => setDialog("reject")}
             >
               <Text fontWeight="light">
                 <h5>Reddet</h5>
@@ -160,14 +162,12 @@ AccountProductItem.propTypes = {
   item: PropTypes.object,
   userInfo: PropTypes.object,
   updateUser: PropTypes.func,
-  loading: PropTypes.bool,
   startOffer: PropTypes.func,
   finishOffer: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   userInfo: state.user.currentUser,
-  loading: state.product.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
