@@ -3,7 +3,6 @@ import { Text, Button } from "../";
 
 import PropTypes from "prop-types";
 import { buyItem } from "../../utils/axios";
-import { ToastContainer } from "react-toastify";
 
 import { connect } from "react-redux";
 
@@ -12,20 +11,21 @@ const ProductDetailPurchaseDialog = ({
   item,
   getProducts,
   open,
+  startOffer,
+  finishOffer,
 }) => {
   const buy = async (item) => {
+    startOffer();
     const res = await buyItem(item);
     if (res) {
       getProducts();
-      setTimeout(() => {
-        closeFunc();
-      }, 1000);
+      finishOffer();
+      closeFunc();
     }
   };
 
   return (
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
-      <ToastContainer theme="colored" />
       <div className="dialogbox__content productdetailpurchasedialog">
         <Text color="dark">
           <h2>Satın Al</h2>
@@ -61,10 +61,14 @@ ProductDetailPurchaseDialog.propTypes = {
   closeFunc: PropTypes.func,
   getProducts: PropTypes.func,
   open: PropTypes.bool,
+  startOffer: PropTypes.func,
+  finishOffer: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   getProducts: () => dispatch({ type: "GET_PRODUCT_START" }),
+  startOffer: () => dispatch({ type: "START_OFFER" }),
+  finishOffer: () => dispatch({ type: "END_OFFER" }),
 });
 
 export default connect(null, mapDispatchToProps)(ProductDetailPurchaseDialog);

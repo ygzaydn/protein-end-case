@@ -1,6 +1,6 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
-import { Text, Button } from "..";
+import { Text, Button, Loader } from "..";
 
 import { buyItem } from "../../utils/axios";
 import { connect } from "react-redux";
@@ -8,20 +8,31 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { baseURL } from "../../utils/axios";
 
-const AccountOfferItem = ({ item, updateUser, userInfo }) => {
+const AccountOfferItem = ({
+  item,
+  updateUser,
+  userInfo,
+  loading,
+  startOffer,
+  finishOffer,
+}) => {
   const buy = async (item) => {
+    startOffer();
     try {
       const res = await buyItem(item);
       if (res) {
         updateUser(userInfo.id);
+        finishOffer();
       }
     } catch (err) {
       console.log(err);
+      finishOffer();
     }
   };
 
   return (
     <div className="accountproductitem">
+      <Loader open={loading} />
       <ToastContainer theme="colored" />
       <div className="accountproductitem__imagediv">
         <img
@@ -91,14 +102,20 @@ AccountOfferItem.propTypes = {
   item: PropTypes.object,
   userInfo: PropTypes.object,
   updateUser: PropTypes.func,
+  loading: PropTypes.bool,
+  startOffer: PropTypes.func,
+  finishOffer: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   userInfo: state.user.currentUser,
+  loading: state.product.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateUser: (id) => dispatch({ type: "UPDATE_USER", payload: { id } }),
+  startOffer: () => dispatch({ type: "START_OFFER" }),
+  finishOffer: () => dispatch({ type: "END_OFFER" }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountOfferItem);

@@ -3,6 +3,7 @@ import React from "react";
 const Loading = () => {
   return (
     <svg
+      width="5rem"
       version="1.1"
       id="L7"
       x="0px"

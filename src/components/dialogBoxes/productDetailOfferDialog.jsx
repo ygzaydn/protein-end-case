@@ -4,23 +4,28 @@ import { Text, Offerbox, OfferInput, OfferItemPreview, Button } from "../";
 import PropTypes from "prop-types";
 import { makeOffer } from "../../utils/axios";
 import { connect } from "react-redux";
-import { ToastContainer } from "react-toastify";
 
-const ProductDetailOfferDialog = ({ closeFunc, item, userId, open }) => {
+const ProductDetailOfferDialog = ({
+  closeFunc,
+  item,
+  userId,
+  open,
+  startOffer,
+  finishOffer,
+}) => {
   const [offer, setOffer] = useState(0);
 
   const offerItem = async (offer, item, userId) => {
+    startOffer();
     const res = await makeOffer(offer, item, userId);
     if (res) {
-      setTimeout(() => {
-        closeFunc();
-      }, 1000);
+      finishOffer();
+      closeFunc();
     }
   };
 
   return (
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
-      <ToastContainer theme="colored" />
       <div className="dialogbox__content productdetailofferdialog">
         <Text color="dark" classes="productdetailofferdialog__title">
           <h2>Teklif Ver</h2>
@@ -59,12 +64,22 @@ const ProductDetailOfferDialog = ({ closeFunc, item, userId, open }) => {
 ProductDetailOfferDialog.propTypes = {
   item: PropTypes.object,
   closeFunc: PropTypes.func,
-  userId: PropTypes.string,
+  userId: PropTypes.number,
   open: PropTypes.bool,
+  startOffer: PropTypes.func,
+  finishOffer: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   userId: state?.user?.currentUser?.id,
 });
 
-export default connect(mapStateToProps, null)(ProductDetailOfferDialog);
+const mapDispatchToProps = (dispatch) => ({
+  startOffer: () => dispatch({ type: "START_OFFER" }),
+  finishOffer: () => dispatch({ type: "END_OFFER" }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductDetailOfferDialog);

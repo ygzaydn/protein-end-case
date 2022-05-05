@@ -7,13 +7,14 @@ import {
   PageOptions,
   AccountItemGrid,
   ProductDetailPurchaseDialog,
+  Loader,
 } from "../../components";
 import { Profile } from "../../icons";
 import { useNavigate } from "react-router";
 
 import PropTypes from "prop-types";
 
-const Account = ({ updateUser, userInfo, auth }) => {
+const Account = ({ updateUser, userInfo, auth, loading }) => {
   const [dialogBox, setDialogBox] = useState({ open: false, item: null });
   const [option, setOption] = useState("products");
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Account = ({ updateUser, userInfo, auth }) => {
         item={dialogBox.item}
         open={dialogBox.open}
       />
-
+      <Loader open={loading} />
       <Header />
 
       <div className="accountpage__contentdiv">
@@ -81,11 +82,13 @@ Header.propTypes = {
   userInfo: PropTypes.object,
   auth: PropTypes.bool,
   updateUser: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
   userInfo: state.user.currentUser,
   auth: state.user.authenticated,
+  loading: state.products.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

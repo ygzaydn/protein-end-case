@@ -8,34 +8,50 @@ import { connect } from "react-redux";
 import { baseURL } from "../../utils/axios";
 
 import PropTypes from "prop-types";
+import Loader from "../loader/loader";
 
-const AccountProductItem = ({ item, updateUser, userInfo }) => {
+const AccountProductItem = ({
+  item,
+  updateUser,
+  userInfo,
+  loading,
+  startOffer,
+  finishOffer,
+}) => {
   const [dialog, setDialog] = useState(false);
 
   const takeOffer = async (item) => {
+    startOffer();
     try {
       const res = await acceptOffer(item);
       if (res) {
         updateUser(userInfo.id);
+        finishOffer();
       }
     } catch (err) {
       console.log(err);
+      finishOffer();
     }
   };
   const rejectOffer = async (item) => {
+    startOffer();
     try {
       const res = await rejectOffer(item);
       if (res) {
         updateUser(userInfo.id);
+        finishOffer();
       }
     } catch (err) {
       console.log(err);
+      finishOffer();
     }
   };
 
   const closeDialog = () => setDialog(false);
   return (
     <div className="accountproductitem">
+      <Loader open={loading} />
+      <ToastContainer theme="colored" />
       <ProductDetailPurchaseDialog
         open={dialog}
         clickFunc={
@@ -44,7 +60,7 @@ const AccountProductItem = ({ item, updateUser, userInfo }) => {
         item={item}
         closeFunc={() => closeDialog()}
       />
-      <ToastContainer theme="colored" />
+
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"
@@ -146,14 +162,20 @@ AccountProductItem.propTypes = {
   item: PropTypes.object,
   userInfo: PropTypes.object,
   updateUser: PropTypes.func,
+  loading: PropTypes.bool,
+  startOffer: PropTypes.func,
+  finishOffer: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   userInfo: state.user.currentUser,
+  loading: state.product.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateUser: (id) => dispatch({ type: "UPDATE_USER", payload: { id } }),
+  startOffer: () => dispatch({ type: "START_OFFER" }),
+  finishOffer: () => dispatch({ type: "END_OFFER" }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountProductItem);

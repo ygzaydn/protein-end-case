@@ -23,9 +23,13 @@
         padding: 2rem;
     }
     &__loader {
-        min-height: 10rem;
-        min-width: 10rem;
+        height: 5rem;
+        width: 5rem;
         padding: 2rem;
         background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
     }
 }

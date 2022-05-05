@@ -95,7 +95,7 @@ const Index = ({
 };
 
 const mapStateToProps = (state) => ({
-  products: state?.products,
+  products: state?.products.items,
   categories: state?.categories?.items?.map((el) => el.name),
   category: state?.categories?.selectedCategory,
 });

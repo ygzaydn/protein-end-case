@@ -10,8 +10,10 @@ import {
   Button,
   ProductDetailOfferDialog,
   ProductDetailPurchaseDialog,
+  Loader,
 } from "../../components";
 
+import { ToastContainer } from "react-toastify";
 import { useWindowContext } from "../../contexts/windowContext";
 
 import PropTypes from "prop-types";
@@ -26,7 +28,7 @@ const initialState = {
   image: null,
 };
 
-const ProductDetail = ({ products, auth, getProducts }) => {
+const ProductDetail = ({ products, auth, getProducts, loading }) => {
   const [productDetail, setProductDetail] = useState({ ...initialState });
   const [dialogBoxes, setDialogBoxes] = useState({
     offer: false,
@@ -82,6 +84,7 @@ const ProductDetail = ({ products, auth, getProducts }) => {
 
   return (
     <section className="productdetailpage">
+      <ToastContainer theme="colored" />
       <ProductDetailOfferDialog
         closeFunc={() => closeOfferDialogBox()}
         item={productDetail}
@@ -93,7 +96,7 @@ const ProductDetail = ({ products, auth, getProducts }) => {
         item={productDetail}
         open={dialogBoxes.purchase}
       />
-
+      <Loader open={loading} />
       <div className="productdetailpage__header">
         <Header />
       </div>
@@ -257,7 +260,8 @@ const ProductDetail = ({ products, auth, getProducts }) => {
 };
 
 const mapStateToProps = (state) => ({
-  products: state.products,
+  products: state.products.items,
+  loading: state.products.loading,
   auth: state.user.authenticated,
 });
 
@@ -269,6 +273,7 @@ ProductDetail.propTypes = {
   products: PropTypes.array,
   auth: PropTypes.bool,
   getProducts: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
