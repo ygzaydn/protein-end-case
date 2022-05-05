@@ -13,6 +13,7 @@ import { Profile } from "../../icons";
 import { useNavigate } from "react-router";
 
 import PropTypes from "prop-types";
+import { ToastContainer } from "react-toastify";
 
 const Account = ({ updateUser, userInfo, auth, loading }) => {
   const [dialogBox, setDialogBox] = useState({ open: false, item: null });
@@ -32,11 +33,14 @@ const Account = ({ updateUser, userInfo, auth, loading }) => {
 
   return (
     <section className="accountpage">
+      <ToastContainer theme="colored" />
+
       <ProductDetailPurchaseDialog
         closeFunc={closeDialogBox}
         item={dialogBox.item}
         open={dialogBox.open}
       />
+
       <Loader open={loading} />
       <Header />
 

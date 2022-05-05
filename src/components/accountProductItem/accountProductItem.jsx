@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ToastContainer } from "react-toastify";
 import { Text, Button, ProductDetailPurchaseDialog } from "..";
 
 import { acceptOffer, declineOffer } from "../../utils/axios";
@@ -50,8 +49,6 @@ const AccountProductItem = ({
   const closeDialog = () => setDialog(false);
   return (
     <div className="accountproductitem">
-      <Loader open={loading} />
-      <ToastContainer theme="colored" />
       <ProductDetailPurchaseDialog
         open={dialog}
         clickFunc={
@@ -61,6 +58,7 @@ const AccountProductItem = ({
         closeFunc={() => closeDialog()}
       />
 
+      <Loader open={loading} />
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"

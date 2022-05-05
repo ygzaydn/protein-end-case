@@ -1,5 +1,4 @@
 import React from "react";
-import { ToastContainer } from "react-toastify";
 import { Text, Button, Loader } from "..";
 
 import { buyItem } from "../../utils/axios";
@@ -33,7 +32,7 @@ const AccountOfferItem = ({
   return (
     <div className="accountproductitem">
       <Loader open={loading} />
-      <ToastContainer theme="colored" />
+
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"
