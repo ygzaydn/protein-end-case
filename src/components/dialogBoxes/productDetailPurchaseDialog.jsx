@@ -6,6 +6,7 @@ import { buyItem } from "../../utils/axios";
 
 import { connect } from "react-redux";
 import { dialogText } from "../../constants/texts";
+import { toast } from "react-toastify";
 
 const ProductDetailPurchaseDialog = ({
   closeFunc,
@@ -17,11 +18,34 @@ const ProductDetailPurchaseDialog = ({
 }) => {
   const buy = async (item) => {
     startOffer();
-    const res = await buyItem(item);
-    if (res) {
-      getProducts();
+    try {
+      const res = await buyItem(item);
+      if (res) {
+        getProducts();
+        finishOffer();
+        closeFunc();
+        toast.success(`Satın alma başarılı.`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } catch (err) {
       finishOffer();
       closeFunc();
+      toast.error(`Satın alma sırasında hata oluştu.`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 

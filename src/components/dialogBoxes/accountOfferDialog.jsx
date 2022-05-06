@@ -13,7 +13,6 @@ const AccountPurchaseDialog = ({
   open,
   dialog,
 }) => {
-  console.log(id);
   return (
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <div className="dialogbox__content productdetailpurchasedialog">

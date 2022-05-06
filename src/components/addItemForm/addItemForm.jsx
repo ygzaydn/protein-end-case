@@ -11,13 +11,7 @@ import {
 
 import { connect } from "react-redux";
 
-import {
-  uploadProduct,
-  brands,
-  colors,
-  usages,
-  addBrand,
-} from "../../utils/axios";
+import { uploadProduct, brands, colors, usages } from "../../utils/axios";
 
 import { additemformText } from "../../constants/texts";
 
@@ -26,14 +20,10 @@ import PropTypes from "prop-types";
 import { addItemSchema } from "../../constants/schemas/";
 import { toast } from "react-toastify";
 
-import { useNavigate } from "react-router";
-
 const AddItemForm = ({ categories, userId, startOffer, finishOffer }) => {
   const [brandList, setBrandList] = useState([]);
   const [colorList, setColorList] = useState([]);
   const [usageList, setUsageList] = useState([]);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -75,15 +65,6 @@ const AddItemForm = ({ categories, userId, startOffer, finishOffer }) => {
           option,
           file,
         } = values;
-
-        if (!brandList.find((el) => el.name === brand)) {
-        }
-        if (!categories.find((el) => el.name === category)) {
-        }
-        if (!colorList.find((el) => el.name === color)) {
-        }
-        if (!usageList.find((el) => el.name === usage)) {
-        }
 
         const data = {
           name,

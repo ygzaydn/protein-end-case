@@ -52,36 +52,28 @@ Hesabım Sayfa Detayları
 
 Ürün Ekleme Sayfa Detayları
 
-- Tasarıma göre design edilmeli
-- Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli
+- Tasarıma göre design edilmeli [ok]
+- Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli [ok]
 - İlgili validasyonlar eklenmeli:
-- Ürün Adı alanı maksimum 100 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı
-- Açıklama alanı maksimum 500 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı
-- Kategori alanı ilgili endpointten çekilen kategorileri listelemeli ve en fazla bir kategori seçilebilmeli. Bu alan zorunlu bir alan olmalı
-- Renk alanı ilgili endpointten çekilen renkleri listelemeli ve en fazla bir renk seçilebilmeli.
-  Bu alan zorunlu bir alan olmamalı
-- Marka alanı ilgili endpointten çekilen markaları listelemeli ve en fazla bir marka
-  seçilebilmeli. Bu alan zorunlu bir alan olmamalı
-- Kullanım Durumu alanı ilgili endpointten çekilen kullanım durumlarını listelemeli ve en fazla bir kullanım durumu seçilebilmeli. Bu alan zorunlu bir alan olmalı
-- Ürün Görseli alanından en fazla bir ürün görseli eklenmeli. Eklenen ürün görseli
-  istenildiği zaman silinebilmeli. Bu alan zorunlu bir alan olmalı. Sadece png/jpg/jpeg
-  formatında görseller eklenmeli. Maksimum 400kb değerinde görseller eklenilebilmeli
-- Fiyat alanı number olmalı ve zorunlu bir alan olmalı
-- Teklif Opsiyonu alanı boolean bir değer olmalı ve default olarak false olmalı
+- Ürün Adı alanı maksimum 100 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı [ok]
+- Açıklama alanı maksimum 500 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı [ok]
+- Kategori alanı ilgili endpointten çekilen kategorileri listelemeli ve en fazla bir kategori seçilebilmeli. Bu alan zorunlu bir alan olmalı [ok]
+- Renk alanı ilgili endpointten çekilen renkleri listelemeli ve en fazla bir renk seçilebilmeli.Bu alan zorunlu bir alan olmamalı [ok]
+- Marka alanı ilgili endpointten çekilen markaları listelemeli ve en fazla bir marka seçilebilmeli. Bu alan zorunlu bir alan olmamalı [ok]
+- Kullanım Durumu alanı ilgili endpointten çekilen kullanım durumlarını listelemeli ve en fazla bir kullanım durumu seçilebilmeli. Bu alan zorunlu bir alan olmalı [ok]
+- Ürün Görseli alanından en fazla bir ürün görseli eklenmeli. Eklenen ürün görseli istenildiği zaman silinebilmeli. Bu alan zorunlu bir alan olmalı. Sadece png/jpg/jpeg formatında görseller eklenmeli. Maksimum 400kb değerinde görseller eklenilebilmeli [ok]
+- Fiyat alanı number olmalı ve zorunlu bir alan olmalı [ok]
+- Teklif Opsiyonu alanı boolean bir değer olmalı ve default olarak false olmalı [ok]
 
 Ek Proje Gereksinimleri:
 
-- Tüm UI responsive olmalı
-- Desktop ve Responsive iletilen tasarıma göre yapılmalı.
-- İlgili yerlere kendi insiyatifinizde loading indicator ekleyebilirsiniz. Mesela productlar
-  yüklenirken ya da Satın Al gibi async operasyonlar başlatıldığında loading indicator
-  gösterilebilir
+- Tüm UI responsive olmalı [ok]
+- Desktop ve Responsive iletilen tasarıma göre yapılmalı. [ok]
+- İlgili yerlere kendi insiyatifinizde loading indicator ekleyebilirsiniz. Mesela productlar yüklenirken ya da Satın Al gibi async operasyonlar başlatıldığında loading indicator gösterilebilir. [ok]
 - Performanslı bir uygulama olmalı ve CLS gibi web-vitals parametrelerine dikkat edilmeli
 - Accessibility'e önem verilmeli
-- Typescript, SSR, Unit-testing ve Code-splitting gibi geliştirmelerin olması öne çıkaran bir
-  özellik olabilir
-- Yazılan projenin nasıl ayağa kalktığı ve benzeri detayların paylaşıldığı bir README.md file'ı
-  projlere eklenmeli
+- Typescript, SSR, Unit-testing ve Code-splitting gibi geliştirmelerin olması öne çıkaran bir özellik olabilir
+- Yazılan projenin nasıl ayağa kalktığı ve benzeri detayların paylaşıldığı bir README.md file'ı projlere eklenmeli
 
 - API: https://bootcampapi.techcs.io/api/fe/v1/
 - Yeni API: https://bootcamp.akbolat.net/documentation/v1.0.0

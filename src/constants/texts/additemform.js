@@ -13,11 +13,11 @@ const additemformText = {
     placeholder: "Kategori Seç",
   },
   brand: {
-    label: "Marka*",
+    label: "Marka",
     placeholder: "Marka Seç",
   },
   color: {
-    label: "Renk*",
+    label: "Renk",
     placeholder: "Renk Seç",
   },
   usage: {
@@ -39,7 +39,7 @@ const additemformText = {
   upload: {
     upperText: "Sürükleyip bırakarak yükle",
     label: "Görsel Seçin",
-    constraint: "PNG ve JPEG Dosya boyutu max. 100kb",
+    constraint: "PNG/JPEG/JPG Dosya boyutu max. 400kb",
   },
 };
 

@@ -80,23 +80,6 @@ export const categories = async () => {
   return res;
 };
 
-export const addCategories = async (category) => {
-  const cookies = new Cookies();
-  const jwt = cookies.get("jwt");
-  const res = await instance.post(
-    urls.categories,
-    {
-      name: category,
-    },
-    {
-      headers: {
-        Authorization: "Bearer " + jwt,
-      },
-    }
-  );
-  return res;
-};
-
 export const productInfo = async (id) => {
   const res = await instance.get(urls.categories + "/" + id);
   return res;
@@ -104,26 +87,6 @@ export const productInfo = async (id) => {
 
 export const brands = async () => {
   const res = await instance.get(urls.brands);
-  return res;
-};
-
-export const addBrand = async (brand) => {
-  const cookies = new Cookies();
-  const jwt = cookies.get("jwt");
-  const res = await instance.post(
-    urls.brands,
-    {
-      name: brand,
-      published_at: new Date(),
-      created_by: new Date(),
-      updated_by: new Date(),
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    }
-  );
   return res;
 };
 
@@ -278,7 +241,7 @@ export const acceptOffer = async (offer) => {
 export const declineOffer = async (offer) => {
   const cookies = new Cookies();
   const jwt = cookies.get("jwt");
-  console.log(offer);
+
   const id = offer.id;
 
   const activeOffer = offer.item.offers.find((el) => el.id === offer.id)[0];
@@ -311,9 +274,17 @@ export const buyItem = async (info) => {
   const cookies = new Cookies();
   const jwt = cookies.get("jwt");
 
-  const { id } = info.product;
+  let id;
 
-  const data = { ...info.product, isOfferable: false, isSold: true };
+  if (info.product) {
+    id = info.product.id;
+  } else {
+    id = info.id;
+  }
+
+  const data = info.product
+    ? { ...info.product, isOfferable: false, isSold: true }
+    : { ...info, isOfferable: false, isSold: true };
 
   const res = instance.put(urls.products + "/" + id, data, {
     headers: {
@@ -322,15 +293,6 @@ export const buyItem = async (info) => {
   });
 
   if (res) {
-    toast.success(`Satın alma başarılı.`, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
   }
   return res;
 };

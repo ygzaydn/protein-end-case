@@ -4,15 +4,18 @@ import { connect } from "react-redux";
 import { AccountProductItem, Text, AccountOfferItem } from "../";
 
 const AccountItemGrid = ({ option, nullText, userInfo, data }) => {
-  const len = option === "products" ? userInfo[option]?.length : data.length;
   const filteredInput = [];
 
   option === "products" &&
+    data.length > 0 &&
     data.map((el) =>
-      el.offers.map((el2) => filteredInput.push({ ...el2, item: { ...el } }))
+      el?.offers?.map((el2) => filteredInput.push({ ...el2, item: { ...el } }))
     );
 
-  console.log(filteredInput);
+  const len =
+    option !== "products"
+      ? userInfo[option]?.length > 0
+      : filteredInput.length > 0;
 
   return (
     <div className="accountitemgrid">
