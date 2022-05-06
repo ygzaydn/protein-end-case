@@ -29,8 +29,8 @@ const AccountItemGrid = ({ option, nullText, userInfo, data }) => {
         </div>
       ) : (
         <div className="accountitemgrid__nullText">
-          <Text color="blue">
-            <h2>{nullText}</h2>
+          <Text color="blue" size="h2">
+            {nullText}
           </Text>
         </div>
       )}

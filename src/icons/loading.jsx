@@ -10,6 +10,7 @@ const Loading = () => {
       y="0px"
       viewBox="0 0 100 100"
       enableBackground="new 0 0 100 100"
+      role="img"
     >
       <path
         fill="#fff"

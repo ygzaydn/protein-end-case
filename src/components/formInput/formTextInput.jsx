@@ -55,16 +55,8 @@ const FormTextInput = ({
       )}
 
       {additionalText?.length && (
-        <Text>
-          <h6
-            style={{
-              textAlign: "end",
-              cursor: "pointer",
-              color: "#b1b1b1",
-            }}
-          >
-            {additionalText}
-          </h6>
+        <Text size="h6" classes="formtext__additionalText">
+          {additionalText}
         </Text>
       )}
     </div>

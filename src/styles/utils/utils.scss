@@ -35,3 +35,15 @@
         z-index: 1000;
     }
 }
+
+.pointer {
+    &__cursor{
+        cursor: pointer;
+    }
+}
+
+.margin {
+    &__left{
+        margin-left: .5rem;
+    }
+}

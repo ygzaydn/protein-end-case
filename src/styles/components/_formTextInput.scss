@@ -64,4 +64,9 @@
             color: $color-dark-4;
         }
     }
+    &__additionalText {
+        text-align: end;
+        cursor: pointer;
+        color: #b1b1b1;
+    }
 }

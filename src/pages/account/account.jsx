@@ -13,7 +13,6 @@ import { Profile } from "../../icons";
 import { useNavigate } from "react-router";
 
 import PropTypes from "prop-types";
-import { ToastContainer } from "react-toastify";
 import { accountpageText } from "../../constants/texts";
 
 const Account = ({ updateUser, userInfo, auth, loading }) => {
@@ -34,8 +33,6 @@ const Account = ({ updateUser, userInfo, auth, loading }) => {
 
   return (
     <section className="accountpage">
-      <ToastContainer theme="colored" />
-
       <ProductDetailPurchaseDialog
         closeFunc={closeDialogBox}
         item={dialogBox.item}
@@ -47,8 +44,8 @@ const Account = ({ updateUser, userInfo, auth, loading }) => {
       <div className="accountpage__contentdiv">
         <div className="accountpage__infodiv">
           <Profile />
-          <Text color="dark">
-            <h5>{userInfo?.email}</h5>
+          <Text color="dark" size="h5">
+            {userInfo?.email}
           </Text>
         </div>
         <div className="accountpage__productsdiv">

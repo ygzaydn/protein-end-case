@@ -7,6 +7,7 @@ const Profile = () => {
       width="38"
       height="38"
       viewBox="0 0 38 38"
+      role="img"
     >
       <g
         id="Group_6876"

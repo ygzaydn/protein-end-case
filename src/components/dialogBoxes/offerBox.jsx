@@ -15,10 +15,9 @@ const Offerbox = ({ active, setFunc, amount }) => {
       <Text
         fontWeight="light"
         classes={active ? "offerbox__text--active" : "offerbox__text"}
+        size="h4"
       >
-        <h4>
-          %{amount} {dialogText.offerBox.amount}
-        </h4>
+        %{amount} {dialogText.offerBox.amount}
       </Text>
     </div>
   );

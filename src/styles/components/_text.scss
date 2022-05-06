@@ -16,29 +16,19 @@
         color: $color-green-1;
     }
     &__block {
-        & > * {
-            display: block;
-        }
+        display: block;
     }
     &__inline {
         display: inline;
-        & > * {
-            display: inline;
-        }
+
     }
     &__light {
-        & > * {
-            font-weight: 400;
-        }
+        font-weight: 400;
     }
     &__medium {
-        & > * {
-            font-weight: 600;
-        }
+        font-weight: 600;
     }
     &__bold {
-        & > * {
-            font-weight: 800;
-        }
+         font-weight: 800;
     }
 }

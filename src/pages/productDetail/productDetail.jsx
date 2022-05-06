@@ -14,7 +14,6 @@ import {
   Loader,
 } from "../../components";
 
-import { ToastContainer } from "react-toastify";
 import { useWindowContext } from "../../contexts/windowContext";
 
 import PropTypes from "prop-types";
@@ -83,7 +82,6 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
 
   return (
     <section className="productdetailpage">
-      <ToastContainer theme="colored" />
       <ProductDetailOfferDialog
         item={productDetail}
         open={Boolean(dialogBoxes.offer)}
@@ -135,8 +133,8 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
 
             <div className="productdetailpage__product--detailsgrid">
               <div className="productdetailpage__product--detailsgrid--row">
-                <Text fontWeight="bold" color="dark">
-                  <h5>{productdetailpageText.brand}</h5>
+                <Text fontWeight="bold" color="dark" size="h5">
+                  {productdetailpageText.brand}
                 </Text>
                 <SkeletonText
                   loading={Boolean(brand)}
@@ -149,8 +147,8 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
                 />
               </div>
               <div className="productdetailpage__product--detailsgrid--row">
-                <Text fontWeight="bold" color="dark">
-                  <h5>{productdetailpageText.color}</h5>
+                <Text fontWeight="bold" color="dark" size="h5">
+                  {productdetailpageText.color}
                 </Text>
                 <SkeletonText
                   loading={Boolean(color)}
@@ -163,8 +161,8 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
                 />
               </div>
               <div className="productdetailpage__product--detailsgrid--row">
-                <Text fontWeight="bold" color="dark">
-                  <h5>{productdetailpageText.usage}</h5>
+                <Text fontWeight="bold" color="dark" size="h5">
+                  {productdetailpageText.usage}
                 </Text>
                 <SkeletonText
                   loading={Boolean(status)}
@@ -197,8 +195,8 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
                   classes="productdetailpage__product--buttonsdiv--button"
                   clickFunc={() => openPurchaseDialogBox()}
                 >
-                  <Text fontWeight="medium" color="white">
-                    <h5>{productdetailpageText.buy}</h5>
+                  <Text fontWeight="medium" color="white" size="h5">
+                    {productdetailpageText.buy}
                   </Text>
                 </Button>
               )}
@@ -210,8 +208,8 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
                   classes="productdetailpage__product--buttonsdiv--button"
                   clickFunc={() => openOfferDialogBox("make")}
                 >
-                  <Text fontWeight="medium" color="blue">
-                    <h5>{productdetailpageText.offer}</h5>
+                  <Text fontWeight="medium" color="blue" size="h5">
+                    {productdetailpageText.offer}
                   </Text>
                 </Button>
               )}
@@ -223,8 +221,8 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
                   classes="productdetailpage__product--buttonsdiv--button"
                   clickFunc={() => openOfferDialogBox("withdraw")}
                 >
-                  <Text fontWeight="medium" color="white">
-                    <h5>{productdetailpageText.cancelOffer}</h5>
+                  <Text fontWeight="medium" color="white" size="h5">
+                    {productdetailpageText.cancelOffer}
                   </Text>
                 </Button>
               )}
@@ -233,8 +231,9 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
                   fontWeight="light"
                   color="red"
                   classes="productdetailpage__product--detailsdiv--detail"
+                  size="h3"
                 >
-                  <h3>{productdetailpageText.error}</h3>
+                  {productdetailpageText.error}
                 </Text>
               )}
               {isSold && (
@@ -243,8 +242,8 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
                   color="orange"
                   classes="productdetailpage__product--buttonsdiv--button--sold"
                 >
-                  <Text fontWeight="medium" color="orange">
-                    <h5>{productdetailpageText.sold}</h5>
+                  <Text fontWeight="medium" color="orange" size="h5">
+                    {productdetailpageText.sold}
                   </Text>
                 </Button>
               )}
@@ -254,8 +253,9 @@ const ProductDetail = ({ products, auth, getProducts, loading, userId }) => {
                 fontWeight="bold"
                 color="dark"
                 classes="productdetailpage__product--detailsdiv--detail"
+                size="h4"
               >
-                <h4>{productdetailpageText.explain}</h4>
+                {productdetailpageText.explain}
               </Text>
               <SkeletonText
                 loading={Boolean(description)}

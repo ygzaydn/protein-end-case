@@ -19,11 +19,14 @@ import PropTypes from "prop-types";
 
 import { addItemSchema } from "../../constants/schemas/";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const AddItemForm = ({ categories, userId, startOffer, finishOffer }) => {
   const [brandList, setBrandList] = useState([]);
   const [colorList, setColorList] = useState([]);
   const [usageList, setUsageList] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -88,6 +91,7 @@ const AddItemForm = ({ categories, userId, startOffer, finishOffer }) => {
           const res = await uploadProduct(formData);
           if (res) {
             finishOffer();
+            navigate("/");
             toast.success(`Ürün başarı ile listelendi.`, {
               position: "top-right",
               autoClose: 5000,
@@ -128,8 +132,9 @@ const AddItemForm = ({ categories, userId, startOffer, finishOffer }) => {
                 fontWeight="bold"
                 color="dark"
                 classes="addproductpage__content--detailsdiv--title"
+                size="h2"
               >
-                <h2>{additemformText.title}</h2>
+                {additemformText.title}
               </Text>
             </div>
 
@@ -238,8 +243,9 @@ const AddItemForm = ({ categories, userId, startOffer, finishOffer }) => {
                 fontWeight="bold"
                 color="dark"
                 classes="addproductpage__content--detailsdiv--title"
+                size="h2"
               >
-                <h2>{additemformText.image.text}</h2>
+                {additemformText.image.text}
               </Text>
             </div>
             <FormUploadInput

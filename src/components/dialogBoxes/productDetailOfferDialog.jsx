@@ -42,8 +42,8 @@ const ProductDetailOfferDialog = ({
   return (
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <div className="dialogbox__content productdetailofferdialog">
-        <Text color="dark" classes="productdetailofferdialog__title">
-          <h2>{dialogText.productDetailOffer[mode].offer}</h2>
+        <Text color="dark" classes="productdetailofferdialog__title" size="h2">
+          {dialogText.productDetailOffer[mode].offer}
         </Text>
         <span
           className="productdetailofferdialog__closebutton"
@@ -62,7 +62,7 @@ const ProductDetailOfferDialog = ({
         {mode === "make" && (
           <OfferInput
             onChangeFunc={setOffer}
-            placeholder={dialogText.productDetailOffer[mode].placeholder}
+            placeholder={dialogText.offerInput.placeholder}
             classes="productdetailofferdialog__input"
             value={offer}
           />

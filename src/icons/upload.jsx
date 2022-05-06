@@ -7,6 +7,7 @@ const Upload = () => {
       width="29.92"
       height="28.556"
       viewBox="0 0 29.92 28.556"
+      role="img"
     >
       <g
         id="Group_6911"

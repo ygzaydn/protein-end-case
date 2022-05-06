@@ -61,11 +61,11 @@ const AccountOfferItem = ({
             id={item}
             closeFunc={() => setDialog(false)}
           />
-          <div className="accountproductitem__imagediv">
+          <div className="accountproductitem__imagediv" role="img">
             <img
               className="accountproductitem__imagediv--image"
               src={baseURL + item?.product?.image?.url}
-              alt={item?.product?.image?.url}
+              alt={item?.product?.name}
             />
           </div>
           <div className="accountproductitem__contentdiv">
@@ -74,19 +74,19 @@ const AccountOfferItem = ({
                 color="dark"
                 fontWeight="medium"
                 classes="accountproductitem__contentdiv--title"
+                size="h2"
               >
-                <h2>{item?.product?.name}</h2>
+                {item?.product?.name}
               </Text>
             </div>
             <div>
               <Text
                 classes="accountproductitem__contentdiv--offer"
                 fontWeight="light"
+                size="h5"
               >
-                <h5>
-                  {accountpageText.offerTo}
-                  <strong>{item?.offerPrice} TL</strong>
-                </h5>
+                {accountpageText.offerTo}
+                <strong>{item?.offerPrice} TL</strong>
               </Text>
             </div>
           </div>
@@ -96,10 +96,9 @@ const AccountOfferItem = ({
                 color="green"
                 fontWeight="light"
                 classes="accountproductitem__buttondiv--text"
+                size="h4"
               >
-                <h4>
-                  <h4>{accountpageText.bought}</h4>
-                </h4>
+                {accountpageText.bought}
               </Text>
             )}
             {!item?.product?.isSold && item?.isStatus && (
@@ -109,19 +108,19 @@ const AccountOfferItem = ({
                 size="xsmall"
                 clickFunc={() => setDialog(true)}
               >
-                <Text fontWeight="light">
-                  <h5>{accountpageText.buy}</h5>
+                <Text fontWeight="light" size="h5">
+                  {accountpageText.buy}
                 </Text>
               </Button>
             )}
             {!item?.product?.isSold && item?.isStatus && (
-              <Text color="blue" fontWeight="light">
-                <h4>{accountpageText.approved}</h4>
+              <Text color="blue" fontWeight="light" size="h4">
+                {accountpageText.approved}
               </Text>
             )}
             {!item?.product?.isSold && item?.isStatus === false && (
-              <Text color="red" fontWeight="light">
-                <h4>{accountpageText.refused}</h4>
+              <Text color="red" fontWeight="light" size="h4">
+                {accountpageText.refused}
               </Text>
             )}
           </div>

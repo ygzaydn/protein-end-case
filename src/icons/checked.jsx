@@ -6,6 +6,7 @@ const Checked = () => (
     width="20"
     height="20"
     viewBox="0 0 20 20"
+    role="img"
   >
     <g id="Group_6909" data-name="Group 6909" transform="translate(-10 -13)">
       <path

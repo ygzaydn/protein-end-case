@@ -6,17 +6,22 @@ import { baseURL } from "../../utils/axios";
 
 const OfferItemPreview = ({ item }) => {
   return (
-    <div className="offeritempreview">
+    <div className="offeritempreview" role="img">
       <img
         className="offeritempreview__image"
-        alt="item-image"
+        alt={item?.name}
         src={`${baseURL}${item?.image?.url}`}
       />
-      <Text color="dark" fontWeight="light" classes="offeritempreview__text">
-        <h6>{item?.name}</h6>
+      <Text
+        color="dark"
+        fontWeight="light"
+        classes="offeritempreview__text"
+        size="h6"
+      >
+        {item?.name}
       </Text>
-      <Text color="dark" classes="offeritempreview__price">
-        <h4>{item.price} TL</h4>
+      <Text color="dark" classes="offeritempreview__price" size="h4">
+        {item.price} TL
       </Text>
     </div>
   );

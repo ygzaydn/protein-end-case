@@ -61,11 +61,11 @@ const AccountProductItem = ({
         dialog={dialog === "accept" ? "accept" : "reject"}
       />
 
-      <div className="accountproductitem__imagediv">
+      <div className="accountproductitem__imagediv" role="img">
         <img
           className="accountproductitem__imagediv--image"
           src={baseURL + item?.item?.image.url}
-          alt={item.item?.image.url}
+          alt={item.item?.name}
         />
       </div>
       <div className="accountproductitem__contentdiv">
@@ -74,18 +74,18 @@ const AccountProductItem = ({
             color="dark"
             fontWeight="medium"
             classes="accountproductitem__contentdiv--title"
+            size="h2"
           >
-            <h2>{item.item?.name}</h2>
+            {item.item?.name}
           </Text>
         </div>
         <div>
           <Text
             classes="accountproductitem__contentdiv--offer"
             fontWeight="light"
+            size="h5"
           >
-            <h5>
-              {accountpageText.offer} <strong>{item?.offerPrice} TL </strong>
-            </h5>
+            {accountpageText.offer} <strong>{item?.offerPrice} TL </strong>
           </Text>
         </div>
       </div>
@@ -97,8 +97,8 @@ const AccountProductItem = ({
             size="xsmall"
             clickFunc={() => setDialog("accept")}
           >
-            <Text fontWeight="light">
-              <h5>{accountpageText.approve}</h5>
+            <Text fontWeight="light" size="h5">
+              {accountpageText.approve}
             </Text>
           </Button>
         )}
@@ -109,8 +109,8 @@ const AccountProductItem = ({
             size="xsmall"
             clickFunc={() => setDialog("reject")}
           >
-            <Text fontWeight="light">
-              <h5>{accountpageText.refuse}</h5>
+            <Text fontWeight="light" size="h5">
+              {accountpageText.refuse}
             </Text>
           </Button>
         )}
@@ -119,8 +119,9 @@ const AccountProductItem = ({
             color="green"
             fontWeight="light"
             classes="accountproductitem__buttondiv--text"
+            size="h4"
           >
-            <h4>{accountpageText.sold}</h4>
+            {accountpageText.sold}
           </Text>
         )}
         {!item?.item.isSold && item?.isStatus === true && (
@@ -128,8 +129,9 @@ const AccountProductItem = ({
             color="blue"
             fontWeight="light"
             classes="accountproductitem__buttondiv--text"
+            size="h4"
           >
-            <h4>{accountpageText.approved}</h4>
+            {accountpageText.approved}
           </Text>
         )}
         {!item?.item.isSold && item?.isStatus === false && (
@@ -137,8 +139,9 @@ const AccountProductItem = ({
             color="red"
             fontWeight="light"
             classes="accountproductitem__buttondiv--text"
+            size="h4"
           >
-            <h4>{accountpageText.reddedildi}</h4>
+            {accountpageText.reddedildi}
           </Text>
         )}
       </div>

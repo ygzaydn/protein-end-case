@@ -74,7 +74,7 @@ const FormUploadInput = ({ onChangeFunc, id, name, error }) => {
       ref={ref}
     >
       {selectedFile ? (
-        <div className="formuploadinput__uploadeddiv">
+        <div className="formuploadinput__uploadeddiv" role="img">
           <img
             src={preview}
             className="formuploadinput__uploadeddiv--image"

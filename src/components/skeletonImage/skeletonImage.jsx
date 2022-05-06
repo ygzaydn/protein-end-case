@@ -10,7 +10,10 @@ const SkeletonImage = ({
   imageClass,
 }) => {
   return (
-    <div className={loading ? containerClass : `${containerClass} loading-box`}>
+    <div
+      className={loading ? containerClass : `${containerClass} loading-box`}
+      role="img"
+    >
       {loading && (
         <img
           src={`${baseURL}${url}`}

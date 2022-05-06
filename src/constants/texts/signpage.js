@@ -1,6 +1,6 @@
 const signpageText = {
-  signin: "Giriş yap",
-  signup: "Üye ol",
+  signin: " Giriş yap",
+  signup: " Üye ol",
   signinHeader: "Fırsatlardan yararlanmak için giriş yap!",
   signupHeader: "Fırsatlardan yararlanmak için üye ol!",
   accountText1: " Hesabın var mı? ",

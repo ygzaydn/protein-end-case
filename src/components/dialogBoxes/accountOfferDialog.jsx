@@ -16,11 +16,11 @@ const AccountPurchaseDialog = ({
   return (
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <div className="dialogbox__content productdetailpurchasedialog">
-        <Text color="dark">
-          <h2>{dialogText.accountOffer[dialog].offer}</h2>
+        <Text color="dark" size="h2">
+          {dialogText.accountOffer[dialog].offer}
         </Text>
-        <Text color="dark" fontWeight="light">
-          <h3>{dialogText.accountOffer[dialog].question}</h3>
+        <Text color="dark" fontWeight="light" size="h3">
+          {dialogText.accountOffer[dialog].question}
         </Text>
         <div className="productdetailpurchasedialog--buttondiv">
           <Button

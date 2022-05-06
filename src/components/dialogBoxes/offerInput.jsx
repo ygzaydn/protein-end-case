@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 
 const OfferInput = ({ value, onChangeFunc, placeholder }) => {
   const val = value && value?.includes("%") ? value?.split("%")[0] : value;
+
   return (
     <div className="offerinput">
       <input
         className={
-          /^[0-9]+$/.test(val)
+          /^[0-9]+$/.test(val + 0)
             ? "offerinput__input"
             : "offerinput__input offerinput__input--error"
         }
@@ -16,7 +17,6 @@ const OfferInput = ({ value, onChangeFunc, placeholder }) => {
           onChangeFunc(e.target.value);
         }}
         placeholder={placeholder}
-        defaultValue={10}
       />
     </div>
   );

@@ -20,7 +20,7 @@ const Header = ({ auth }) => {
 
   return (
     <header className="header">
-      <div className="header__logo">
+      <div className="header__logo" role="img">
         <img
           src={Logo}
           alt="ikinciel-logo"

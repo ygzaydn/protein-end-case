@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Text, Button } from "..";
 
 import PropTypes from "prop-types";
@@ -10,11 +10,11 @@ const AccountOfferDialog = ({ approveFunc, closeFunc, id, open }) => {
   return (
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <div className="dialogbox__content productdetailpurchasedialog">
-        <Text color="dark">
-          <h2>{dialogText.accountPurchase.offer}</h2>
+        <Text color="dark" size="h2">
+          {dialogText.accountPurchase.offer}
         </Text>
-        <Text color="dark" fontWeight="light">
-          <h3>{dialogText.accountPurchase.question}</h3>
+        <Text color="dark" fontWeight="light" size="h3">
+          {dialogText.accountPurchase.question}
         </Text>
         <div className="productdetailpurchasedialog--buttondiv">
           <Button

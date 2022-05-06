@@ -52,11 +52,11 @@ const ProductDetailPurchaseDialog = ({
   return (
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <div className="dialogbox__content productdetailpurchasedialog">
-        <Text color="dark">
-          <h2>{dialogText.productDetailPurchase.buy}</h2>
+        <Text color="dark" size="h2">
+          {dialogText.productDetailPurchase.buy}
         </Text>
-        <Text color="dark" fontWeight="light">
-          <h3>{dialogText.productDetailPurchase.question}</h3>
+        <Text color="dark" fontWeight="light" size="h3">
+          {dialogText.productDetailPurchase.question}
         </Text>
         <div className="productdetailpurchasedialog--buttondiv">
           <Button

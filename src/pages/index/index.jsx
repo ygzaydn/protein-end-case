@@ -44,10 +44,10 @@ const Index = ({
     <section className="indexpage">
       <Header />
       <div className="indexpage__content">
-        <div className="indexpage__banner">
+        <div className="indexpage__banner" role="img">
           <img
             src={BannerImage}
-            alt="indexpage-banner-image"
+            alt="indexpage-banner"
             className="indexpage__banner__image"
           />
         </div>
