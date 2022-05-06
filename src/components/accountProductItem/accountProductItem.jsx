@@ -46,7 +46,6 @@ const AccountProductItem = ({
       finishOffer();
     }
   };
-
   const closeDialog = () => setDialog(false);
 
   return (
@@ -56,7 +55,7 @@ const AccountProductItem = ({
         approveFunc={
           dialog === "accept" ? (id) => takeOffer(id) : (id) => rejectOffer(id)
         }
-        id={item?.offers[item.offers.length - 1]}
+        id={item}
         closeFunc={() => closeDialog()}
         dialog={dialog === "accept" ? "accept" : "reject"}
       />
@@ -64,7 +63,8 @@ const AccountProductItem = ({
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"
-          src={baseURL + item.image.url}
+          src={baseURL + item?.item?.image.url}
+          alt={item.item?.image.url}
         />
       </div>
       <div className="accountproductitem__contentdiv">
@@ -74,65 +74,46 @@ const AccountProductItem = ({
             fontWeight="medium"
             classes="accountproductitem__contentdiv--title"
           >
-            <h2>{item.name}</h2>
+            <h2>{item.item?.name}</h2>
           </Text>
         </div>
         <div>
-          {item?.offers?.length ? (
-            <Text
-              classes="accountproductitem__contentdiv--offer"
-              fontWeight="light"
-            >
-              <h5>
-                Alınan Teklif:{" "}
-                <strong>
-                  {item.offers[item.offers.length - 1].offerPrice} TL{" "}
-                </strong>
-              </h5>
-            </Text>
-          ) : (
-            <Text
-              fontWeight="light"
-              color="red"
-              classes="accountproductitem__contentdiv--nooffer"
-            >
-              {!item.isSold && <h5>Üründe herhangi bir teklif yok</h5>}
-            </Text>
-          )}
+          <Text
+            classes="accountproductitem__contentdiv--offer"
+            fontWeight="light"
+          >
+            <h5>
+              Alınan Teklif: <strong>{item?.offerPrice} TL </strong>
+            </h5>
+          </Text>
         </div>
       </div>
       <div className="accountproductitem__buttondiv">
-        {!item?.isSold &&
-          item?.offers &&
-          item?.offers.length > 0 &&
-          item?.offers[item.offers.length - 1]?.isStatus == null && (
-            <Button
-              classes="accountproductitem__buttondiv--button"
-              color="primary"
-              size="xsmall"
-              clickFunc={() => setDialog("accept")}
-            >
-              <Text fontWeight="light">
-                <h5>Onayla</h5>
-              </Text>
-            </Button>
-          )}
-        {!item?.isSold &&
-          item?.offers &&
-          item?.offers.length > 0 &&
-          item?.offers[item.offers.length - 1]?.isStatus == null && (
-            <Button
-              classes="accountproductitem__buttondiv--button"
-              color="red"
-              size="xsmall"
-              clickFunc={() => setDialog("reject")}
-            >
-              <Text fontWeight="light">
-                <h5>Reddet</h5>
-              </Text>
-            </Button>
-          )}
-        {item.isSold && (
+        {!item?.item.isSold && item?.isStatus == null && (
+          <Button
+            classes="accountproductitem__buttondiv--button"
+            color="primary"
+            size="xsmall"
+            clickFunc={() => setDialog("accept")}
+          >
+            <Text fontWeight="light">
+              <h5>Onayla</h5>
+            </Text>
+          </Button>
+        )}
+        {!item?.item.isSold && item?.isStatus == null && (
+          <Button
+            classes="accountproductitem__buttondiv--button"
+            color="red"
+            size="xsmall"
+            clickFunc={() => setDialog("reject")}
+          >
+            <Text fontWeight="light">
+              <h5>Reddet</h5>
+            </Text>
+          </Button>
+        )}
+        {item?.item.isSold && (
           <Text
             color="green"
             fontWeight="light"
@@ -141,20 +122,24 @@ const AccountProductItem = ({
             <h4>Satıldı</h4>
           </Text>
         )}
-        {!item?.isSold &&
-          item?.offers &&
-          item?.offers[item.offers.length - 1]?.isStatus === true && (
-            <Text color="blue" fontWeight="light">
-              <h4>Onaylandı</h4>
-            </Text>
-          )}
-        {!item?.isSold &&
-          item?.offers &&
-          item?.offers[item.offers.length - 1]?.isStatus === false && (
-            <Text color="red" fontWeight="light">
-              <h4>Reddedildi</h4>
-            </Text>
-          )}
+        {!item?.item.isSold && item?.isStatus === true && (
+          <Text
+            color="blue"
+            fontWeight="light"
+            classes="accountproductitem__buttondiv--text"
+          >
+            <h4>Onaylandı</h4>
+          </Text>
+        )}
+        {!item?.item.isSold && item?.isStatus === false && (
+          <Text
+            color="red"
+            fontWeight="light"
+            classes="accountproductitem__buttondiv--text"
+          >
+            <h4>Reddedildi</h4>
+          </Text>
+        )}
       </div>
     </div>
   );

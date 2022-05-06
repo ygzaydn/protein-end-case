@@ -43,7 +43,8 @@ const AccountOfferItem = ({
       <div className="accountproductitem__imagediv">
         <img
           className="accountproductitem__imagediv--image"
-          src={baseURL + item?.image?.url}
+          src={baseURL + item?.product?.image?.url}
+          alt={item?.product?.image?.url}
         />
       </div>
       <div className="accountproductitem__contentdiv">
@@ -53,7 +54,7 @@ const AccountOfferItem = ({
             fontWeight="medium"
             classes="accountproductitem__contentdiv--title"
           >
-            <h2>{item?.name}</h2>
+            <h2>{item?.product?.name}</h2>
           </Text>
         </div>
         <div>
@@ -68,7 +69,7 @@ const AccountOfferItem = ({
         </div>
       </div>
       <div className="accountproductitem__buttondiv">
-        {item?.isSold && (
+        {item?.product?.isSold && (
           <Text
             color="green"
             fontWeight="light"
@@ -77,7 +78,7 @@ const AccountOfferItem = ({
             <h4>Satın alındı</h4>
           </Text>
         )}
-        {!item?.isSold && (
+        {!item?.product?.isSold && item?.isStatus && (
           <Button
             classes="accountproductitem__buttondiv--button"
             color="primary"
@@ -89,7 +90,7 @@ const AccountOfferItem = ({
             </Text>
           </Button>
         )}
-        {!item?.isSold && item?.isStatus === true && (
+        {!item?.product?.isSold && item?.isStatus && (
           <Text color="blue" fontWeight="light">
             <h4>Onaylandı</h4>
           </Text>

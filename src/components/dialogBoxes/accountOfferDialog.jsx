@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Text, Button } from "..";
 
 import PropTypes from "prop-types";
@@ -13,6 +13,7 @@ const AccountPurchaseDialog = ({
   open,
   dialog,
 }) => {
+  console.log(id);
   return (
     <div className={open ? "dialogbox dialogbox--open" : "dialogbox"}>
       <div className="dialogbox__content productdetailpurchasedialog">

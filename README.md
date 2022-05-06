@@ -45,10 +45,10 @@ Hesabım Sayfa Detayları
 
 - Tasarıma göre design edilmeli [ok]
 - Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli [ok]
-- Tasarıma göre aktif olan tab için ilgili offer'lar listelenmeli
-- Alınan tekliflere Onayla ve Reddet butonları ile cevap verilebilmeli
-- Verilen teklif onaylandığında yanında satın al butonu gözükmeli
-- Ürün detay sayfasındaki gibi Satın Al butonuna tıklanınca ilgili pop-up gözükmeli.Satın Al'a tıklayınca Teklif Verdiklerim listesindeki ürünün durumu güncellenmeli
+- Tasarıma göre aktif olan tab için ilgili offer'lar listelenmeli [ok]
+- Alınan tekliflere Onayla ve Reddet butonları ile cevap verilebilmeli [ok]
+- Verilen teklif onaylandığında yanında satın al butonu gözükmeli [ok]
+- Ürün detay sayfasındaki gibi Satın Al butonuna tıklanınca ilgili pop-up gözükmeli.Satın Al'a tıklayınca Teklif Verdiklerim listesindeki ürünün durumu güncellenmeli [ok]
 
 Ürün Ekleme Sayfa Detayları
 

@@ -247,10 +247,12 @@ export const acceptOffer = async (offer) => {
   const cookies = new Cookies();
   const jwt = cookies.get("jwt");
 
-  const { id } = offer;
+  const id = offer.id;
+
+  const activeOffer = offer.item.offers.find((el) => el.id === offer.id)[0];
 
   const data = {
-    ...offer,
+    ...activeOffer,
     isStatus: true,
   };
 
@@ -276,11 +278,13 @@ export const acceptOffer = async (offer) => {
 export const declineOffer = async (offer) => {
   const cookies = new Cookies();
   const jwt = cookies.get("jwt");
+  console.log(offer);
+  const id = offer.id;
 
-  const { id } = offer;
+  const activeOffer = offer.item.offers.find((el) => el.id === offer.id)[0];
 
   const data = {
-    ...offer,
+    ...activeOffer,
     isStatus: false,
   };
 
@@ -303,13 +307,13 @@ export const declineOffer = async (offer) => {
   return res;
 };
 
-export const buyItem = async (product) => {
+export const buyItem = async (info) => {
   const cookies = new Cookies();
   const jwt = cookies.get("jwt");
 
-  const { id } = product;
+  const { id } = info.product;
 
-  const data = { ...product, isOfferable: false, isSold: true };
+  const data = { ...info.product, isOfferable: false, isSold: true };
 
   const res = instance.put(urls.products + "/" + id, data, {
     headers: {
