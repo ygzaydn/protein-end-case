@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { baseURL } from "../../utils/axios";
 import { toast } from "react-toastify";
+import { accountpageText } from "../../constants/texts";
 
 const AccountOfferItem = ({
   item,
@@ -83,7 +84,8 @@ const AccountOfferItem = ({
                 fontWeight="light"
               >
                 <h5>
-                  Verilen Teklif: <strong>{item?.offerPrice} TL</strong>
+                  {accountpageText.offerTo}
+                  <strong>{item?.offerPrice} TL</strong>
                 </h5>
               </Text>
             </div>
@@ -95,7 +97,9 @@ const AccountOfferItem = ({
                 fontWeight="light"
                 classes="accountproductitem__buttondiv--text"
               >
-                <h4>Satın alındı</h4>
+                <h4>
+                  <h4>{accountpageText.bought}</h4>
+                </h4>
               </Text>
             )}
             {!item?.product?.isSold && item?.isStatus && (
@@ -106,18 +110,18 @@ const AccountOfferItem = ({
                 clickFunc={() => setDialog(true)}
               >
                 <Text fontWeight="light">
-                  <h5>Satın Al</h5>
+                  <h5>{accountpageText.buy}</h5>
                 </Text>
               </Button>
             )}
             {!item?.product?.isSold && item?.isStatus && (
               <Text color="blue" fontWeight="light">
-                <h4>Onaylandı</h4>
+                <h4>{accountpageText.approved}</h4>
               </Text>
             )}
             {!item?.product?.isSold && item?.isStatus === false && (
               <Text color="red" fontWeight="light">
-                <h4>Reddedildi</h4>
+                <h4>{accountpageText.refused}</h4>
               </Text>
             )}
           </div>

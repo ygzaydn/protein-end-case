@@ -5,6 +5,7 @@ import { acceptOffer, declineOffer } from "../../utils/axios";
 
 import { connect } from "react-redux";
 import { baseURL } from "../../utils/axios";
+import { accountpageText } from "../../constants/texts";
 
 import PropTypes from "prop-types";
 
@@ -83,7 +84,7 @@ const AccountProductItem = ({
             fontWeight="light"
           >
             <h5>
-              Alınan Teklif: <strong>{item?.offerPrice} TL </strong>
+              {accountpageText.offer} <strong>{item?.offerPrice} TL </strong>
             </h5>
           </Text>
         </div>
@@ -97,7 +98,7 @@ const AccountProductItem = ({
             clickFunc={() => setDialog("accept")}
           >
             <Text fontWeight="light">
-              <h5>Onayla</h5>
+              <h5>{accountpageText.approve}</h5>
             </Text>
           </Button>
         )}
@@ -109,7 +110,7 @@ const AccountProductItem = ({
             clickFunc={() => setDialog("reject")}
           >
             <Text fontWeight="light">
-              <h5>Reddet</h5>
+              <h5>{accountpageText.refuse}</h5>
             </Text>
           </Button>
         )}
@@ -119,7 +120,7 @@ const AccountProductItem = ({
             fontWeight="light"
             classes="accountproductitem__buttondiv--text"
           >
-            <h4>Satıldı</h4>
+            <h4>{accountpageText.sold}</h4>
           </Text>
         )}
         {!item?.item.isSold && item?.isStatus === true && (
@@ -128,7 +129,7 @@ const AccountProductItem = ({
             fontWeight="light"
             classes="accountproductitem__buttondiv--text"
           >
-            <h4>Onaylandı</h4>
+            <h4>{accountpageText.approved}</h4>
           </Text>
         )}
         {!item?.item.isSold && item?.isStatus === false && (
@@ -137,7 +138,7 @@ const AccountProductItem = ({
             fontWeight="light"
             classes="accountproductitem__buttondiv--text"
           >
-            <h4>Reddedildi</h4>
+            <h4>{accountpageText.reddedildi}</h4>
           </Text>
         )}
       </div>

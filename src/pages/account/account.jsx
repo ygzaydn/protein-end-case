@@ -14,6 +14,7 @@ import { useNavigate } from "react-router";
 
 import PropTypes from "prop-types";
 import { ToastContainer } from "react-toastify";
+import { accountpageText } from "../../constants/texts";
 
 const Account = ({ updateUser, userInfo, auth, loading }) => {
   const [dialogBox, setDialogBox] = useState({ open: false, item: null });
@@ -55,12 +56,12 @@ const Account = ({ updateUser, userInfo, auth, loading }) => {
             <PageOptions
               active={option === "products"}
               clickFunc={() => setOption("products")}
-              text="Teklif Aldıklarım"
+              text={accountpageText.offersToMe}
             />
             <PageOptions
               active={option === "offers"}
               clickFunc={() => setOption("offers")}
-              text="Teklif Verdiklerim"
+              text={accountpageText.myOffers}
             />
           </div>
           <div className="accountpage__detailsdiv">
@@ -69,8 +70,8 @@ const Account = ({ updateUser, userInfo, auth, loading }) => {
               option={option}
               nullText={
                 option === "offers"
-                  ? "Mevcut bir teklifiniz bulunmuyor."
-                  : "Ürünlerinizde aktif bir teklif bulunmuyor."
+                  ? accountpageText.noProducts
+                  : accountpageText.noOffers
               }
             />
           </div>
