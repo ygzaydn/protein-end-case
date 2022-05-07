@@ -1,6 +1,6 @@
 # İkinci El Project
 
-![logo](./src/assets/images/logo.png);
+![logo](./src/assets/images/logo.png)
 
 İkinci El Project is a platform to help people to sell & buy products for better prices. Users can upload their products and wait for possible offers, or a direct buyer.
 
@@ -27,6 +27,7 @@ Used Libraries:
 - saas: To write & operate CSS in more efficient way
 - toastify: To have popup windows in nasty way
 - react-router: To implement routing easily on React
+- universal-cookie: To implement cookies on React in easier way
 
 ## File Structure
 
@@ -97,10 +98,11 @@ I believe I have completed the checklist that is shared with us. But there are s
 - I haven't find time to write tests. Tests are essentials on software development and must be added.
 - I have worked more on optimizing fetch requests to avoid unnecessary fetches. I might have better performance on it if I had more time.
 - There might some CSS errors, and by having some feedback they are easy to change.
+- I might miss some egde cases even if I have worked on them.
 
 ### Before closing the project
 
-I'd like to thank ![Patika](https://www.patika.dev) and ![Protel](https://www.protel.com.tr) for this bootcamp. I really enjoyed the whole process. I wish we had more time and dive into deeper topics.
+I'd like to thank [Patika](https://www.patika.dev) and [Protel](https://www.protel.com.tr) for this bootcamp. I really enjoyed the whole process. I wish we had more time and dive into deeper topics.
 
 ---
 
