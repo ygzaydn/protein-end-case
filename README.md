@@ -99,6 +99,7 @@ I believe I have completed the checklist that is shared with us. But there are s
 - I have worked more on optimizing fetch requests to avoid unnecessary fetches. I might have better performance on it if I had more time.
 - There might some CSS errors, and by having some feedback they are easy to change.
 - I might miss some egde cases even if I have worked on them.
+- I haven't worked on Next.js, so couldn't find to implement SSR. On my learning path, next step is to learn SSR and Next.js.
 
 ### Before closing the project
 
