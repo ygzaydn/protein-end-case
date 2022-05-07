@@ -55,7 +55,7 @@ const FormTextInput = ({
       )}
 
       {additionalText?.length && (
-        <Text size="h6" classes="formtext__additionalText">
+        <Text size="h6" classes="formtextinput__additionalText">
           {additionalText}
         </Text>
       )}

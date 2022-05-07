@@ -41,10 +41,12 @@ const AccountProductItem = ({
       if (res) {
         updateUser(userInfo.id);
         finishOffer();
+        setDialog(false);
       }
     } catch (err) {
       console.log(err);
       finishOffer();
+      setDialog(false);
     }
   };
   const closeDialog = () => setDialog(false);
@@ -141,7 +143,7 @@ const AccountProductItem = ({
             classes="accountproductitem__buttondiv--text"
             size="h4"
           >
-            {accountpageText.reddedildi}
+            {accountpageText.refused}
           </Text>
         )}
       </div>
