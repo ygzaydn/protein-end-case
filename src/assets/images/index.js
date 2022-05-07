@@ -1,7 +1,7 @@
-import BannerImage from "./bannerImage.jpg";
-import Logo from "./logo.png";
-import Example from "./example.png";
-import Signin from "./signin.jpg";
-import Logo2 from "./logo2.jpg";
+import BannerImage from "./bannerImage-min.jpg";
+import Logo from "./logo-min.png";
+import Example from "./example-min.png";
+import Signin from "./signin-min.jpg";
+import Logo2 from "./logo2-min.jpg";
 
 export { Logo, BannerImage, Example, Signin, Logo2 };

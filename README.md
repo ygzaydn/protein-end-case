@@ -1,81 +1,112 @@
-Üye Ol Sayfa Detayları
+# İkinci El Project
 
-- Tasarıma göre design edilmeli [ok]
-- Kullanıcılar bu sayfadan üye olabilmeliler [ok]
-- Email ve Password alanları zorunlu alanlar olmalı [ok]
-- Email ve Password alanlarının validasyonu UI tarafında da yapılmalı [ok]
-- Email valid olmalı ve en az 8 ve en fazla 20 karakter uzunluğunda bir password girilmeli [ok]
-- İşlem başarılı ise kullanıcı index sayfasına signed-in olarak yönlendirilmeli [ok]
-- İşlem başarısız ise kullanıcıya tasarıma göre hata mesajı gösterilmeli [ok]
-- İşlem başarılı ise API'den gelen ve cookie olarak set edilen Auth_Token değeri tüm authentication gerektiren requestlerde header'a Bearer token olarak eklenmeli [ok]
-- Zaten login olan kullanıcılar bu sayfaya gelmeye çalıştığında bu sayfayı göremeden index sayfasına yönlendirilmeli [ok]
+![logo](./src/assets/images/logo.png);
 
-Üye Girişi Sayfa Detayları
+İkinci El Project is a platform to help people to sell & buy products for better prices. Users can upload their products and wait for possible offers, or a direct buyer.
 
-- Tasarıma göre design edilmeli [ok]
-- Kullanıcılar bu sayfadan üye girişi yapabilmeli [ok]
-- Email ve Password alanları zorunlu alanlar olmalı [ok]
-- Email ve Password alanlarının validasyonu UI tarafında da yapılmalı [ok]
-- Email valid olmalı ve en az 8 ve en fazla 20 karakter uzunluğunda bir password girilmeli [ok]
-- İşlem başarılı ise kullanıcı index sayfasına signed-in olarak yönlendirilmeli [ok]
-- İşlem başarısız ise kullanıcıya tasarıma göre hata mesajı gösterilmeli [ok]
-- İşlem başarılı ise API'den gelen ve cookie olarak set edilen Auth_Token değeri tüm authantication gerektiren requestlerde header'a Bearer token olarak eklenmeli [ok]
-- Zaten login olan kullanıcılar bu sayfaya gelmeye çalıştığında bu sayfayı göremeden index sayfasına yönlendirilmeli [ok]
+In order to run project, you should run:
 
-Index Sayfa Detayları
+`npm run start`
 
-- Tasarıma göre design edilmeli [ok]
-- Hesabım ve Ürün Ekle butonları kullanıcı authanticated ise gösterilmeli aksi halde Üye Girişi butonu gözükmeli [ok]
-- Hesabım butonuna tıklanınca Hesabım sayfasına gitmeli [ok]
-- Ürün Ekle butonuna tıklanınca ürün ekleme sayfasına gitmeli [ok]
-- Tasarıma göre tüm kategoriler listelenmeli ve kullanıcı tıkladığında listelenen ürünler tıklanılan kategoriye göre filtrelenmeli, default olarak tüm ürünler çekilmeli [ok]
-- Herhangi bir kategori tıklandığı zaman, seçili kategori queryde tutulmalı. Kullanıcı URL üzerinden siteye geldiğinde queryde bir kategori değeri varsa, o kategori seçili gelmeli [ok]
+Project is powered by React and additional libraries. In this file, those libraries and properties of project will be explained.
 
-Ürün Detay Sayfa Detayları
+## Library Stack
 
-- Tasarıma göre design edilmeli [ok]
-- Teklif Ver butonu üründen gelen data içerisindeki isOfferable alanına göre gösterilmeli ya da gösterilmemeli [ok]
-- Teklif Ver butonuna tıklanınca tasarımdaki gibi bir pop-up çıkmalı ve oradan hazır teklifler yapılmalı ya da kullanıcı kendisi teklif girebilmeli. Teklif girme alanı number olmalı ve buraya validasyon eklenmeli [ok]
-- Hazır yüzdelik tekliflerden birisi seçildiğinde, fiyat üzerinden ilgili değer hesaplanıp API tarafına yollanmalı (offeredPrice), mesela, 100₺ olan ürün için %40 değeri seçilirse, 40₺ teklif yapılmalı [ok]
-- Eğer bir kullanıcı bir ürüne teklif verdiyse, o ürünün detayına gelince Teklif Ver butonu yerine Teklifi Geri Çek butonu gözükmeli. Tıklanınca teklif geri çekilmeli[ok]
-- Kullanıcı teklif yapmadan bir ürünü direk satın alabilir. Satın Al butonuna tıklanınca ilgili pop-up gözükmeli ve kullanıcı aksiyonuna göre hareket edilmeli [ok]
-- Kullanıcı ürünü satın alınca, ilgili ürün içerisindeki Satın Al ve Teklif Ver butonları gizlenmeli. Bu Ürün Satışta Değil şeklinde tasarımdaki gibi bir yazı gösterilmeli. Bu yazı ürün datası içerisindeki isSold alanının değerine göre gösterilmeli [ok]
+Used Libraries:
 
-Hesabım Sayfa Detayları
+- eslint: To have more controllable code while developing the project
+- formik: To handle forms
+- axios: To handle fetch requests
+- lodash: To use some array functions to ease the operations
+- redux: To have a global state management
+  - redux-saga: To handle side-effects on redux
+  - redux-logger: To make development process easier.
+  - redux-persist: To have a persisted redux state
+- yup: To have variable validations
+- reselect: To create selectors for redux
+- saas: To write & operate CSS in more efficient way
+- toastify: To have popup windows in nasty way
+- react-router: To implement routing easily on React
 
-- Tasarıma göre design edilmeli [ok]
-- Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli [ok]
-- Tasarıma göre aktif olan tab için ilgili offer'lar listelenmeli [ok]
-- Alınan tekliflere Onayla ve Reddet butonları ile cevap verilebilmeli [ok]
-- Verilen teklif onaylandığında yanında satın al butonu gözükmeli [ok]
-- Ürün detay sayfasındaki gibi Satın Al butonuna tıklanınca ilgili pop-up gözükmeli.Satın Al'a tıklayınca Teklif Verdiklerim listesindeki ürünün durumu güncellenmeli [ok]
+## File Structure
 
-Ürün Ekleme Sayfa Detayları
+```
+.
+└── src/
+    ├── assets/
+    │   ├── images
+    │   └── svgs
+    ├── components/
+    ├── contexts/
+    ├── constants/
+    │   ├── schemas
+    │   └── texts
+    ├── icons/
+    ├── pages/
+    │   ├── account
+    │   ├── addProduct
+    │   ├── index
+    │   ├── productDetail
+    │   └── sign
+    ├── redux/
+    │   ├── categories
+    │   ├── products
+    │   └── user
+    ├── router/
+    ├── styles/
+    │   ├── abstract
+    │   ├── base
+    │   ├── components
+    │   ├── layout
+    │   ├── pages
+    │   ├── toastify
+    │   └── utils
+    └── utils/
+```
 
-- Tasarıma göre design edilmeli [ok]
-- Kullanıcı signed-in değilse bu sayfayı görüntüleyememeli [ok]
-- İlgili validasyonlar eklenmeli:
-- Ürün Adı alanı maksimum 100 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı [ok]
-- Açıklama alanı maksimum 500 karakter uzunluğunda olmalı ve zorunlu bir alan olmalı [ok]
-- Kategori alanı ilgili endpointten çekilen kategorileri listelemeli ve en fazla bir kategori seçilebilmeli. Bu alan zorunlu bir alan olmalı [ok]
-- Renk alanı ilgili endpointten çekilen renkleri listelemeli ve en fazla bir renk seçilebilmeli.Bu alan zorunlu bir alan olmamalı [ok]
-- Marka alanı ilgili endpointten çekilen markaları listelemeli ve en fazla bir marka seçilebilmeli. Bu alan zorunlu bir alan olmamalı [ok]
-- Kullanım Durumu alanı ilgili endpointten çekilen kullanım durumlarını listelemeli ve en fazla bir kullanım durumu seçilebilmeli. Bu alan zorunlu bir alan olmalı [ok]
-- Ürün Görseli alanından en fazla bir ürün görseli eklenmeli. Eklenen ürün görseli istenildiği zaman silinebilmeli. Bu alan zorunlu bir alan olmalı. Sadece png/jpg/jpeg formatında görseller eklenmeli. Maksimum 400kb değerinde görseller eklenilebilmeli [ok]
-- Fiyat alanı number olmalı ve zorunlu bir alan olmalı [ok]
-- Teklif Opsiyonu alanı boolean bir değer olmalı ve default olarak false olmalı [ok]
+- Assets -> Necessary image & svg files are stored here.
+- Components -> Components are stored here.
+- Contexts -> Contexts are stored here. (There are 2 contexts that is used on this project, you can check them out)
+- Constants -> Yup schemas and texts are stored here. (All texts that have been used on pages are stored in JSON objects, which we can change them easily)
+- Icons -> SVG Icon components are stored here.
+- Pages -> Pages are stored here. (There are 5 different pages on this project)
+- Redux -> Redux related files are stored here. (I've used 3 different reducers to handle all cases)
+- Router -> React router file is stored here.
+- Styles -> SCSS files are stored here.
+- Utils -> Axios configuration is stored here. You can change urls here without dealing with other files.
 
-Ek Proje Gereksinimleri:
+## Development Process
 
-- Tüm UI responsive olmalı [ok]
-- Desktop ve Responsive iletilen tasarıma göre yapılmalı. [ok]
-- İlgili yerlere kendi insiyatifinizde loading indicator ekleyebilirsiniz. Mesela productlar yüklenirken ya da Satın Al gibi async operasyonlar başlatıldığında loading indicator gösterilebilir. [ok]
-- Performanslı bir uygulama olmalı ve CLS gibi web-vitals parametrelerine dikkat edilmeli
-- Accessibility'e önem verilmeli
-- Typescript, SSR, Unit-testing ve Code-splitting gibi geliştirmelerin olması öne çıkaran bir özellik olabilir
-- Yazılan projenin nasıl ayağa kalktığı ve benzeri detayların paylaşıldığı bir README.md file'ı projlere eklenmeli
+During the development, I've tried to follow some architectures. On this part the file, I'll mention them.
 
-- API: https://bootcampapi.techcs.io/api/fe/v1/
-- Yeni API: https://bootcamp.akbolat.net/documentation/v1.0.0
-- Tasarım: https://xd.adobe.com/view/d2d90aae-3e30-4062-64db-8e998a010c1a-a4e8/grid
-- Şifre: Çiçeksepeti1
+- CSS class names are named by following BEM phenomenon.
+- SASS file are organized by using the idea of SASS 7-1 pattern, I have used necessary layers here, and added a _toastify_ folder to handle CSS of toastify popup.
+- I tried to create variables for CSS to handle code repetitions. Also wrote some mixins to deal with media queries etc. You can reach them [here](./src/styles/abstract/_mixins.scss)
+- I have used Redux-Saga middleware to handle side effets of redux. Redux-saga uses [generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators). I know that usage of this middleware is a bit hard, but I wanted to show you that I am capable to do.
+- I have created small pieces of components to avoid code repetitions. You can check components [here](./src/components/index.js). Generic components are used on different cases, and I wanted to simulate some components (e.g Button Component, Text Component) like on React libraries (like Material UI).
+- I haven't used any additional React library to have ready-to-use components. I have tried to create them all by writing CSS.
+- I have created an [axios](./src/utils/axios.js) file to have control on axios calls. On this file you can easily change base URL or paths without have additional concern.
+- I have used some _role_ HTML attribute to make project is readable for people who has disabilities.
+- I have compressed files on [images](/src/assets/images/). By doing this operation file size is minimized(~70%) thus we have better performance. You can check old & new versions of images.
+- I have created `index.js` files for all subfolders to control import & export action in one place.
+
+## Things to do
+
+I believe I have completed the checklist that is shared with us. But there are some elements that I could add.
+
+- I haven't find time to write tests. Tests are essentials on software development and must be added.
+- I have worked more on optimizing fetch requests to avoid unnecessary fetches. I might have better performance on it if I had more time.
+- There might some CSS errors, and by having some feedback they are easy to change.
+
+### Before closing the project
+
+I'd like to thank ![Patika](https://www.patika.dev) and ![Protel](https://www.protel.com.tr) for this bootcamp. I really enjoyed the whole process. I wish we had more time and dive into deeper topics.
+
+---
+
+> - API: https://bootcampapi.techcs.io/api/fe/v1/
+> - Yeni API: https://bootcamp.akbolat.net/documentation/v1.0.0
+> - Tasarım: https://xd.adobe.com/view/d2d90aae-3e30-4062-64db-8e998a010c1a-a4e8/grid
+> - Şifre: Çiçeksepeti1
+
+---
