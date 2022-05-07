@@ -52,9 +52,9 @@ const AccountOfferItem = ({
   };
 
   return (
-    <div className="accountproductitem">
-      {item.product && (
-        <>
+    <>
+      {item?.product?.id !== undefined && (
+        <div className="accountproductitem">
           <AccountPurchaseDialog
             open={Boolean(dialog)}
             approveFunc={(id) => buy(id)}
@@ -124,9 +124,9 @@ const AccountOfferItem = ({
               </Text>
             )}
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

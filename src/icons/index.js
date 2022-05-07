@@ -6,5 +6,16 @@ import Upload from "./upload";
 import Checked from "./checked";
 import Unchecked from "./unchecked";
 import Loading from "./loading";
+import UpArrow from "./upArrow";
 
-export { Logo, Plus, UserLogo, Profile, Upload, Checked, Unchecked, Loading };
+export {
+  Logo,
+  Plus,
+  UserLogo,
+  Profile,
+  Upload,
+  Checked,
+  Unchecked,
+  Loading,
+  UpArrow,
+};

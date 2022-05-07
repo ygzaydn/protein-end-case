@@ -18,7 +18,7 @@ const CategoryText = ({ name, active, clickFunc }) => {
 CategoryText.propTypes = {
   name: PropTypes.string,
   active: PropTypes.bool,
-  clickFunc: PropTypes.bool,
+  clickFunc: PropTypes.func,
 };
 
 export default CategoryText;

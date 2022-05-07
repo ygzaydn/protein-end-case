@@ -1,0 +1,28 @@
+.scroll {
+    position: fixed;
+    padding:1rem;
+    bottom:5rem;
+    right:10rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1rem;
+    background-color: $color-blue-1;
+    cursor: pointer;
+    color: $color-light-1;
+    font-size: 3rem;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: visible;
+    @include respond(tab-port){
+        bottom: 3rem;
+        right:2rem;
+    }
+    & svg {
+        fill: $color-light-1;
+    }
+    &--hidden{
+        visibility: hidden;
+    }
+}

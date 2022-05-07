@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header, CategoryText, ItemCard } from "../../components";
+import { Header, CategoryText, ItemCard, ScrollToTop } from "../../components";
 import { BannerImage } from "../../assets/images/";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -19,13 +19,28 @@ const Index = ({
   setCategory,
 }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [pos, setPos] = useState(0);
   const navigate = useNavigate();
+
+  const position = () => {
+    const height = window.innerHeight / 2;
+    const posY = window.pageYOffset;
+    const temp = parseInt(posY / height);
+    if (temp > 0 && pos !== temp) {
+      setPos(temp);
+    } else if (temp === 0) {
+      setPos(0);
+    }
+  };
 
   useEffect(() => {
     //resetStore();
     getProducts();
     getCategories();
     checkUser();
+    window.addEventListener("scroll", () => position());
+
+    return () => window.removeEventListener("scroll", () => position());
   }, []);
 
   const filterProducts = () => {
@@ -43,6 +58,7 @@ const Index = ({
   return (
     <section className="indexpage">
       <Header />
+      <ScrollToTop visible={Boolean(pos)} />
       <div className="indexpage__content">
         <div className="indexpage__banner" role="img">
           <img
@@ -57,7 +73,7 @@ const Index = ({
             active={category === ""}
             name={indexpageText.allProducts}
           />
-          {categories?.map((el) => (
+          {categories.map((el) => (
             <CategoryText
               active={el === category}
               key={el}
@@ -67,7 +83,7 @@ const Index = ({
           ))}
         </div>
         <div className="indexpage__items">
-          {filteredProducts?.map((el) => (
+          {filteredProducts?.slice(0, (pos + 1) * 10).map((el) => (
             <ItemCard
               key={el.id + el.brand}
               brand={el.brand}
