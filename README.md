@@ -28,6 +28,7 @@ Used Libraries:
 - toastify: To have popup windows in nasty way
 - react-router: To implement routing easily on React
 - universal-cookie: To implement cookies on React in easier way
+- prop-types: To be able to do typecheck without Typescript
 
 ## File Structure
 
@@ -83,7 +84,7 @@ During the development, I've tried to follow some architectures. On this part th
 - CSS class names are named by following BEM phenomenon.
 - SASS file are organized by using the idea of SASS 7-1 pattern, I have used necessary layers here, and added a _toastify_ folder to handle CSS of toastify popup.
 - I tried to create variables for CSS to handle code repetitions. Also wrote some mixins to deal with media queries etc. You can reach them [here](./src/styles/abstract/_mixins.scss)
-- I have used Redux-Saga middleware to handle side effets of redux. Redux-saga uses [generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators). I know that usage of this middleware is a bit hard, but I wanted to show you that I am capable to do.
+- I have used Redux-Saga middleware to handle side effets of redux. Redux-saga uses [generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators).
 - I have created small pieces of components to avoid code repetitions. You can check components [here](./src/components/index.js). Generic components are used on different cases, and I wanted to simulate some components (e.g Button Component, Text Component) like on React libraries (like Material UI).
 - I haven't used any additional React library to have ready-to-use components. I have tried to create them all by writing CSS.
 - I have created an [axios](./src/utils/axios.js) file to have control on axios calls. On this file you can easily change base URL or paths without have additional concern.
