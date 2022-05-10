@@ -1,5 +1,7 @@
 # İkinci El Project
 
+[live demo](https://ikincielproject.web.app/)
+
 ![logo](./src/assets/images/logo.png)
 
 İkinci El Project is a platform to help people to sell & buy products for better prices. Users can upload their products and wait for possible offers, or a direct buyer.
